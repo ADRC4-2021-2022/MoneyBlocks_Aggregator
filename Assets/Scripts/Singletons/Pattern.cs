@@ -47,28 +47,350 @@ public class PatternManager
                     new Vector3Int(2, 0, 0),
                     new Vector3Int(0, 1, 0),
                     new Vector3Int(0, 2, 0),
-                    new Vector3Int(1, 2, 0),
+                    new Vector3Int(0, 3, 0),
+                    new Vector3Int(2, 1, 0),
                     new Vector3Int(2, 2, 0),
-                    
+                    new Vector3Int(2, 3, 0),
+
                 },
             new List<Vector3Int>() //Anchorpoints
                 {
-                    new Vector3Int(1, 0, 0),
-                    new Vector3Int(0, 1, 0),
-                    new Vector3Int(1, 2, 0)
+                   new Vector3Int(1, 0, 0),
+                   new Vector3Int(0, 1, 0),
+                   new Vector3Int(2, 1, 0),
+                   
 
                 },
             new List<Vector3Int>() //Connections
                 {
-                    new Vector3Int(-1, 1, 0),
                     new Vector3Int(1, 1, 0),
-                    new Vector3Int(2, 1, 0)
-
+                    new Vector3Int(1, 2, 0),
+                    new Vector3Int(1, 3, 0)
+                    
                 },
                 "UShape"
                 );
 
         //Define all patterns
+
+        //Define H shape 
+        AddPattern(
+            new List<Vector3Int>() //indices
+                {
+                    new Vector3Int(0, 0, 0),
+                    new Vector3Int(1, 0, 0),
+                    new Vector3Int(2, 0, 0),
+                    new Vector3Int(3, 0, 0),
+                    new Vector3Int(4, 0, 0),
+                    new Vector3Int(5, 0, 0),
+                    new Vector3Int(6, 0, 0),
+                    new Vector3Int(4, 1, 0),
+                    new Vector3Int(4, 2, 0),
+                    new Vector3Int(0, 2, 0),
+                    new Vector3Int(1, 2, 0),
+                    new Vector3Int(2, 2, 0),
+                    new Vector3Int(3, 2, 0),
+                    new Vector3Int(4, 2, 0),
+                    new Vector3Int(5, 2, 0),
+                    new Vector3Int(6, 2, 0),
+
+
+                },
+            new List<Vector3Int>() //Anchorpoints
+                {
+                    new Vector3Int(1, 0, 0),
+                    new Vector3Int(2, 0, 0),
+                    new Vector3Int(4, 0, 0),
+                    new Vector3Int(5, 0, 0),
+                    new Vector3Int(4, 1, 0),
+                    new Vector3Int(1, 2, 0),
+                    new Vector3Int(2, 2, 0),
+                    new Vector3Int(4, 2, 0),
+                    new Vector3Int(5, 2, 0),
+
+                },
+            new List<Vector3Int>() //Connections
+                {
+                    new Vector3Int(0, 2, 0),
+                    new Vector3Int(1, 2, 0),
+                    new Vector3Int(2, 2, 0),
+                    new Vector3Int(4, 2, 0),
+                    new Vector3Int(5, 2, 0),
+                    new Vector3Int(6, 2, 0)
+
+                },
+                "HShape"
+                );
+
+
+        //Define O shape 
+        AddPattern(
+            new List<Vector3Int>() //indices
+                {
+                    new Vector3Int(0, 0, 0),
+                    new Vector3Int(1, 0, 0),
+                    new Vector3Int(2, 0, 0),
+                    new Vector3Int(0, 1, 0),
+                    new Vector3Int(0, 2, 0),
+                    new Vector3Int(0, 3, 0),
+                    new Vector3Int(1, 3, 0),
+                    new Vector3Int(2, 1, 0),
+                    new Vector3Int(2, 2, 0),
+                    new Vector3Int(2, 3, 0),
+                },
+            new List<Vector3Int>() //Anchorpoints
+                {
+                    new Vector3Int(1, 0, 0),
+                    new Vector3Int(0, 1, 0),
+                    new Vector3Int(0, 2, 0),
+                    new Vector3Int(1, 3, 0),
+                    new Vector3Int(2, 1, 0),
+                    new Vector3Int(2, 2, 0),
+                },
+            new List<Vector3Int>() //Connections
+                {
+                    new Vector3Int(1, 1, 0),
+                    new Vector3Int(1, 2, 0),
+                },
+                "OShape"
+                );
+
+        //Define S shape 
+        AddPattern(
+            new List<Vector3Int>() //indices
+                {
+                    new Vector3Int(0, 0, 0),
+                    new Vector3Int(0, 1, 0),
+                    new Vector3Int(0, 2, 0),
+                    new Vector3Int(0, 3, 0),
+                    new Vector3Int(1, 0, 0),
+                    new Vector3Int(2, 0, 0),
+                    new Vector3Int(2, 1, 0),
+                    new Vector3Int(2, 2, 0),
+                    new Vector3Int(2, 3, 0),
+                    new Vector3Int(3, 3, 0),
+                    new Vector3Int(4, 0, 0),
+                    new Vector3Int(4, 1, 0),
+                    new Vector3Int(4, 2, 0),
+                    new Vector3Int(4, 3, 0),
+
+                },
+            new List<Vector3Int>() //Anchorpoints
+                {
+                    new Vector3Int(0, 1, 0),
+                    new Vector3Int(0, 2, 0),
+                    new Vector3Int(1, 0, 0),
+                    new Vector3Int(2, 1, 0),
+                    new Vector3Int(2, 2, 0),
+                    new Vector3Int(3, 3, 0),
+                    new Vector3Int(4, 1, 0),
+                    new Vector3Int(4, 2, 0),
+
+                },
+            new List<Vector3Int>() //Connections
+                {
+                    new Vector3Int(1, 1, 0),
+                    new Vector3Int(1, 2, 0),
+                    new Vector3Int(1, 3, 0),
+                    new Vector3Int(3, 0, 0),
+                    new Vector3Int(3, 1, 0),
+                    new Vector3Int(3, 2, 0),
+                },
+                "SShape"
+                );
+        //Define Hook shape 
+        AddPattern(
+            new List<Vector3Int>() //indices
+                {
+                    new Vector3Int(0, 0, 0),
+                    new Vector3Int(0, 1, 0),
+                    new Vector3Int(0, 2, 0),
+                    new Vector3Int(1, 0, 0),
+                    new Vector3Int(2, 0, 0),
+                    new Vector3Int(2, 1, 0),
+                    new Vector3Int(2, 2, 0),                 
+                    new Vector3Int(3, 0, 0),
+                    new Vector3Int(3, 1, 0),
+                    new Vector3Int(3, 2, 0),
+                    new Vector3Int(4, 0, 0),               
+                    new Vector3Int(4, 2, 0),
+                    new Vector3Int(5, 0, 0),
+                    new Vector3Int(5, 2, 0),
+
+                },
+            new List<Vector3Int>() //Anchorpoints
+                {
+                    new Vector3Int(0, 1, 0),                  
+                    new Vector3Int(1, 0, 0),
+                    new Vector3Int(2, 1, 0),
+                    new Vector3Int(3, 1, 0),
+                    new Vector3Int(3, 3, 0),
+                    new Vector3Int(4, 0, 0),
+                    new Vector3Int(4, 2, 0),
+
+                },
+            new List<Vector3Int>() //Connections
+                {
+                    new Vector3Int(1, 1, 0),
+                    new Vector3Int(1, 2, 0),
+                    new Vector3Int(4, 1, 0),
+                    new Vector3Int(4, 3, 0),
+                    new Vector3Int(5, 1, 0),
+                    new Vector3Int(3, 1, 0),
+                    
+                },
+
+                "HookShape"
+               
+                );
+        //Define  LongHookshape 
+        AddPattern(
+            new List<Vector3Int>() //indices
+                {
+                    new Vector3Int(0, 0, 0),
+                    new Vector3Int(1, 0, 0),
+                    new Vector3Int(2, 0, 0),                   
+                    new Vector3Int(0, 1, 0),
+                    new Vector3Int(0, 2, 0),
+                    new Vector3Int(1, 2, 0),
+                    new Vector3Int(2, 2, 0),
+                    new Vector3Int(0, 4, 0),
+                    new Vector3Int(1, 4, 0),
+                    new Vector3Int(2, 4, 0),
+                    new Vector3Int(0, 5, 0),
+                    new Vector3Int(1, 5, 0),
+                    new Vector3Int(2, 5, 0),
+                    new Vector3Int(0, 6, 0),
+                    new Vector3Int(1, 6, 0),
+                    new Vector3Int(2, 6, 0),
+                    new Vector3Int(0, 7, 0),
+                    new Vector3Int(1, 7, 0),
+                    new Vector3Int(2, 7, 0),
+                    new Vector3Int(0, 8, 0),
+                    new Vector3Int(1, 8, 0),
+                    new Vector3Int(2, 8, 0),
+                    new Vector3Int(0, 9, 0),
+                    new Vector3Int(1, 9, 0),
+                    new Vector3Int(2, 9, 0),
+                    new Vector3Int(1, 10, 0),
+                    new Vector3Int(2, 10, 0),
+                    new Vector3Int(1, 11, 0),
+                    new Vector3Int(2, 11, 0),
+                    new Vector3Int(1, 12, 0),
+                    new Vector3Int(2, 12, 0),
+                    new Vector3Int(1, 13, 0),
+                    new Vector3Int(2, 13, 0),
+                    new Vector3Int(0, 14, 0),
+                    new Vector3Int(1, 14, 0),
+                    new Vector3Int(2, 14, 0),
+                    new Vector3Int(0, 15, 0),
+                    new Vector3Int(1, 15, 0),
+                    new Vector3Int(2, 15, 0),
+
+
+                },
+            new List<Vector3Int>() //Anchorpoints
+                {
+                    new Vector3Int(0, 0, 0),
+                    new Vector3Int(1, 0, 0),
+                    new Vector3Int(2, 0, 0),
+                    new Vector3Int(0, 1, 0),
+                    new Vector3Int(0, 2, 0),
+                    new Vector3Int(1, 2, 0),
+                    new Vector3Int(2, 2, 0),
+                    new Vector3Int(1, 10, 0),
+                    new Vector3Int(2, 10, 0),
+                    new Vector3Int(1, 11, 0),
+                    new Vector3Int(2, 11, 0),
+                    new Vector3Int(1, 12, 0),
+                    new Vector3Int(2, 12, 0),
+                    new Vector3Int(1, 13, 0),
+                    new Vector3Int(2, 13, 0),
+
+
+                },
+            new List<Vector3Int>() //Connections
+                {
+                    
+                    new Vector3Int(1, 1, 0),
+                    new Vector3Int(1, 2, 0),
+                    new Vector3Int(0, 10, 0),
+                    new Vector3Int(0, 11, 0),
+                    new Vector3Int(0, 12, 0),
+                    new Vector3Int(0, 13, 0),
+
+                },
+                "LongHookShape"
+              
+
+        );
+        //Define LongHshape 
+        AddPattern(
+            new List<Vector3Int>() //indices
+                {
+                    new Vector3Int(0, 0, 0),
+                    new Vector3Int(2, 0, 0),
+                    new Vector3Int(0, 1, 0),
+                    new Vector3Int(0, 2, 0),
+                    new Vector3Int(2, 1, 0),
+                    new Vector3Int(2, 2, 0),
+                    new Vector3Int(0, 3, 0),
+                    new Vector3Int(1, 3, 0),
+                    new Vector3Int(2, 3, 0),
+                    new Vector3Int(0, 4, 0),
+                    new Vector3Int(2, 4, 0),
+                    new Vector3Int(0, 5, 0),
+                    new Vector3Int(2, 5, 0),
+                    new Vector3Int(0, 6, 0),
+                    new Vector3Int(2, 6, 0),
+                    new Vector3Int(0, 7, 0),
+                    new Vector3Int(1, 7, 0),
+                    new Vector3Int(2, 7, 0),
+                    new Vector3Int(0, 8, 0),
+                    new Vector3Int(2, 8, 0),
+                    new Vector3Int(0, 9, 0),
+                    new Vector3Int(2, 9, 0),
+                    new Vector3Int(0, 10, 0),
+                    new Vector3Int(2, 10, 0),
+
+                },
+            new List<Vector3Int>() //Anchorpoints
+                {
+                    new Vector3Int(0, 1, 0),
+                    new Vector3Int(0, 2, 0),
+                    new Vector3Int(2, 1, 0),
+                    new Vector3Int(2, 2, 0),
+                    new Vector3Int(1, 3, 0),
+                    new Vector3Int(0, 5, 0),
+                    new Vector3Int(2, 5, 0),
+                    new Vector3Int(0, 6, 0),
+                    new Vector3Int(2, 6, 0),
+                    new Vector3Int(1, 7, 0),
+                    new Vector3Int(0, 8, 0),
+                    new Vector3Int(2, 8, 0),
+                    new Vector3Int(0, 9, 0),
+                    new Vector3Int(2, 9, 0),
+
+                },
+            new List<Vector3Int>() //Connections
+                {
+                    new Vector3Int(1, 0, 0),
+                    new Vector3Int(1, 1, 0),
+                    new Vector3Int(1, 2, 0),
+                    new Vector3Int(1, 4, 0),
+                    new Vector3Int(1, 5, 0),
+                    new Vector3Int(1, 6, 0),
+                    new Vector3Int(3, 6, 0),
+                    new Vector3Int(1, 8, 0),
+                    new Vector3Int(1, 9, 0),
+                    new Vector3Int(1, 10, 0),
+
+
+                },
+
+                "LongHShape"
+            );
+
 
     }
     /// <summary>

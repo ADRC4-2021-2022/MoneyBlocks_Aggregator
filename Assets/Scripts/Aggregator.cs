@@ -8,24 +8,40 @@ public class Aggregator : MonoBehaviour
     private VoxelGrid _grid;
     void Start()
     {
-        //Create a voxelgrid
+        _grid = new VoxelGrid(50,100,50,10f,Vector3.zero);//the voxel grid does not show up
 
+        //Find the GameObject
+
+        GameObject obj = GameObject.Find("UShap");
+
+        //Get script attached to it
+        //attached in unity
+        //Call the function
+        //which function
     }
 
     public void AddFirstBlock()
+         
     {
-        //Select a random voxel with Y index = 0
-        //Create a new connection with the voxel index
-        //TryConnection(RandomVoxel);
+        int x = 3;
+        int z = 15;
+        Vector3Int randomVoxel = new Vector3Int(x,0,z);//Select a random voxel with Y index = 0
+        Connection _connectionZero;
+        _connectionZero = new Connection(randomVoxel, _grid );//Create a new connection with the voxel index
+        TryConnection(_connectionZero);//TryConnection(RandomVoxel)
+       
     }
 
     public bool TryConnection(Connection connection)
     {
-        //Select a random pattern out of the connections possiblePatterns
+        new Vector3Int(2, 1, 0); //Select a random pattern out of the connections possiblePatterns
 
         List<Vector3Int> possibleRotations = new List<Vector3Int>(Util.Directions);
-        ////Select a random rotation out of possibleRotations
-        ////Try to add a block on the connection voxel with the selected pattern in the selected direction
+
+        new Vector3Int(0, -1, 0);////Select a random rotation out of possibleRotations
+        GameObject obj = GameObject.Find("UShap"); ////Try to add a block on the connection voxel with the selected pattern in the selected direction
+        obj.transform.position = new Vector3Int(3,0,15);
+        obj.transform.rotation = new Quaternion. ;
         ///
         /// 
         ////If(Adding block failed)
