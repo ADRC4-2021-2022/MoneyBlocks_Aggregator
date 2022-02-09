@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+
+//Try to use Kevin his voxelgrid class instead of Davids
 public class VoxelGrid
 {
     #region public fields
@@ -152,7 +154,8 @@ public class VoxelGrid
             }
         }
 
-        ShowAvailableVoxels = true;
+        //Put this to true if you want to see the voxels on creation of the grid
+        ShowAvailableVoxels = false;
         ShowAliveVoxels = true;
     }
 

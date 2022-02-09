@@ -101,8 +101,9 @@ public class Block
     /// </summary>
     public void CreateGOBlock()
     {
-        if (_grid.GOPatternPrefabs[PatternIndex] != null)
-            _goBlock = GameObject.Instantiate(_grid.GOPatternPrefabs[PatternIndex], _grid.GetVoxelByIndex(Anchor).Centre, Rotation);
+
+        if (_pattern.GOPrefab != null)
+            _goBlock = GameObject.Instantiate(_pattern.GOPrefab, _grid.GetVoxelByIndex(Anchor).Centre, Rotation);
         else
             Debug.LogWarning($"The GameObject for pattern  {PatternIndex}: '{PatternManager.GetPatternByIndex(PatternIndex).Name}' is not found");
     }

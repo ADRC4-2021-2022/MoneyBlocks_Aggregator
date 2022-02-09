@@ -59,7 +59,6 @@ public class PatternManager
                    new Vector3Int(0, 1, 0),
                    new Vector3Int(2, 1, 0),
                    
-
                 },
             new List<Vector3Int>() //Connections
                 {
