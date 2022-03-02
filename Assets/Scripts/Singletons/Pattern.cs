@@ -38,6 +38,8 @@ public class PatternManager
         _patterns = new List<Pattern>();
         _patternsByName = new Dictionary<string, Pattern>();
 
+
+        //once the patterncreator works, put all the AddPattern() function below in comments
         //Define UShape
         AddPattern(
             new List<Vector3Int>() //indices
@@ -71,7 +73,7 @@ public class PatternManager
                 );
 
         //Define all patterns
-
+        /*
         //Define H shape 
         AddPattern(
             new List<Vector3Int>() //indices
@@ -121,8 +123,8 @@ public class PatternManager
                 "HShape"
                 );
 
-
-        //Define HShape 
+        */
+        //Define HShape There are some wrong indices in here
         AddPattern(
             new List<Vector3Int>() //indices
                 {
@@ -489,6 +491,7 @@ public class PatternManager
         return true;
     }
 
+    //When the patternloader is working, add the gameobject to the parameters of this function, position it correctly according to the anchorpoints
     public void GeneratePatterns(List<Vector3Int> indices, Vector3Int anchorPoint, List<Vector3Int> connections, string name)
     {
         List<Vector3Int> newIndices = new List<Vector3Int>();

@@ -19,7 +19,11 @@ public class Aggregator : MonoBehaviour
         //Call the function
         //which function
         AddFirstBlock();
-        GenerationStep();
+        for (int i = 0; i < 50; i++)
+        {
+            GenerationStep();
+        }
+        
     }
 
     public void AddFirstBlock()
@@ -70,7 +74,7 @@ public class Aggregator : MonoBehaviour
             List<Vector3Int> possibleDirections = new List<Vector3Int>(Util.Directions);
             int directionTries = 0;
 
-            //Get a random pattern oout of the possiblePatterns
+            //Get a random pattern out of the possiblePatterns
             int patternIndex = Random.Range(0, possiblePatterns.Count);
             Pattern selectedPattern = possiblePatterns[patternIndex];
 
@@ -83,7 +87,7 @@ public class Aggregator : MonoBehaviour
                 _grid.SetPatternIndex(selectedPattern.Index);
 
                 //Try to place a block based on the pattern with the anchorpoint on the connection point
-                _grid.AddBlock(connection.Index, Quaternion.Euler(randomDirection));
+                _grid.AddBlock(connection.Index, Quaternion.Euler(randomDirection*90));
 
                 //See if the block can be added
                 if (!_grid.TryAddCurrentBlocksToGrid())

@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Voxel
+  - AnchorPoint
+  - Connection
+  - Component
+  - ComponentMesh
   layers:
   - Default
   - TransparentFX
