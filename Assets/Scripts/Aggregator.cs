@@ -8,7 +8,7 @@ public class Aggregator : MonoBehaviour
     private VoxelGrid _grid;
     void Start()
     {
-        _grid = new VoxelGrid(10, 20, 10, 10f, Vector3.zero);//the voxel grid does not show up
+        _grid = new VoxelGrid(20, 20, 20, 10f, Vector3.zero);//the voxel grid does not show up
 
         //Find the GameObject
 
@@ -19,7 +19,7 @@ public class Aggregator : MonoBehaviour
         //Call the function
         //which function
         AddFirstBlock();
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 1000; i++)
         {
             GenerationStep();
         }
