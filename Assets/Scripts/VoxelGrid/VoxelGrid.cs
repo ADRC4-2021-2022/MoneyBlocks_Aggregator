@@ -79,8 +79,18 @@ public class VoxelGrid
             if (_goPatternPrefabs == null)
             {
                 _goPatternPrefabs = new Dictionary<int, GameObject>();
-                _goPatternPrefabs.Add(0, Resources.Load("Prefabs/PrefabPatternA") as GameObject);
-                _goPatternPrefabs.Add(1, Resources.Load("Prefabs/PrefabPatternB") as GameObject);
+                _goPatternPrefabs.Add(0, Resources.Load("Prefabs/9Shape") as GameObject);
+                _goPatternPrefabs.Add(1, Resources.Load("Prefabs/HookShape") as GameObject);
+                _goPatternPrefabs.Add(2, Resources.Load("Prefabs/HShape") as GameObject);
+                _goPatternPrefabs.Add(3, Resources.Load("Prefabs/LongHShape") as GameObject);
+                _goPatternPrefabs.Add(4, Resources.Load("Prefabs/LonglongHShape") as GameObject);
+                _goPatternPrefabs.Add(5, Resources.Load("Prefabs/LShape") as GameObject);
+                _goPatternPrefabs.Add(6, Resources.Load("Prefabs/LonglongShape") as GameObject);
+                _goPatternPrefabs.Add(6, Resources.Load("Prefabs/MidHshape") as GameObject);
+                _goPatternPrefabs.Add(6, Resources.Load("Prefabs/OShape") as GameObject);
+                _goPatternPrefabs.Add(6, Resources.Load("Prefabs/SShape") as GameObject);
+                _goPatternPrefabs.Add(6, Resources.Load("Prefabs/UShape") as GameObject);
+                _goPatternPrefabs.Add(6, Resources.Load("Prefabs/YShape") as GameObject);
             }
             return _goPatternPrefabs;
         }
