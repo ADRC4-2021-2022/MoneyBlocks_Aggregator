@@ -133,6 +133,11 @@ public class Voxel
         trigger.AttachedVoxel = this;
     }
 
+    public void DestroyGameObject()
+    {
+        GameObject.Destroy(_goVoxelTrigger);
+    }
+
     public List<Voxel> GetFaceNeighbourList()
     {
         List<Voxel> neighbours = new List<Voxel>();

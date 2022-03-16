@@ -115,5 +115,29 @@ public static class Util
         return Quaternion.Euler(x, y, z);
     }
 
-  
+    /// <summary>
+    /// Gets all the child gameobject of a parent object with a given tag
+    /// </summary>
+    /// <param name="parent"></param>
+    /// <param name="tag"></param>
+    /// <returns>list of children</returns>
+    public static List<GameObject> GetChildrenWithTag(Transform parent, string tag)
+    {
+        List<GameObject> taggedChildren = new List<GameObject>();
+
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            Transform child = parent.GetChild(i);
+            if (child.tag == tag)
+            {
+                taggedChildren.Add(child.gameObject);
+            }
+            if (child.childCount > 0)
+            {
+                GetChildrenWithTag(child, tag);
+            }
+        }
+
+        return taggedChildren;
+    }
 }

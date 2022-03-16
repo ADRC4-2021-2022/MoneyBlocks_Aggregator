@@ -19,10 +19,18 @@ public class Aggregator : MonoBehaviour
     private int _tryCounter = 0;
     private int _iterationCounter = 0;
 
+    private PatternCreator _patternCreator
+    {
+        get
+        {
+            return GameObject.Find("PatternCreator").GetComponent<PatternCreator>();
+        }
+    }
+
+
     void Start()
     {
-        
-
+        _patternCreator.CreatePatterns();
 
         Invoke("StopRun", 10f);
         _grid = new VoxelGrid(20, 20, 20, 10f, Vector3.zero);
@@ -40,7 +48,7 @@ public class Aggregator : MonoBehaviour
         {
             GenerationStep();
         }
-        
+
     }
     public void Update()
     {
@@ -100,9 +108,9 @@ public class Aggregator : MonoBehaviour
         //Select a random available connection
         int rndConnectionIndex = Random.Range(0, availableConnections.Count);
         Connection selectedConnection = availableConnections[rndConnectionIndex];
-        
+
         TryConnection(selectedConnection);
-        
+
         //TryConnection(selectedConnection)
         //if tryConnection == false
         ////remove the connection from available connections
@@ -135,7 +143,7 @@ public class Aggregator : MonoBehaviour
                 _grid.SetPatternIndex(selectedPattern.Index);
 
                 //Try to place a block based on the pattern with the anchorpoint on the connection point
-                _grid.AddBlock(connection.Index, Quaternion.Euler(randomDirection*90));
+                _grid.AddBlock(connection.Index, Quaternion.Euler(randomDirection * 90));
 
                 //See if the block can be added
                 if (!_grid.TryAddCurrentBlocksToGrid())
@@ -167,7 +175,7 @@ public class Aggregator : MonoBehaviour
 
             patternTries++;
 
-            
+
         }
 
 
