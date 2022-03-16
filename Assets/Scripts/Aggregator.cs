@@ -1,14 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Aggregator : MonoBehaviour
 {
     private List<Connection> connections = new List<Connection>();
     private VoxelGrid _grid;
+    public Coroutine coroutine;
+    private List<Voxel> _nonDeadVoxels;
+
+    private float _voxelSize = 0.2f;
+    private int _voxelOffset = 2;
+
+    private int _triesPerIteration = 10000;
+    private int _iterations = 1000;
+
+    private int _tryCounter = 0;
+    private int _iterationCounter = 0;
+
     void Start()
     {
-        _grid = new VoxelGrid(20, 20, 20, 10f, Vector3.zero);//the voxel grid does not show up
+        
+
+
+        Invoke("StopRun", 10f);
+        _grid = new VoxelGrid(20, 20, 20, 10f, Vector3.zero);
 
         //Find the GameObject
 
@@ -19,11 +36,42 @@ public class Aggregator : MonoBehaviour
         //Call the function
         //which function
         AddFirstBlock();
-        for (int i = 0; i < 1000; i++)
+        for (int i = 0; i < 5000; i++)
         {
             GenerationStep();
         }
         
+    }
+    public void Update()
+    {
+        /*int track = 0;
+
+        if (track<1000)
+        {
+            track++;
+            GenerationStep();
+
+        }*/
+    }
+
+    /// <summary>
+    /// Set the status of all voxels dead inside or outside of the mesh
+    /// </summary>
+    /// <param name="checkInside">if true, the voxels outside the mesh will be dead.
+    /// If false, the voxels inside of the mesh will be dead.</param>
+    private void KillVoxelsInOutBounds(bool checkInside)
+    {
+        foreach (Voxel voxel in _grid.GetVoxels())
+        {
+            bool isInside = BoundingMesh.IsInsideCentre(voxel);
+            if (checkInside && !isInside)
+                voxel.Status = VoxelState.Dead;
+            if (!checkInside && isInside)
+                voxel.Status = VoxelState.Dead;
+        }
+
+        Debug.Log($"Number of available voxels: {_grid.GetVoxels().Count(v => v.Status == VoxelState.Available)} of {_grid.GetVoxels().Count()} voxels");
+        _nonDeadVoxels = _grid.GetVoxels().Where(v => v.Status != VoxelState.Dead).ToList();
     }
 
     public void AddFirstBlock()
@@ -52,9 +100,9 @@ public class Aggregator : MonoBehaviour
         //Select a random available connection
         int rndConnectionIndex = Random.Range(0, availableConnections.Count);
         Connection selectedConnection = availableConnections[rndConnectionIndex];
-
+        
         TryConnection(selectedConnection);
-
+        
         //TryConnection(selectedConnection)
         //if tryConnection == false
         ////remove the connection from available connections
@@ -118,7 +166,11 @@ public class Aggregator : MonoBehaviour
             }
 
             patternTries++;
+
+            
         }
+
+
 
 
         //obj.transform.rotation = new Quaternion. ;
@@ -146,8 +198,19 @@ public class Aggregator : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.5f);
+            GenerationStep();
+            yield return new WaitForSeconds(1f);
         }
+    }
+
+    private void StartRun()
+    {
+        coroutine = StartCoroutine(StartGeneration());
+    }
+
+    public void StopRun()
+    {
+        StopCoroutine(coroutine);
     }
 
     public void StartStopGenerating()
@@ -156,5 +219,32 @@ public class Aggregator : MonoBehaviour
         ////AddFirstBlock()
         //else
         ////StartGeneration() start or stop the coroutine
+    }
+
+    public void CreateVoxelGrid()
+    {
+        _grid = BoundingMesh.GetVoxelGrid(_voxelOffset, _voxelSize);
+    }
+
+
+    /// <summary>
+    /// Set the voxels outside of the mesh to not alive
+    /// </summary>
+    public void VoxeliseMesh()
+    {
+        KillVoxelsInOutBounds(true);
+    }
+
+    public void ShowAliveVoxels()
+    {
+        _grid.ShowAliveVoxels = !_grid.ShowAliveVoxels;
+    }
+
+    /// <summary>
+    /// Show all the available voxels
+    /// </summary>
+    public void ShowAvailableVoxels()
+    {
+        _grid.ShowAvailableVoxels = !_grid.ShowAvailableVoxels;
     }
 }
