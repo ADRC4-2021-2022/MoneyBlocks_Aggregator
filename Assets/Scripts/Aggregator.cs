@@ -36,7 +36,7 @@ public class Aggregator : MonoBehaviour
         //Call the function
         //which function
         AddFirstBlock();
-        for (int i = 0; i < 5000; i++)
+        for (int i = 0; i < 100; i++)
         {
             GenerationStep();
         }
@@ -44,14 +44,14 @@ public class Aggregator : MonoBehaviour
     }
     public void Update()
     {
-        /*int track = 0;
+        int track = 0;
 
-        if (track<1000)
+        if (track < 1000)
         {
             track++;
             GenerationStep();
 
-        }*/
+        }
     }
 
     /// <summary>
