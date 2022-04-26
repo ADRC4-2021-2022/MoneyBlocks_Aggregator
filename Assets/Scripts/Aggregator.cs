@@ -7,11 +7,11 @@ public class Aggregator : MonoBehaviour
 {
     private List<Connection> connections = new List<Connection>();
     private VoxelGrid _grid;
-    public Coroutine coroutine;
+    //public Coroutine coroutine;
     private List<Voxel> _nonDeadVoxels;
 
-    private float _voxelSize = 0.2f;
-    private int _voxelOffset = 2;
+    private float _voxelSize = 0.0902f;
+    private int _voxelOffset = 1;
 
     private int _triesPerIteration = 10000;
     private int _iterations = 1000;
@@ -32,19 +32,21 @@ public class Aggregator : MonoBehaviour
     {
         _patternCreator.CreatePatterns();
 
-        Invoke("StopRun", 10f);
-        _grid = new VoxelGrid(20, 20, 20, 10f, Vector3.zero);
+       // Invoke("StopRun", 10f);
+        //_grid = new VoxelGrid(20, 20, 20, 0.095f, Vector3.zero);
+        _grid = BoundingMesh.GetVoxelGrid(_voxelOffset, _voxelSize);
+        KillVoxelsInOutBounds(true);
 
         //Find the GameObject
 
-        GameObject obj = GameObject.Find("UShap");
+        //GameObject obj = GameObject.Find("UShap");
 
         //Get script attached to it
         //attached in unity
         //Call the function
         //which function
         AddFirstBlock();
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 1000; i++)
         {
             GenerationStep();
         }
@@ -54,7 +56,7 @@ public class Aggregator : MonoBehaviour
     {
         int track = 0;
 
-        if (track < 1000)
+        if (track < 100)
         {
             track++;
             GenerationStep();
@@ -202,24 +204,7 @@ public class Aggregator : MonoBehaviour
     }
 
     //This is a coroutine, watch a tutorial on coroutines to start this function
-    public IEnumerator StartGeneration()
-    {
-        while (true)
-        {
-            GenerationStep();
-            yield return new WaitForSeconds(1f);
-        }
-    }
 
-    private void StartRun()
-    {
-        coroutine = StartCoroutine(StartGeneration());
-    }
-
-    public void StopRun()
-    {
-        StopCoroutine(coroutine);
-    }
 
     public void StartStopGenerating()
     {
@@ -229,10 +214,10 @@ public class Aggregator : MonoBehaviour
         ////StartGeneration() start or stop the coroutine
     }
 
-    public void CreateVoxelGrid()
+    /*public void CreateVoxelGrid()
     {
         _grid = BoundingMesh.GetVoxelGrid(_voxelOffset, _voxelSize);
-    }
+    }*/
 
 
     /// <summary>
@@ -243,16 +228,5 @@ public class Aggregator : MonoBehaviour
         KillVoxelsInOutBounds(true);
     }
 
-    public void ShowAliveVoxels()
-    {
-        _grid.ShowAliveVoxels = !_grid.ShowAliveVoxels;
-    }
 
-    /// <summary>
-    /// Show all the available voxels
-    /// </summary>
-    public void ShowAvailableVoxels()
-    {
-        _grid.ShowAvailableVoxels = !_grid.ShowAvailableVoxels;
-    }
 }

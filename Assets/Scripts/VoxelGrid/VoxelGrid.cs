@@ -72,7 +72,7 @@ public class VoxelGrid
     }
 
     #region Block fields
-    public Dictionary<int, GameObject> GOPatternPrefabs
+    /*public Dictionary<int, GameObject> GOPatternPrefabs
     {
         get
         {
@@ -86,15 +86,15 @@ public class VoxelGrid
                 _goPatternPrefabs.Add(4, Resources.Load("Prefabs/LonglongHShape") as GameObject);
                 _goPatternPrefabs.Add(5, Resources.Load("Prefabs/LShape") as GameObject);
                 _goPatternPrefabs.Add(6, Resources.Load("Prefabs/LonglongShape") as GameObject);
-                _goPatternPrefabs.Add(6, Resources.Load("Prefabs/MidHshape") as GameObject);
-                _goPatternPrefabs.Add(6, Resources.Load("Prefabs/OShape") as GameObject);
-                _goPatternPrefabs.Add(6, Resources.Load("Prefabs/SShape") as GameObject);
-                _goPatternPrefabs.Add(6, Resources.Load("Prefabs/UShape") as GameObject);
-                _goPatternPrefabs.Add(6, Resources.Load("Prefabs/YShape") as GameObject);
+                _goPatternPrefabs.Add(7, Resources.Load("Prefabs/MidHshape") as GameObject);
+                _goPatternPrefabs.Add(8, Resources.Load("Prefabs/OShape") as GameObject);
+                _goPatternPrefabs.Add(9, Resources.Load("Prefabs/SShape") as GameObject);
+                _goPatternPrefabs.Add(10, Resources.Load("Prefabs/UShape") as GameObject);
+                _goPatternPrefabs.Add(11, Resources.Load("Prefabs/YShape") as GameObject);
             }
             return _goPatternPrefabs;
         }
-    }
+    }*/
     #endregion
 
     #endregion

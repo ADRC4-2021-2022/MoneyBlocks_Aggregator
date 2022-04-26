@@ -38,26 +38,83 @@ public class PatternCreator : MonoBehaviour
 
         Debug.Log(goPrefabs.Length);
 
-        
-        //Comment the following two lines after adding all the colliders and uncomment the next block of code
-        GameObject goComponent = GameObject.Instantiate(goPrefabs[0]);
-        AddPattern(goComponent);
-        GameObject.Destroy(goComponent);
 
-        /*
-       //Loop over all your prefabs and run AddPattern()
+        //Comment the following two lines after adding all the colliders and uncomment the next block of code
+        /*GameObject goComponent0 = GameObject.Instantiate(goPrefabs[0]);
+        AddPattern(goComponent0);
+        GameObject.Destroy(goComponent0);
+
+        GameObject goComponent1 = GameObject.Instantiate(goPrefabs[1]);
+        AddPattern(goComponent1);
+        GameObject.Destroy(goComponent1);
+
+        GameObject goComponent2 = GameObject.Instantiate(goPrefabs[2]);
+        AddPattern(goComponent2);
+        GameObject.Destroy(goComponent2);
+
+        GameObject goComponent3 = GameObject.Instantiate(goPrefabs[3]);
+        AddPattern(goComponent3);
+        GameObject.Destroy(goComponent3);
+
+        GameObject goComponent4 = GameObject.Instantiate(goPrefabs[4]);
+        AddPattern(goComponent4);
+        GameObject.Destroy(goComponent4);
+
+        GameObject goComponent5 = GameObject.Instantiate(goPrefabs[5]);
+        AddPattern(goComponent5);
+        GameObject.Destroy(goComponent5);
+        
+        GameObject goComponent6 = GameObject.Instantiate(goPrefabs[6]);
+        AddPattern(goComponent6);
+        GameObject.Destroy(goComponent6);
+
+        GameObject goComponent7 = GameObject.Instantiate(goPrefabs[7]);
+        AddPattern(goComponent7);
+        GameObject.Destroy(goComponent7);
+
+        GameObject goComponent8 = GameObject.Instantiate(goPrefabs[8]);
+        AddPattern(goComponent8);
+        GameObject.Destroy(goComponent8);
+
+        GameObject goComponent9 = GameObject.Instantiate(goPrefabs[9]);
+        AddPattern(goComponent9);
+        GameObject.Destroy(goComponent9);
+
+        GameObject goComponent10 = GameObject.Instantiate(goPrefabs[10]);
+        AddPattern(goComponent10);
+        GameObject.Destroy(goComponent10);
+
+        GameObject goComponent11 = GameObject.Instantiate(goPrefabs[11]);
+        AddPattern(goComponent11);
+        GameObject.Destroy(goComponent11);
+
+        GameObject goComponent12 = GameObject.Instantiate(goPrefabs[12]);
+        AddPattern(goComponent12);
+        GameObject.Destroy(goComponent12);
+        */
+
+
+
+
+
+
+
+        //Loop over all your prefabs and run AddPattern()
+        
         foreach (GameObject goPrefab in goPrefabs)
         {
             GameObject goComponent = GameObject.Instantiate(goPrefab);
             AddPattern(goComponent);
             GameObject.Destroy(goComponent);
-        }*/
+        }
     }
+
 
     /*private void Awake()
     {
         CreatePatterns();
     }*/
+
     private void AddPattern(GameObject goComponent)
     {
 
