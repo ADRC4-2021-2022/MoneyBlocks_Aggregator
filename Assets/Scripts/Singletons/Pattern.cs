@@ -47,7 +47,7 @@ public class PatternManager
     /// <param name="indices">List of indices that define the patter. The indices should always relate to Vector3In(0,0,0) as anchor point</param>
     /// <param name="type">The PatternType of this pattern to add. Each type can only exist once</param>
     /// <returns></returns>
-    public bool AddPattern(List<Vector3Int> indices, List<Vector3Int> anchorPoints, List<Vector3Int> connections, string name)
+    public bool AddPattern(List<Vector3Int> indices, List<Vector3Int> anchorPoints, List<Vector3Int> connections, string name, GameObject goPrefab, float voxelSize)
     {
 
         //only add valid patterns
@@ -57,14 +57,14 @@ public class PatternManager
 
         foreach (var anchor in anchorPoints)
         {
-            GeneratePatterns(indices, anchor, connections, name);
+            GeneratePatterns(indices, anchor, connections, name, goPrefab,voxelSize );
         }
 
         return true;
     }
 
     //When the patternloader is working, add the gameobject to the parameters of this function, position it correctly according to the anchorpoints
-    public void GeneratePatterns(List<Vector3Int> indices, Vector3Int anchorPoint, List<Vector3Int> connections, string name)
+    public void GeneratePatterns(List<Vector3Int> indices, Vector3Int anchorPoint, List<Vector3Int> connections, string name, GameObject goPrefab, float voxelSize)
     {
         List<Vector3Int> newIndices = new List<Vector3Int>();
         List<Vector3Int> newConnections = new List<Vector3Int>();
@@ -78,13 +78,17 @@ public class PatternManager
             newConnections.Add(connection - anchorPoint);
         }
 
-        GameObject goPrefab = null;
+        //GameObject goPrefab = null;
         //Load the prefab out of resources
+        //goPrefab = Resources.Load(@"Prefabs/Parts");
+
         //Create a copy
         //Move the mesh child object of the prefab according to the anchorpoint
         //==> position = position - anchorpoint * voxelsize
+        //goPrefab.transform.Translate((Vector3)anchorPoint * voxelSize);
 
-        _patterns.Add(new Pattern(newIndices, newConnections, _patterns.Count, newName, goPrefab));
+
+        _patterns.Add(new Pattern(newIndices, newConnections, _patterns.Count, newName, goPrefab, anchorPoint));
         _patternsByName.Add(newName, _patterns.Last());
     }
 
@@ -114,18 +118,21 @@ public class Pattern
 
     public string Name { get; }
 
+    public Vector3Int AnchorPoint { get; }
+
     /// <summary>
     /// Pattern constructor. The indices will be stored in a ReadOnlyCollection
     /// </summary>
     ///<param name = "indices" > List of indices that define the patter.The indices should always relate to Vector3In(0,0,0) as anchor point</param>
     /// <param name="type">The PatternType of this pattern to add. Each type can only exist once</param>
-    public Pattern(List<Vector3Int> indices, List<Vector3Int> connections, int index, string name, GameObject goPrefab)
+    public Pattern(List<Vector3Int> indices, List<Vector3Int> connections, int index, string name, GameObject goPrefab, Vector3Int anchorPoint)
     {
         Indices = new ReadOnlyCollection<Vector3Int>(indices);
         Connections = new ReadOnlyCollection<Vector3Int>(connections);
         Index = index;
         Name = name;
         GOPrefab = goPrefab;
+        AnchorPoint = anchorPoint;
 
     }
 }

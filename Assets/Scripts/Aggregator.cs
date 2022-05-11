@@ -10,7 +10,7 @@ public class Aggregator : MonoBehaviour
     //public Coroutine coroutine;
     private List<Voxel> _nonDeadVoxels;
 
-    private float _voxelSize = 0.0902f;
+    private float _voxelSize = 0.09f;
     private int _voxelOffset = 1;
 
     private int _triesPerIteration = 10000;
@@ -107,15 +107,32 @@ public class Aggregator : MonoBehaviour
         //Find all available connections
         List<Connection> availableConnections = _grid.GetAvailableConnections();
 
-        //Select a random available connection
-        int rndConnectionIndex = Random.Range(0, availableConnections.Count);
-        Connection selectedConnection = availableConnections[rndConnectionIndex];
+        
+        
+        if (availableConnections.Count <= 0)
+        {
+            Debug.Log($"no available connections");
+            //return;
+            
+        }
 
-        TryConnection(selectedConnection);
+        else
+        {
+            //Select a random available connection
+            int rndConnectionIndex = Random.Range(0, availableConnections.Count);
+            Connection selectedConnection = availableConnections[rndConnectionIndex];
+
+            TryConnection(selectedConnection);
+        }
+
+
+        //TryConnection(selectedConnection);
 
         //TryConnection(selectedConnection)
         //if tryConnection == false
         ////remove the connection from available connections
+        ///
+
     }
 
     public bool TryConnection(Connection connection)

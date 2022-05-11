@@ -204,6 +204,6 @@ public class PatternCreator : MonoBehaviour
         }
 
         //Add the new paterns for the component
-        PatternManager.Instance.AddPattern(indices, anchorpoints, connections, name);
+        PatternManager.Instance.AddPattern(indices, anchorpoints, connections, name, goComponent,_voxelSize);
     }
 }

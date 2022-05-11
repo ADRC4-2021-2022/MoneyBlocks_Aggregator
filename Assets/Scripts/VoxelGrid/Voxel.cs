@@ -191,5 +191,10 @@ public class Voxel
         _goVoxelTrigger.GetComponent<MeshRenderer>().material.color = color;
     }
 
+    public void SetParent(GameObject goParent)
+    {
+        _goVoxelTrigger.transform.SetParent(goParent.transform, true);
+    }
+
     #endregion
 }

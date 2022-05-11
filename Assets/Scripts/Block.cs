@@ -60,7 +60,7 @@ public class Block
         {
             if (Util.TryOrientIndex(connection, Anchor, Rotation, _grid.GridDimensions, out var newIndex))
             {
-                Connections.Add(new Connection(newIndex,_grid));
+                Connections.Add(new Connection(newIndex, _grid));
             }
         }
 
@@ -85,13 +85,17 @@ public class Block
             return false;
         }
         Color randomCol = Util.RandomColor;
+        CreateGOBlock();
 
         foreach (var voxel in Voxels)
         {
+            if (voxel.Status != VoxelState.Available) Debug.Log("Wrong voxel state");
             voxel.Status = VoxelState.Alive;
             voxel.SetColor(randomCol);
+            if (_goBlock != null)
+                voxel.SetParent(_goBlock);
         }
-        CreateGOBlock();
+
         _placed = true;
         return true;
     }
@@ -103,7 +107,24 @@ public class Block
     {
 
         if (_pattern.GOPrefab != null)
-            _goBlock = GameObject.Instantiate(_pattern.GOPrefab, _grid.GetVoxelByIndex(Anchor).Centre, Rotation);
+        {
+            //We're trying to get the gameobjects to allign with the voxel representation
+            GameObject moveAnchor = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            moveAnchor.transform.position = (Vector3)_pattern.AnchorPoint * _grid.VoxelSize - _grid.VoxelSize * Vector3.one / 2;
+            moveAnchor.transform.localScale = Vector3.one * 0.1f;
+            _goBlock = GameObject.Instantiate(_pattern.GOPrefab);
+            //_goBlock.transform.localPosition = (Vector3)_pattern.AnchorPoint * _grid.VoxelSize - _grid.VoxelSize * Vector3.one / 2;
+
+            _goBlock.transform.SetParent(moveAnchor.transform);
+            moveAnchor.transform.position = _grid.GetVoxelByIndex(Anchor).Centre;
+            moveAnchor.transform.rotation = Rotation;
+
+            //GameObject.Instantiate(_pattern.GOPrefab);
+            //GameObject.Instantiate(_pattern.GOPrefab);
+
+            //_goBlock.transform.SetParent(null); 
+            //GameObject.Destroy(moveAnchor);
+        }
         else
             Debug.LogWarning($"The GameObject for pattern  {PatternIndex}: '{PatternManager.GetPatternByIndex(PatternIndex).Name}' is not found");
     }
