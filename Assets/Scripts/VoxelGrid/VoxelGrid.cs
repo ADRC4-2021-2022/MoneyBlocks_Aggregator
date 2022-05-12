@@ -346,7 +346,8 @@ public class VoxelGrid
         //Keep adding blocks to the grid untill all the pending blocks are added
         while (_currentBlocks.Count > 0)
         {
-            _currentBlocks.First().ActivateVoxels();
+            var block = _currentBlocks.First();
+            block.ActivateVoxels();
         }
 
         return true;

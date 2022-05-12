@@ -5,7 +5,7 @@ using System.Linq;
 
 public class Aggregator : MonoBehaviour
 {
-    private List<Connection> connections = new List<Connection>();
+    private List<Connection> _connections = new List<Connection>();
     private VoxelGrid _grid;
     //public Coroutine coroutine;
     private List<Voxel> _nonDeadVoxels;
@@ -30,6 +30,7 @@ public class Aggregator : MonoBehaviour
 
     void Start()
     {
+        //Random.InitState(66);
         _patternCreator.CreatePatterns();
 
        // Invoke("StopRun", 10f);
@@ -54,14 +55,14 @@ public class Aggregator : MonoBehaviour
     }
     public void Update()
     {
-        int track = 0;
+        //int track = 0;
 
-        if (track < 100)
-        {
-            track++;
-            GenerationStep();
+        //while (track < 1000)
+        //{
+        //    track++;
+        //    GenerationStep();
 
-        }
+        //}
     }
 
     /// <summary>
@@ -87,17 +88,19 @@ public class Aggregator : MonoBehaviour
     public void AddFirstBlock()
 
     {
-        int rndX = Random.Range(0, _grid.GridDimensions.x);
-        int rndY = Random.Range(0, _grid.GridDimensions.y);
-        int rndZ = Random.Range(0, _grid.GridDimensions.z);
+        //int rndX = Random.Range(0, _grid.GridDimensions.x);
+        //int rndY = Random.Range(0, _grid.GridDimensions.y);
+        //int rndZ = Random.Range(0, _grid.GridDimensions.z);
 
         //Select a random voxel with Y index = 0
-        Vector3Int randomVoxel = new Vector3Int(5, 5, 5);
+        int rndIndex = Random.Range(0, _nonDeadVoxels.Count);
+
+        Vector3Int randomVoxel = _nonDeadVoxels[rndIndex].Index;
         //Create a new connection with the voxel index
         Connection _connectionZero = new Connection(randomVoxel, _grid);
 
         TryConnection(_connectionZero);//TryConnection(RandomVoxel)
-        Debug.Log("I passed");
+        //Debug.Log("I passed");
     }
 
     //Add the next block to the aggregation. Run this in a coroutine to automate the generation
@@ -138,13 +141,14 @@ public class Aggregator : MonoBehaviour
     public bool TryConnection(Connection connection)
     {
         List<Pattern> possiblePatterns = connection.PossiblePatterns;
+        Debug.Log(possiblePatterns.Count);
         //If we have found a pattern, this boolean will be true
         bool patternSet = false;
 
         int patternTries = 0;
 
         //Try all patterns until one is found
-        while (possiblePatterns.Count > 0 && patternSet == false && patternTries < PatternManager.Patterns.Count)
+        while (possiblePatterns.Count > 0 && !patternSet && patternTries < PatternManager.Patterns.Count)
         {
             List<Vector3Int> possibleDirections = new List<Vector3Int>(Util.Directions);
             int directionTries = 0;
@@ -154,7 +158,7 @@ public class Aggregator : MonoBehaviour
             Pattern selectedPattern = possiblePatterns[patternIndex];
 
             //try all directions untill one is found
-            while (possibleDirections.Count > 0 && patternSet == false && directionTries < Util.Directions.Count)
+            while (possibleDirections.Count > 0 && !patternSet && directionTries < Util.Directions.Count)
             {
                 int rndDirectionIndex = Random.Range(0, possibleDirections.Count);
                 Vector3Int randomDirection = possibleDirections[rndDirectionIndex];

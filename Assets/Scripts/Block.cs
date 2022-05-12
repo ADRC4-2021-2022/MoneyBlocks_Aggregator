@@ -105,25 +105,32 @@ public class Block
     /// </summary>
     public void CreateGOBlock()
     {
-
         if (_pattern.GOPrefab != null)
         {
             //We're trying to get the gameobjects to allign with the voxel representation
-            GameObject moveAnchor = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            moveAnchor.transform.position = (Vector3)_pattern.AnchorPoint * _grid.VoxelSize - _grid.VoxelSize * Vector3.one / 2;
-            moveAnchor.transform.localScale = Vector3.one * 0.1f;
+            GameObject moveAnchor = new GameObject();
+            moveAnchor.name = this._pattern.Name;
+            //moveAnchor.transform.localScale = Vector3.one * 0.1f;
+
+            //Debug.Log(_pattern.AnchorPoint);
+
             _goBlock = GameObject.Instantiate(_pattern.GOPrefab);
-            //_goBlock.transform.localPosition = (Vector3)_pattern.AnchorPoint * _grid.VoxelSize - _grid.VoxelSize * Vector3.one / 2;
-
             _goBlock.transform.SetParent(moveAnchor.transform);
+            //_goBlock.transform.localRotation = Quaternion.Euler(0, -90, 0);
+            //_goBlock.transform.Rotate(_goBlock.transform.localPosition, 90);
+            _goBlock.transform.localPosition = -(Vector3)_pattern.AnchorPoint * _grid.VoxelSize - Vector3.one * _grid.VoxelSize * 0.5f;
+            
+
+
+            //moveAnchor.transform.position = (Vector3)_pattern.AnchorPoint * _grid.VoxelSize - _grid.VoxelSize * Vector3.one / 2;
+            //moveAnchor.transform.localScale = Vector3.one * 0.1f;
+
+            //_goBlock = GameObject.Instantiate(_pattern.GOPrefab);
+            //_goBlock.transform.SetParent(moveAnchor.transform);
+            //_goBlock.transform.localPosition = -(Vector3)_pattern.AnchorPoint * _grid.VoxelSize;
+
             moveAnchor.transform.position = _grid.GetVoxelByIndex(Anchor).Centre;
-            moveAnchor.transform.rotation = Rotation;
-
-            //GameObject.Instantiate(_pattern.GOPrefab);
-            //GameObject.Instantiate(_pattern.GOPrefab);
-
-            //_goBlock.transform.SetParent(null); 
-            //GameObject.Destroy(moveAnchor);
+            moveAnchor.transform.rotation = Rotation;;
         }
         else
             Debug.LogWarning($"The GameObject for pattern  {PatternIndex}: '{PatternManager.GetPatternByIndex(PatternIndex).Name}' is not found");

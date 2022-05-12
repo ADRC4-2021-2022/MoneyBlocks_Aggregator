@@ -110,8 +110,8 @@ public class Voxel
     {
         bool visible = false;
         if (Status == VoxelState.Dead) visible = false;
-        if (Status == VoxelState.Available&&_showAvailableVoxel) visible = true;
-        if (Status == VoxelState.Alive&&_showAliveVoxel) visible = true;
+        if (Status == VoxelState.Available && _showAvailableVoxel) visible = true;
+        if (Status == VoxelState.Alive && _showAliveVoxel) visible = true;
 
         _goVoxelTrigger.SetActive(visible);
     }

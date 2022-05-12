@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MainCamera : MonoBehaviour
+public class MainCamera_R : MonoBehaviour
 {
     //Copied from Vicente Soler https://github.com/ADRC4/Voxel/blob/master/Assets/Scripts/Util/MainCamera.cs
     Vector3 _target;

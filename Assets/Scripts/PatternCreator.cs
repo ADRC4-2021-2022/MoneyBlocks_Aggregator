@@ -36,8 +36,6 @@ public class PatternCreator : MonoBehaviour
 
         GameObject[] goPrefabs = Resources.LoadAll<GameObject>("Prefabs/Parts");
 
-        Debug.Log(goPrefabs.Length);
-
 
         //Comment the following two lines after adding all the colliders and uncomment the next block of code
         /*GameObject goComponent0 = GameObject.Instantiate(goPrefabs[0]);
@@ -149,7 +147,7 @@ public class PatternCreator : MonoBehaviour
         Vector3Int gridDimensions = (partBounds.size / _voxelSize).ToVector3IntRound();
 
         ////Create you voxelgrid using the Voxelsize, Origin and dimensions
-        if(_grid!=null)
+        if(_grid != null)
         {
             foreach (var vox in _grid.GetVoxels())
             {
