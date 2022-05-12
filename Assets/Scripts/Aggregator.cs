@@ -86,11 +86,7 @@ public class Aggregator : MonoBehaviour
     }
 
     public void AddFirstBlock()
-
     {
-        //int rndX = Random.Range(0, _grid.GridDimensions.x);
-        //int rndY = Random.Range(0, _grid.GridDimensions.y);
-        //int rndZ = Random.Range(0, _grid.GridDimensions.z);
 
         //Select a random voxel with Y index = 0
         int rndIndex = Random.Range(0, _nonDeadVoxels.Count);
@@ -99,8 +95,7 @@ public class Aggregator : MonoBehaviour
         //Create a new connection with the voxel index
         Connection _connectionZero = new Connection(randomVoxel, _grid);
 
-        TryConnection(_connectionZero);//TryConnection(RandomVoxel)
-        //Debug.Log("I passed");
+        TryConnection(_connectionZero);
     }
 
     //Add the next block to the aggregation. Run this in a coroutine to automate the generation
@@ -127,14 +122,6 @@ public class Aggregator : MonoBehaviour
 
             TryConnection(selectedConnection);
         }
-
-
-        //TryConnection(selectedConnection);
-
-        //TryConnection(selectedConnection)
-        //if tryConnection == false
-        ////remove the connection from available connections
-        ///
 
     }
 
