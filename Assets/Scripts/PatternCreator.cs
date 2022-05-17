@@ -53,42 +53,6 @@ public class PatternCreator : MonoBehaviour
         GameObject goComponent3 = GameObject.Instantiate(goPrefabs[3]);
         AddPattern(goComponent3);
         GameObject.Destroy(goComponent3);
-
-        GameObject goComponent4 = GameObject.Instantiate(goPrefabs[4]);
-        AddPattern(goComponent4);
-        GameObject.Destroy(goComponent4);
-
-        GameObject goComponent5 = GameObject.Instantiate(goPrefabs[5]);
-        AddPattern(goComponent5);
-        GameObject.Destroy(goComponent5);
-        
-        GameObject goComponent6 = GameObject.Instantiate(goPrefabs[6]);
-        AddPattern(goComponent6);
-        GameObject.Destroy(goComponent6);
-
-        GameObject goComponent7 = GameObject.Instantiate(goPrefabs[7]);
-        AddPattern(goComponent7);
-        GameObject.Destroy(goComponent7);
-
-        GameObject goComponent8 = GameObject.Instantiate(goPrefabs[8]);
-        AddPattern(goComponent8);
-        GameObject.Destroy(goComponent8);
-
-        GameObject goComponent9 = GameObject.Instantiate(goPrefabs[9]);
-        AddPattern(goComponent9);
-        GameObject.Destroy(goComponent9);
-
-        GameObject goComponent10 = GameObject.Instantiate(goPrefabs[10]);
-        AddPattern(goComponent10);
-        GameObject.Destroy(goComponent10);
-
-        GameObject goComponent11 = GameObject.Instantiate(goPrefabs[11]);
-        AddPattern(goComponent11);
-        GameObject.Destroy(goComponent11);
-
-        GameObject goComponent12 = GameObject.Instantiate(goPrefabs[12]);
-        AddPattern(goComponent12);
-        GameObject.Destroy(goComponent12);
         */
 
 
@@ -125,6 +89,7 @@ public class PatternCreator : MonoBehaviour
 
         //Create a voxelgrid using the given voxelsize with the dimensions and origin of the component
         GameObject goPartMesh = Util.GetChildrenWithTag(goComponent.transform, "ComponentMesh").First();
+        //GameObject goPartMesh = Util.GetChildrenWithTag(goComponent.transform, transform.localPosition, "ComponentMesh").First();
         if (goPartMesh == null)
         {
             Debug.Log($"Mesh gameobject {name} collider not found");
