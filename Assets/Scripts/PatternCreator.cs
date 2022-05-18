@@ -36,31 +36,6 @@ public class PatternCreator : MonoBehaviour
 
         GameObject[] goPrefabs = Resources.LoadAll<GameObject>("Prefabs/Parts");
 
-
-        //Comment the following two lines after adding all the colliders and uncomment the next block of code
-        /*GameObject goComponent0 = GameObject.Instantiate(goPrefabs[0]);
-        AddPattern(goComponent0);
-        GameObject.Destroy(goComponent0);
-
-        GameObject goComponent1 = GameObject.Instantiate(goPrefabs[1]);
-        AddPattern(goComponent1);
-        GameObject.Destroy(goComponent1);
-
-        GameObject goComponent2 = GameObject.Instantiate(goPrefabs[2]);
-        AddPattern(goComponent2);
-        GameObject.Destroy(goComponent2);
-
-        GameObject goComponent3 = GameObject.Instantiate(goPrefabs[3]);
-        AddPattern(goComponent3);
-        GameObject.Destroy(goComponent3);
-        */
-
-
-
-
-
-
-
         //Loop over all your prefabs and run AddPattern()
         
         foreach (GameObject goPrefab in goPrefabs)
@@ -68,6 +43,7 @@ public class PatternCreator : MonoBehaviour
             GameObject goComponent = GameObject.Instantiate(goPrefab);
             AddPattern(goComponent);
             GameObject.Destroy(goComponent);
+            break;
         }
     }
 

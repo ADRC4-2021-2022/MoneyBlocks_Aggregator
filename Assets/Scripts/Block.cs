@@ -117,6 +117,8 @@ public class Block
 
             moveAnchor.transform.position = _grid.GetVoxelByIndex(Anchor).Centre;
             moveAnchor.transform.rotation = Rotation;;
+            var mesh = _goBlock.transform.Find("mesh9Shape");
+            mesh.GetComponent<MeshRenderer>().material.color = Util.RandomColor;
         }
         else
             Debug.LogWarning($"The GameObject for pattern  {PatternIndex}: '{PatternManager.GetPatternByIndex(PatternIndex).Name}' is not found");

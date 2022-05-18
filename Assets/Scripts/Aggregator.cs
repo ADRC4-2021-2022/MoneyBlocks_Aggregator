@@ -128,7 +128,7 @@ public class Aggregator : MonoBehaviour
     public bool TryConnection(Connection connection)
     {
         List<Pattern> possiblePatterns = connection.PossiblePatterns;
-        Debug.Log(possiblePatterns.Count);
+        //Debug.Log(possiblePatterns.Count);
         //If we have found a pattern, this boolean will be true
         bool patternSet = false;
 
