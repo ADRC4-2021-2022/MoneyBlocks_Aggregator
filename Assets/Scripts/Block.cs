@@ -117,7 +117,7 @@ public class Block
 
             moveAnchor.transform.position = _grid.GetVoxelByIndex(Anchor).Centre;
             moveAnchor.transform.rotation = Rotation;;
-            var mesh = _goBlock.transform.Find("mesh9Shape");
+            var mesh = _goBlock.transform.Find("meshHookShape");
             mesh.GetComponent<MeshRenderer>().material.color = Util.RandomColor;
         }
         else

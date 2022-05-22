@@ -44,6 +44,7 @@ public class PatternCreator : MonoBehaviour
             AddPattern(goComponent);
             GameObject.Destroy(goComponent);
             break;
+            //continue;
         }
     }
 
