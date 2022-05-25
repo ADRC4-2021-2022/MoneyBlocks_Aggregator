@@ -93,9 +93,9 @@ public class Aggregator : MonoBehaviour
 
         Vector3Int randomVoxel = _nonDeadVoxels[rndIndex].Index;
         //Create a new connection with the voxel index
-        Connection _connectionZero = new Connection(randomVoxel, _grid);
+        Connection connectionZero = new Connection(randomVoxel, _grid);
 
-        TryConnection(_connectionZero);
+        TryConnection(connectionZero);
     }
 
     //Add the next block to the aggregation. Run this in a coroutine to automate the generation

@@ -26,7 +26,11 @@ public class Block
         {
             if (_placed) return BlockState.Placed;
             if (Voxels.Count < _pattern.Indices.Count) return BlockState.OutOfBounds;
-            if (Voxels.Count(v => v.Status != VoxelState.Available) > 0) return BlockState.Intersecting;
+            if (Voxels.Count(v => v.Status != VoxelState.Available) > 0)
+            {
+                //_goBlock.name = "INTERSECTING";
+                return BlockState.Intersecting;
+            }
             return BlockState.Valid;
         }
     }
@@ -115,9 +119,11 @@ public class Block
             _goBlock.transform.SetParent(moveAnchor.transform);
             _goBlock.transform.localPosition = -(Vector3)_pattern.AnchorPoint * _grid.VoxelSize - Vector3.one * _grid.VoxelSize * 0.5f;
 
+            if (State == BlockState.Intersecting) _goBlock.name = "INTERSECTING";
+
             moveAnchor.transform.position = _grid.GetVoxelByIndex(Anchor).Centre;
             moveAnchor.transform.rotation = Rotation;;
-            var mesh = _goBlock.transform.Find("meshHookShape");
+            var mesh = Util.GetChildrenWithTag(_goBlock.transform, "ComponentMesh").First();
             mesh.GetComponent<MeshRenderer>().material.color = Util.RandomColor;
         }
         else

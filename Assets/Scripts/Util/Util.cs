@@ -11,6 +11,7 @@ public static class Util
     /// <param name="v">the Vector3 variable this method is applied to</param>
     /// <returns>the rounded Vector3Int value of the given Vector3</returns>
     public static Vector3Int ToVector3IntRound(this Vector3 v) => new Vector3Int(Mathf.RoundToInt(v.x), Mathf.RoundToInt(v.y), Mathf.RoundToInt(v.z));
+    public static Vector3Int ToVector3IntCeil(this Vector3 v) => new Vector3Int(Mathf.CeilToInt(v.x), Mathf.CeilToInt(v.y), Mathf.CeilToInt(v.z));
     
 
     /// <summary>

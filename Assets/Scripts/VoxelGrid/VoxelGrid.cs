@@ -339,14 +339,23 @@ public class VoxelGrid
     public bool TryAddCurrentBlocksToGrid()
     {
         //Stop if there are no blocks to add
-        if (_currentBlocks == null || _currentBlocks.Count == 0) return false;
+        if (_currentBlocks == null || _currentBlocks.Count == 0)
+        {
+            _currentBlocks.Clear();
+            return false;
+        }
         //Stop if there are no valid blocks to add
-        if (_currentBlocks.Count(b => b.State == BlockState.Valid) == 0) return false;
+        if (_currentBlocks.Count(b => b.State == BlockState.Valid) == 0)
+        {
+            _currentBlocks.Clear();
+            return false;
+        }
 
         //Keep adding blocks to the grid untill all the pending blocks are added
-        while (_currentBlocks.Count > 0)
+        int counter = 0;
+        while (counter < _currentBlocks.Count)
         {
-            var block = _currentBlocks.First();
+            var block = _currentBlocks[counter];
             block.ActivateVoxels();
         }
 

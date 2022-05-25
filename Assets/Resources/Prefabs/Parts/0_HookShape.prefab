@@ -592,7 +592,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4405635343556553362}
   m_Layer: 0
-  m_Name: HookShape
+  m_Name: 0_HookShape
   m_TagString: Component
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
