@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using System;
+//using System;
 
 
 public class PatternCreator : MonoBehaviour
@@ -50,26 +50,21 @@ public class PatternCreator : MonoBehaviour
         //GameObject goComponent = GameObject.Instantiate(goPrefabs[1]);
         //AddPattern(goComponent);
         //GameObject.Destroy(goComponent);
-
+        int count = 0;
         foreach (GameObject goPrefab in goPrefabs)
         {
             //var goPrefab = goPrefabs[i];
             GameObject goComponent = GameObject.Instantiate(goPrefab);
-            AddPattern(goComponent);
+            AddPattern(goComponent, count++);
             GameObject.Destroy(goComponent);
 
             //break;
 
         }
+        
     }
 
-
-    /*private void Awake()
-    {
-        CreatePatterns();
-    }*/
-
-    private void AddPattern(GameObject goComponent)
+    private void AddPattern(GameObject goComponent, int count)
     {
         //Declare all the patern variables
         string name = goComponent.name;
@@ -87,7 +82,8 @@ public class PatternCreator : MonoBehaviour
         }
         MeshCollider partCollider = goPartMesh.GetComponent<MeshCollider>();
 
-        
+        var displacement = new Vector3(0, count * 10, 0);
+        goComponent.transform.Translate(displacement);
 
         ////Get dimensions of your component + connections/ voxelsize
         Bounds partBounds = new Bounds();
@@ -118,7 +114,7 @@ public class PatternCreator : MonoBehaviour
             {
                 for (int z = 0; z < gridDimensions.z; z++)
                 {
-                    vecGrid[x,y,z] = partBounds.min + new Vector3(x,y,z) * _voxelSize + Vector3.one * 0.5f * _voxelSize;
+                    vecGrid[x, y, z] = displacement + partBounds.min + new Vector3(x, y, z) * _voxelSize + Vector3.one * 0.5f * _voxelSize;
                 }
             }
         }
@@ -130,8 +126,8 @@ public class PatternCreator : MonoBehaviour
             {
                 for (int z = 0; z < gridDimensions.z; z++)
                 {
-                    var pos = vecGrid[x,y,z];
-                    var index = new Vector3Int(x,y,z);
+                    var pos = vecGrid[x, y, z];
+                    var index = new Vector3Int(x, y, z);
                     if (Util.PointInsideCollider(pos, partCollider))
                     {
                         indices.Add(index);
@@ -186,7 +182,7 @@ public class PatternCreator : MonoBehaviour
         ////Loop over all the connections,
         //////Take the connection position and divide by your voxelsize, rounded to a Vector3Int
         //////Add the new vector3Int to the list of connection
-        
+
 
         foreach (GameObject goConnection in goConnections)
         {
@@ -215,9 +211,11 @@ public class PatternCreator : MonoBehaviour
             //    }
             //}
         }
-
+        
+        Debug.Log($"{name} {indices.Count} {anchorpoints.Count} {connections.Count}");
         //Add the new paterns for the component
-        PatternManager.AddPattern(indices, anchorpoints, connections, name, goComponent, _voxelSize);
+        PatternManager.AddPattern(indices, anchorpoints, connections, $"{name}-{Random.Range(0, 1000)}", goComponent, _voxelSize);
+        //PatternManager.AddPattern(indices, anchorpoints, connections, name, goComponent, _voxelSize);
 
     }
 }

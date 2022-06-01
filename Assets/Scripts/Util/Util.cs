@@ -71,6 +71,7 @@ public static class Util
     /// <returns>true if inside the collider</returns>
     public static bool PointInsideCollider(Vector3 point, Collider collider)
     {
+        Physics.SyncTransforms();
         Physics.queriesHitBackfaces = true;
 
         int hitCounter = 0;

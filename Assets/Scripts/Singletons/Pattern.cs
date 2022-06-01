@@ -57,9 +57,7 @@ public static class PatternManager
 
         foreach (var anchor in anchorPoints)
         {
-            Debug.Log(indices.Count);
             GeneratePatterns(indices, anchor, connections, name, goPrefab,voxelSize );
-            Debug.Log($"{name} {_patterns.Last().Indices.Count}");
         }
 
         return true;
