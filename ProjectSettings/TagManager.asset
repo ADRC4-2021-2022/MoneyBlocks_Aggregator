@@ -10,6 +10,13 @@ TagManager:
   - Component
   - ComponentMesh
   - BoundingMesh
+  - VoidVoxel
+  - ObstacleVoxel
+  - TargetVoxel
+  - PathVoxel
+  - WhiteVoxel
+  - RedVoxel
+  - YellowVoxel
   layers:
   - Default
   - TransparentFX
