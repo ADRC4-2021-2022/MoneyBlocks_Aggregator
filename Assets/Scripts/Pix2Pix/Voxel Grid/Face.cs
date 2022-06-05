@@ -15,7 +15,7 @@ public class Face
 
     #region Public fields
 
-    public Pix2PixVoxel[] Voxels;
+    public Voxel[] Voxels;
     public Vector3Int Index;
     public Vector3 Center;
     public Axis Direction;
@@ -86,7 +86,7 @@ public class Face
 
     #region Private fields
 
-    Pix2PixVoxelGrid _grid;
+    VoxelGrid _grid;
 
     #endregion
 
@@ -100,7 +100,7 @@ public class Face
     /// <param name="z">Z Index</param>
     /// <param name="direction">Direction Axis</param>
     /// <param name="grid">Grid to create the Face in</param>
-    public Face(int x, int y, int z, Axis direction, Pix2PixVoxelGrid grid)
+    public Face(int x, int y, int z, Axis direction, VoxelGrid grid)
     {
         _grid = grid;
         Index = new Vector3Int(x, y, z);
@@ -113,6 +113,12 @@ public class Face
         Center = GetCenter();
     }
 
+    
+
+
+
+
+
     #endregion
 
     #region Private methods
@@ -121,7 +127,7 @@ public class Face
     /// Get the Voxels associated with this face
     /// </summary>
     /// <returns>The voxels as an Array</returns>
-    Pix2PixVoxel[] GetVoxels()
+    Voxel[] GetVoxels()
     {
         int x = Index.x;
         int y = Index.y;

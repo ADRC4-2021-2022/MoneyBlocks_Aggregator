@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using System;
 
 /// <summary>
 /// Status of the voxel. Dead are voxels that won't be used,
@@ -13,13 +14,47 @@ public enum VoxelState { Dead = 0, Alive = 1, Available = 2 }
 /// <summary>
 /// Data structure for a voxel in a grid
 /// </summary>
-public class Voxel
+public class Voxel 
 {
+
+
+
+
+
+
+
+
+    #region Protected fields
+
+    protected GameObject _voxelGO;
+    protected VoxelGrid _voxelGrid;
+    protected float _size;
+
+    #endregion
 
     #region public fields
 
     //index can not be set outside of the scope of this class
     public Vector3Int Index { get; private set; }
+
+    
+    public List<Face> Faces = new List<Face>(6);
+    public Vector3 Center => (Index + _voxelGrid.Origin) * _size;
+    public bool IsActive;
+
+    //23 Create IsObstacle field
+    public bool IsObstacle;
+
+    //43 Create IsTarget field
+    public bool IsTarget;
+
+    //75 Create IsPath field
+    public bool IsPath;
+
+    public FunctionColour VoxelColour;
+
+
+
 
     /// <summary>
     /// Change the value of _showVoxel and enable/disable the _goVoxelTrigger 
@@ -86,7 +121,7 @@ public class Voxel
     private float _scalefactor = 0.95f;
     private float _voxelSixe => _grid.VoxelSize;
     private Vector3 _gridOrigin => _grid.Origin;
-
+    private float _state;
 
 
     #endregion
@@ -102,6 +137,32 @@ public class Voxel
 
         Status = VoxelState.Available;
     }
+
+    /// <summary>
+    /// Creates a regular voxel on a voxel grid
+    /// </summary>
+    /// <param name="index">The index of the Pix2PixVoxel</param>
+    /// <param name="voxelgrid">The <see cref="VoxelGrid"/> this <see cref="Voxel"/> is attached to</param>
+    /// <param name="voxelGameObject">The <see cref="GameObject"/> used on the Pix2PixVoxel</param>
+    public Voxel(Vector3Int index, VoxelGrid voxelGrid, float state, float sizeFactor = 1f)
+    {
+        Index = index;
+        _voxelGrid = voxelGrid;
+        _size = _voxelGrid.VoxelSize;
+
+        //04 Add state to the voxel constructor
+        _state = state;
+
+        _voxelGO = GameObject.Instantiate(Resources.Load<GameObject>("Pix2PixPrefabs/Basic Cube"));
+        _voxelGO.transform.position = (_voxelGrid.Origin + Index) * _size;
+        _voxelGO.transform.localScale *= _voxelGrid.VoxelSize * sizeFactor;
+        _voxelGO.name = $"Voxel_{Index.x}_{Index.y}_{Index.z}";
+        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/Basic");
+        _voxelGO.GetComponent<VoxelTrigger>().Voxel2 = this;
+    }
+
+
+
 
     #endregion
 
@@ -119,7 +180,108 @@ public class Voxel
 
     #region public functions
 
+    public void SetStateRed(float newState)
+    {
+       
+        _state = newState;
+        
+        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/RED");
+
+        _voxelGO.tag = "RedVoxel";
+
+    }
+
+    public void SetStateWhite(float newState)
+    {
+
+        _state = newState;
+
+        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/WHITE");
+
+        _voxelGO.tag = "WhiteVoxel";
+
+    }
+
+
+    public void SetStateYellow(float newState)
+    {
+
+        _state = newState;
+
+        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/YELLOW");
+
+        _voxelGO.tag = "YellowVoxel";
+
+    }
+
+    public void SetStateBlue(float newState)
+    {
+
+        _state = newState;
+
+        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/BLUE");
+
+
+
+    }
+
+    public void SetStateGreen(float newState)
+    {
+
+        _state = newState;
+
+        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/GREEN");
+
+
+
+    }
+
+
+    public void SetStateVoid(float newState)
+    {
+
+        _state = newState;
+
+        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/Void");
+
+        _voxelGO.tag = "VoidVoxel";
+
+    }
+
+    //41 Create public method to toggle the visibility of this voxel
+    /// <summary>
+    /// Toggle the visibility of the voxel
+    /// </summary>
+    public void ToggleVisibility()
+    {
+        _voxelGO.GetComponent<MeshRenderer>().enabled = !_voxelGO.GetComponent<MeshRenderer>().enabled;
+    }
+
     
+
+    public IEnumerable<Voxel> GetFaceNeighbours()
+    {
+        int x = Index.x;
+        int y = Index.y;
+        int z = Index.z;
+        var s = _voxelGrid.GridSize;
+
+        if (x != 0) yield return _voxelGrid.Voxels[x - 1, y, z];
+        if (x != s.x - 1) yield return _voxelGrid.Voxels[x + 1, y, z];
+
+        if (y != 0) yield return _voxelGrid.Voxels[x, y - 1, z];
+        if (y != s.y - 1) yield return _voxelGrid.Voxels[x, y + 1, z];
+
+        if (z != 0) yield return _voxelGrid.Voxels[x, y, z - 1];
+        if (z != s.z - 1) yield return _voxelGrid.Voxels[x, y, z + 1];
+    }
+
+    public void ActivateVoxel(bool state)
+    {
+        IsActive = state;
+        _voxelGO.GetComponent<MeshRenderer>().enabled = state;
+        _voxelGO.GetComponent<BoxCollider>().enabled = state;
+    }
 
     public void CreateGameobject()
     {
@@ -197,4 +359,27 @@ public class Voxel
     }
 
     #endregion
+
+    #region Equality checks
+    /// <summary>
+    /// Checks if two Voxels are equal based on their Index
+    /// </summary>
+    /// <param name="other">The <see cref="Voxel"/> to compare with</param>
+    /// <returns>True if the Voxels are equal</returns>
+    public bool Equals(Pix2PixVoxel other)
+    {
+        return (other != null) && (Index == other.Index);
+    }
+
+    /// <summary>
+    /// Get the HashCode of this <see cref="Voxel"/> based on its Index
+    /// </summary>
+    /// <returns>The HashCode as an Int</returns>
+    public override int GetHashCode()
+    {
+        return Index.GetHashCode();
+    }
+
+    #endregion
+
 }

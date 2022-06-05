@@ -4,12 +4,79 @@ using UnityEngine;
 using System.Linq;
 
 //Try to use Kevin his voxelgrid class instead of Davids
+
+public enum FunctionColour { Yellow = 1, Green = 2, Blue = 3, Red = 4, White = 5 }
 public class VoxelGrid
 {
+
+
+    #region  HSVIndex
+    private const int HSV_H = 360;
+    private const int HSV_S = 255;
+    private const int HSV_V = 255;
+
+    //HSV YELLOW
+    private const float HSV_Yellow_H_Max = 68f;
+    private const float HSV_Yellow_H_Min = 26f;
+    private const float HSV_Yellow_S_Max = 255f;
+    private const float HSV_Yellow_S_Min = 43f;
+    private const float HSV_Yellow_V_Max = 255f;
+    private const float HSV_Yellow_V_Min = 43f;
+    //HSV GREEN
+    private const float HSV_Green_H_Max = 154f;
+    private const float HSV_Green_H_Min = 35f;
+    private const float HSV_Green_S_Max = 255f;
+    private const float HSV_Green_S_Min = 43f;
+    private const float HSV_Green_V_Max = 255f;
+    private const float HSV_Green_V_Min = 43f;
+    //HSV BLUE
+    private const float HSV_Blue_H_Max = 248f;
+    private const float HSV_Blue_H_Min = 100f;
+    private const float HSV_Blue_S_Max = 255f;
+    private const float HSV_Blue_S_Min = 43f;
+    private const float HSV_Blue_V_Max = 255f;
+    private const float HSV_Blue_V_Min = 43f;
+    //HSV RED
+    private const float HSV_Red_H_Max = 20f;
+    private const float HSV_Red_H_Min = 0f;
+    private const float HSV_Red_S_Max = 255f;
+    private const float HSV_Red_S_Min = 43f;
+    private const float HSV_Red_V_Max = 255f;
+    private const float HSV_Red_V_Min = 43f;
+    //HSV WHITE
+    private const float HSV_White_H_Max = 360f;
+    private const float HSV_White_H_Min = 0f;
+    private const float HSV_White_S_Max = 60f;
+    private const float HSV_White_S_Min = 0f;
+    private const float HSV_White_V_Max = 255f;
+    private const float HSV_White_V_Min = 221f;
+    #endregion
+
+
+
+
+
+
+
+
+
+
     #region public fields
     public Vector3Int GridDimensions { get; private set; }
     public float VoxelSize { get; private set; }
     public Vector3 Origin { get; private set; }
+
+    public Vector3Int GridSize;
+    public Voxel[,,] Voxels;
+    public Face[][,,] Faces = new Face[3][,,];
+    
+    public Vector3 Corner;
+   
+
+
+    public int PixelsPerVoxel;
+
+
 
     public Vector3 Centre => Origin + (Vector3)GridDimensions * VoxelSize / 2;
 
@@ -144,6 +211,87 @@ public class VoxelGrid
     public VoxelGrid(int x, int y, int z, float voxelSize, Vector3 origin) : this(new Vector3Int(x, y, z), voxelSize, origin) { }
 
 
+    /// <summary>
+    /// Constructor for a basic <see cref="VoxelGrid"/>
+    /// </summary>
+    /// <param name="size">Size of the grid</param>
+    /// <param name="origin">Origin of the grid</param>
+    /// <param name="voxelSize">The size of each <see cref="Voxel"/></param>
+    public VoxelGrid(Vector3Int size, Vector3 origin, float voxelSize)
+    {
+        GridSize = size;
+        Origin = origin;
+        VoxelSize = voxelSize;
+
+        Voxels = new Voxel[GridSize.x, GridSize.y, GridSize.z];
+
+        for (int x = 0; x < GridSize.x; x++)
+        {
+            for (int y = 0; y < GridSize.y; y++)
+            {
+                for (int z = 0; z < GridSize.z; z++)
+                {
+                    Voxels[x, y, z] = new Voxel(
+                        new Vector3Int(x, y, z),
+                        this,
+                        0.96f);
+                }
+            }
+        }
+
+        MakeFaces();
+    }
+
+    public VoxelGrid(Texture2D source, int height, Vector3 origin, float voxelSize)
+    {
+        //06 Read grid dimensions in X and Z from image
+        GridSize = new Vector3Int(source.width, height, source.height);
+
+        Origin = origin;
+        VoxelSize = voxelSize;
+
+        Voxels = new Voxel[GridSize.x, GridSize.y, GridSize.z];
+
+        for (int x = 0; x < GridSize.x; x++)
+        {
+            for (int y = 0; y < GridSize.y; y++)
+            {
+                for (int z = 0; z < GridSize.z; z++)
+                {
+                    Voxels[x, y, z] = new Voxel(new Vector3Int(x, y, z), this, 1f, 0.96f);
+                }
+            }
+        }
+        MakeFaces();
+    }
+
+    public VoxelGrid(Texture2D source, int pixelPerVoxel, int height, Vector3 origin, float voxelSize)
+    {
+        //06 Read grid dimensions in X and Z from image
+        GridSize = new Vector3Int(source.width / pixelPerVoxel, height, source.height / pixelPerVoxel);
+
+        Origin = origin;
+        VoxelSize = voxelSize;
+        PixelsPerVoxel = pixelPerVoxel;
+
+        Voxels = new Voxel[GridSize.x, GridSize.y, GridSize.z];
+
+        for (int x = 0; x < GridSize.x; x++)
+        {
+            for (int y = 0; y < GridSize.y; y++)
+            {
+                for (int z = 0; z < GridSize.z; z++)
+                {
+                    Voxels[x, y, z] = new Voxel(new Vector3Int(x, y, z), this, 1f, 0.96f);
+                }
+            }
+        }
+
+        //07 Add make Faces
+        MakeFaces();
+    }
+
+
     #endregion
 
     #region private functions
@@ -184,6 +332,15 @@ public class VoxelGrid
                 {
                     yield return _voxels[x, y, z];
                 }
+
+
+        for (int x = 0; x < GridSize.x; x++)
+            for (int y = 0; y < GridSize.y; y++)
+                for (int z = 0; z < GridSize.z; z++)
+                {
+                    yield return _voxels[x, y, z];
+                }
+
     }
 
 
@@ -385,5 +542,316 @@ public class VoxelGrid
     public int NumberOfBlocks => _blocks.Count(b => b.State == BlockState.Placed);
 
     #endregion
+    #endregion
+
+
+
+    #region Grid elements constructors
+
+    /// <summary>
+    /// Creates the Faces of each <see cref="Voxel"/>
+    /// </summary>
+    private void MakeFaces()
+    {
+        // make faces
+        Faces[0] = new Face[GridSize.x + 1, GridSize.y, GridSize.z];
+
+        for (int x = 0; x < GridSize.x + 1; x++)
+            for (int y = 0; y < GridSize.y; y++)
+                for (int z = 0; z < GridSize.z; z++)
+                {
+                    Faces[0][x, y, z] = new Face(x, y, z, Axis.X, this);
+                }
+
+        Faces[1] = new Face[GridSize.x, GridSize.y + 1, GridSize.z];
+
+        for (int x = 0; x < GridSize.x; x++)
+            for (int y = 0; y < GridSize.y + 1; y++)
+                for (int z = 0; z < GridSize.z; z++)
+                {
+                    Faces[1][x, y, z] = new Face(x, y, z, Axis.Y, this);
+                }
+
+        Faces[2] = new Face[GridSize.x, GridSize.y, GridSize.z + 1];
+
+        for (int x = 0; x < GridSize.x; x++)
+            for (int y = 0; y < GridSize.y; y++)
+                for (int z = 0; z < GridSize.z + 1; z++)
+                {
+                    Faces[2][x, y, z] = new Face(x, y, z, Axis.Z, this);
+                }
+    }
+
+    #endregion
+
+
+    #region Grid operations
+    public void SetStatesFromImage(Texture2D source)
+    {
+
+        for (int x = 0; x < GridSize.x; x++)
+        {
+            for (int z = 0; z < GridSize.z; z++)
+            {
+
+                Color pixel = source.GetPixel(x, z);
+                float avgColor = (pixel.r + pixel.g + pixel.b) / 3f;
+
+                float h = 0;
+                float s = 0;
+                float v = 0;
+
+                Color.RGBToHSV(pixel, out h, out s, out v);
+
+                if (h * HSV_H >= HSV_Red_H_Min && h * HSV_H <= HSV_Red_H_Max && s * HSV_S >= HSV_Red_S_Min && s * HSV_S <= HSV_Red_S_Max && v * HSV_V >= HSV_Red_V_Min && v * HSV_V <= HSV_Red_V_Max)
+                {
+                    Debug.Log("red");
+                    for (int y = 0; y < GridSize.y; y++)
+                    {
+                        //16 Get Pix2PixVoxel on Coordinate as Pix2PixVoxel
+                        Voxel voxel = Voxels[x, y, z];
+
+                        //19 Calculate state based on height, decreasing as it goes up
+
+
+                        //20 Set state on Pix2PixVoxel
+                        voxel.SetStateRed(avgColor);
+
+                    }
+
+
+                }
+                else if (h * HSV_H >= HSV_White_H_Min && h * HSV_H <= HSV_White_H_Max && s * HSV_S >= HSV_White_S_Min && s * HSV_S <= HSV_White_S_Max && v * HSV_V >= HSV_White_V_Min && v * HSV_V <= HSV_White_V_Max)
+                {
+                    Debug.Log("white");
+                    for (int y = 0; y < GridSize.y; y++)
+                    {
+
+                        Voxel voxel = Voxels[x, y, z];
+
+                        voxel.SetStateWhite(0.1f);
+
+                    }
+
+                }
+
+                else if (h * HSV_H >= HSV_Yellow_H_Min && h * HSV_H <= HSV_Yellow_H_Max && s * HSV_S >= HSV_Yellow_S_Min && s * HSV_S <= HSV_Yellow_S_Max && v * HSV_V >= HSV_Yellow_V_Min && v * HSV_V <= HSV_Yellow_V_Max)
+                {
+                    Debug.Log("yellow");
+
+                    for (int y = 0; y < GridSize.y; y++)
+                    {
+
+                        Voxel voxel = Voxels[x, y, z];
+
+                        voxel.SetStateYellow(0.1f);
+
+                    }
+
+                }
+
+
+                else if (h * HSV_H >= HSV_Green_H_Min && h * HSV_H <= HSV_Green_H_Max && s * HSV_S >= HSV_Green_S_Min && s * HSV_S <= HSV_Green_S_Max && v * HSV_V >= HSV_Green_V_Min && v * HSV_V <= HSV_Green_V_Max)
+                {
+                    Debug.Log("green");
+                    for (int y = 0; y < GridSize.y; y++)
+                    {
+
+                        Voxel voxel = Voxels[x, y, z];
+
+                        voxel.SetStateGreen(0.1f);
+
+                    }
+
+
+                }
+
+
+                else if (h * HSV_H >= HSV_Blue_H_Min && h * HSV_H <= HSV_Blue_H_Max && s * HSV_S >= HSV_Blue_S_Min && s * HSV_S <= HSV_Blue_S_Max && v * HSV_V >= HSV_Blue_V_Min && v * HSV_V <= HSV_Blue_V_Max)
+                {
+                    Debug.Log("blue");
+                    for (int y = 0; y < GridSize.y; y++)
+                    {
+                        //16 Get Pix2PixVoxel on Coordinate as Pix2PixVoxel
+                        Voxel voxel = Voxels[x, y, z];
+
+
+                        //20 Set state on Pix2PixVoxel
+                        voxel.SetStateBlue(0.1f);
+
+                    }
+                }
+            }
+        }
+
+    }
+
+
+    public void SetStageFromImageReduced(Texture2D sourceImage)
+    {
+        FunctionColour[,] combinedColours = new FunctionColour[GridSize.x, GridSize.z];
+
+        //Loop over all the XZ voxels
+        for (int x = 0; x < GridSize.x; x++)
+        {
+            for (int z = 0; z < GridSize.z; z++)
+            {
+                FunctionColour[] pixels = new FunctionColour[PixelsPerVoxel * PixelsPerVoxel];
+
+                for (int i = 0; i < PixelsPerVoxel; i++)
+                {
+                    for (int j = 0; j < PixelsPerVoxel; j++)
+                    {
+                        int xPixIndex = x * PixelsPerVoxel + i;
+                        int zPixIndex = z * PixelsPerVoxel + j;
+                        pixels[i * PixelsPerVoxel + j] = GetPixelStateFromImage(sourceImage.GetPixel(xPixIndex, zPixIndex));
+                    }
+                }
+                //Debug.Log(pixels.Count(p => p == FunctionColour.Green));
+                //Check if the voxel should be green
+                if (pixels.Count(p => p == FunctionColour.Green) > 0)
+                {
+                    Debug.Log("green");
+                    for (int y = 0; y < GridSize.y; y++)
+                    {
+
+                        Voxel voxel = Voxels[x, y, z];
+
+                        voxel.SetStateGreen(0.1f);
+
+                    }
+                }
+
+                //Check if the voxel should be white
+                if (pixels.Count(p => p == FunctionColour.White) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
+                {
+                    Debug.Log("White");
+                    for (int y = 0; y < GridSize.y; y++)
+                    {
+
+                        Voxel voxel = Voxels[x, y, z];
+
+                        voxel.SetStateWhite(0.1f);
+
+                    }
+                }
+
+                //Check if the voxel should be yellow
+                if (pixels.Count(p => p == FunctionColour.Yellow) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
+                {
+                    Debug.Log("Yellow");
+                    for (int y = 0; y < GridSize.y; y++)
+                    {
+
+                        Voxel voxel = Voxels[x, y, z];
+
+                        voxel.SetStateYellow(0.1f);
+
+                    }
+                }
+
+                //Check if the voxel should be red
+                if (pixels.Count(p => p == FunctionColour.Red) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
+                {
+                    Debug.Log("Red");
+                    for (int y = 0; y < GridSize.y; y++)
+                    {
+
+                        Voxel voxel = Voxels[x, y, z];
+
+                        voxel.SetStateRed(0.1f);
+
+                    }
+                }
+
+                //Check if the voxel should be blue
+                if (pixels.Count(p => p == FunctionColour.Blue) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
+                {
+                    Debug.Log("Blue");
+                    for (int y = 0; y < GridSize.y; y++)
+                    {
+
+                        Voxel voxel = Voxels[x, y, z];
+
+                        voxel.SetStateBlue(0.1f);
+
+                    }
+                }
+
+            }
+        }
+    }
+
+    private FunctionColour GetPixelStateFromImage(Color pixel)
+    {
+
+        float avgColor = (pixel.r + pixel.g + pixel.b) / 3f;
+
+        float h = 0;
+        float s = 0;
+        float v = 0;
+
+        Color.RGBToHSV(pixel, out h, out s, out v);
+
+        if (h * HSV_H >= HSV_Red_H_Min && h * HSV_H <= HSV_Red_H_Max && s * HSV_S >= HSV_Red_S_Min && s * HSV_S <= HSV_Red_S_Max && v * HSV_V >= HSV_Red_V_Min && v * HSV_V <= HSV_Red_V_Max)
+        {
+            return FunctionColour.Red;
+
+
+        }
+        else if (h * HSV_H >= HSV_White_H_Min && h * HSV_H <= HSV_White_H_Max && s * HSV_S >= HSV_White_S_Min && s * HSV_S <= HSV_White_S_Max && v * HSV_V >= HSV_White_V_Min && v * HSV_V <= HSV_White_V_Max)
+        {
+            return FunctionColour.White;
+
+        }
+
+        else if (h * HSV_H >= HSV_Yellow_H_Min && h * HSV_H <= HSV_Yellow_H_Max && s * HSV_S >= HSV_Yellow_S_Min && s * HSV_S <= HSV_Yellow_S_Max && v * HSV_V >= HSV_Yellow_V_Min && v * HSV_V <= HSV_Yellow_V_Max)
+        {
+            return FunctionColour.Yellow;
+
+        }
+
+
+        else if (h * HSV_H >= HSV_Green_H_Min && h * HSV_H <= HSV_Green_H_Max && s * HSV_S >= HSV_Green_S_Min && s * HSV_S <= HSV_Green_S_Max && v * HSV_V >= HSV_Green_V_Min && v * HSV_V <= HSV_Green_V_Max)
+        {
+            return FunctionColour.Green;
+
+        }
+
+
+        else if (h * HSV_H >= HSV_Blue_H_Min && h * HSV_H <= HSV_Blue_H_Max && s * HSV_S >= HSV_Blue_S_Min && s * HSV_S <= HSV_Blue_S_Max && v * HSV_V >= HSV_Blue_V_Min && v * HSV_V <= HSV_Blue_V_Max)
+        {
+            return FunctionColour.Blue;
+        }
+
+        return FunctionColour.White;
+    }
+
+    /// <summary>
+    /// Get the Faces of the <see cref="VoxelGrid"/>
+    /// </summary>
+    /// <returns>All the faces</returns>
+    public IEnumerable<Face> GetFaces()
+    {
+        for (int n = 0; n < 3; n++)
+        {
+            int xSize = Faces[n].GetLength(0);
+            int ySize = Faces[n].GetLength(1);
+            int zSize = Faces[n].GetLength(2);
+
+            for (int x = 0; x < xSize; x++)
+                for (int y = 0; y < ySize; y++)
+                    for (int z = 0; z < zSize; z++)
+                    {
+                        yield return Faces[n][x, y, z];
+                    }
+        }
+    }
+
+
+
+
+
+
     #endregion
 }

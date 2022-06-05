@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public enum FunctionColour { Yellow = 1, Green = 2, Blue = 3, Red = 4, White = 5 }
+
 public class Pix2PixVoxelGrid
 
 {
@@ -97,7 +97,7 @@ public class Pix2PixVoxelGrid
             }
         }
 
-        MakeFaces();
+        //MakeFaces();
     }
 
     //05 Create the constructor for the grid, based on an image
@@ -130,7 +130,7 @@ public class Pix2PixVoxelGrid
         }
 
         //07 Add make Faces
-        MakeFaces();
+        //MakeFaces();
     }
 
     //05 Create the constructor for the grid, based on an image
@@ -165,13 +165,13 @@ public class Pix2PixVoxelGrid
         }
 
         //07 Add make Faces
-        MakeFaces();
+        //MakeFaces();
     }
 
     #endregion
 
     #region Grid elements constructors
-
+    /*
     /// <summary>
     /// Creates the Faces of each <see cref="Voxel"/>
     /// </summary>
@@ -205,7 +205,7 @@ public class Pix2PixVoxelGrid
                     Faces[2][x, y, z] = new Face(x, y, z, Axis.Z, this);
                 }
     }
-
+    */
     #endregion
 
     #region Grid operations
@@ -217,36 +217,7 @@ public class Pix2PixVoxelGrid
     /// <param name="source">The source image</param>
     public void SetStatesFromImage(Texture2D source)
     {
-        /*
-        //12 Start from X and Z
-        for (int x = 0; x < GridSize.x; x++)
-        {
-            for (int z = 0; z < GridSize.z; z++)
-            {
-                //13 Read pixel from image on location
-                Color pixel = source.GetPixel(x, z);
-
-                //14 Define a float value from the average of each channel (0 = black, 1 = white)
-                float avgColor = (pixel.r + pixel.g + pixel.b) / 3f;
-
-                //15 Start iteration on Y coordinate, going up one layer at a time
-                for (int y = 0; y < GridSize.y; y++)
-                {
-                    //16 Get Pix2PixVoxel on Coordinate as Pix2PixVoxel
-                    Pix2PixVoxel voxel = Voxels[x, y, z];
-
-                    //19 Calculate state based on height, decreasing as it goes up
-                    float state = avgColor - (y * (1f / GridSize.y));
-
-                    //20 Set state on Pix2PixVoxel
-                    voxel.SetState(state);
-                }
-            }
-        }
-        */
-
-
-
+        
         for (int x = 0; x < GridSize.x; x++)
         {
             for (int z = 0; z < GridSize.z; z++)
@@ -341,41 +312,6 @@ public class Pix2PixVoxelGrid
                 }
             }
         }
-
-
-
-        /*
-        //31 Deactivate voxels that are not adjacent to the obstacle
-        foreach (Pix2PixVoxel voxel in Voxels)
-        {
-            //32 Get the neighbours of this voxel
-            var neighbours = voxel.GetFaceNeighbours();
-
-            //33 If voxel is obstacle, activate it
-            if (voxel.IsObstacle)
-            {
-                voxel.ActivateVoxel(true);
-            }
-            //34 If it is not obstacle, but one of its neighbours is, activate it
-            else if (neighbours.Any(n => n.IsObstacle))
-            {
-                voxel.ActivateVoxel(true);
-
-                //36 Also activate its neighbours, adding a second layer
-                foreach (var neighbour in neighbours)
-                {
-                    neighbour.ActivateVoxel(true);
-                }
-            }
-            //35 Deactivate all other voxels
-            else
-            {
-                voxel.ActivateVoxel(false);
-            }
-        }
-        
-        */
-
 
     }
 
