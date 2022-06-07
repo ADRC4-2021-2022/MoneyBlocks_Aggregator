@@ -10,7 +10,7 @@ public class PatternCreator : MonoBehaviour
     //Please create your regions
     #region Private fields
     [SerializeField]
-    private readonly float _voxelSize = 0.09f;
+    private readonly float _voxelSize = 0.3f;
 
     //private Vector3Int _dimensions;
     //private Vector3 _origin;
@@ -25,7 +25,7 @@ public class PatternCreator : MonoBehaviour
     #endregion
 
 
-    
+
     public void CreatePatterns()
     {
         //Load all the prefabs out of the resources  .get and make them to gameobject
@@ -46,22 +46,24 @@ public class PatternCreator : MonoBehaviour
         //}
 
         //Loop over all your prefabs and run AddPattern()
-
-        //GameObject goComponent = GameObject.Instantiate(goPrefabs[1]);
-        //AddPattern(goComponent);
-        //GameObject.Destroy(goComponent);
         int count = 0;
-        foreach (GameObject goPrefab in goPrefabs)
-        {
-            //var goPrefab = goPrefabs[i];
-            GameObject goComponent = GameObject.Instantiate(goPrefab);
-            AddPattern(goComponent, count++);
-            GameObject.Destroy(goComponent);
+        GameObject goComponent = GameObject.Instantiate(goPrefabs[2]);
+        AddPattern(goComponent, count++);
+        GameObject.Destroy(goComponent);
 
-            //break;
 
-        }
-        
+        //int count = 0;
+        //foreach (GameObject goPrefab in goPrefabs)
+        //{
+        //var goPrefab = goPrefabs[i];
+        //GameObject goComponent = GameObject.Instantiate(goPrefab);
+        // AddPattern(goComponent, count++);
+        // GameObject.Destroy(goComponent);
+
+        //break;
+
+        //}
+
     }
 
     private void AddPattern(GameObject goComponent, int count)
@@ -211,7 +213,7 @@ public class PatternCreator : MonoBehaviour
             //    }
             //}
         }
-        
+
         Debug.Log($"{name} {indices.Count} {anchorpoints.Count} {connections.Count}");
         //Add the new paterns for the component
         PatternManager.AddPattern(indices, anchorpoints, connections, $"{name}-{Random.Range(0, 1000)}", goComponent, _voxelSize);

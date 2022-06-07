@@ -10,7 +10,7 @@ public class Aggregator : MonoBehaviour
     //public Coroutine coroutine;
     private List<Voxel> _nonDeadVoxels;
 
-    private float _voxelSize = 0.09f;
+    private float _voxelSize = 0.3f;
     private int _voxelOffset = 1;
 
     private int _triesPerIteration = 10000;
@@ -33,7 +33,7 @@ public class Aggregator : MonoBehaviour
         //Random.InitState(66);
         _patternCreator.CreatePatterns();
 
-       // Invoke("StopRun", 10f);
+        // Invoke("StopRun", 10f);
         //_grid = new VoxelGrid(20, 20, 20, 0.095f, Vector3.zero);
         _grid = BoundingMesh.GetVoxelGrid(_voxelOffset, _voxelSize);
         KillVoxelsInOutBounds(true);
@@ -47,7 +47,7 @@ public class Aggregator : MonoBehaviour
         //Call the function
         //which function
         AddFirstBlock();
-        for (int i = 0; i < 1000; i++)
+        for (int i = 0; i < 5000; i++)
         {
             GenerationStep();
         }
@@ -105,13 +105,13 @@ public class Aggregator : MonoBehaviour
         //Find all available connections
         List<Connection> availableConnections = _grid.GetAvailableConnections();
 
-        
-        
+
+
         if (availableConnections.Count <= 0)
         {
             Debug.Log($"no available connections");
             //return;
-            
+
         }
 
         else

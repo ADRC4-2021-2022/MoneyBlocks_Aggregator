@@ -1,0 +1,1123 @@
+Using pre-set license
+Built from '2021.2/staging' branch; Version is '2021.2.7f1 (6bd9e232123f) revision 7068130'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19044) 64bit ProfessionalWorkstation' Language: 'en' Physical Memory: 64721 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker2
+-projectPath
+D:/TEST/MoneyBlockCode/MoneyBlocks_Aggregator
+-logFile
+Logs/AssetImportWorker2.log
+-srvPort
+4174
+Successfully changed project path to: D:/TEST/MoneyBlockCode/MoneyBlocks_Aggregator
+D:/TEST/MoneyBlockCode/MoneyBlocks_Aggregator
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Refreshing native plugins compatible for Editor in 26.58 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.2.7f1 (6bd9e232123f)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/TEST/MoneyBlockCode/MoneyBlocks_Aggregator/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA RTX A5000 Laptop GPU (ID=0x24b6)
+    Vendor:   NVIDIA
+    VRAM:     16201 MB
+    Driver:   30.0.15.1218
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56884
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.004142 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 23.33 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.586 seconds
+Domain Reload Profiling:
+	ReloadAssembly (586ms)
+		BeginReloadAssembly (53ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (449ms)
+			LoadAssemblies (52ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (108ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (31ms)
+			SetupLoadedEditorAssemblies (264ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (25ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (23ms)
+				BeforeProcessingInitializeOnLoad (2ms)
+				ProcessInitializeOnLoadAttributes (179ms)
+				ProcessInitializeOnLoadMethodAttributes (34ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001754 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.32 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.874 seconds
+Domain Reload Profiling:
+	ReloadAssembly (875ms)
+		BeginReloadAssembly (90ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (14ms)
+		EndReloadAssembly (692ms)
+			LoadAssemblies (69ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (247ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (36ms)
+			SetupLoadedEditorAssemblies (304ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (49ms)
+				ProcessInitializeOnLoadAttributes (216ms)
+				ProcessInitializeOnLoadMethodAttributes (22ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.31 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1677 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 22 unused Assets / (56.0 KB). Loaded Objects now: 2138.
+Memory consumption went from 73.9 MB to 73.8 MB.
+Total: 1.966100 ms (FindLiveObjects: 0.134600 ms CreateObjectMapping: 0.030700 ms MarkObjects: 1.745900 ms  DeleteObjects: 0.054100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 450766.897861 seconds.
+  path: Assets/Resources/Component/9Shape.obj
+  artifactKey: Guid(cd7c5267b71f78c4eb3a4beae60c9e44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Component/9Shape.obj using Guid(cd7c5267b71f78c4eb3a4beae60c9e44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c51eec167f4e6e28888dc458931f1ac4') in 0.129134 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 9.260050 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37fcd290d45ebc723d02c89380de436b') in 0.009847 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.149337 seconds.
+  path: Assets/Resources/Prefabs/Parts/HShape.prefab
+  artifactKey: Guid(26b69ddb3afaf334fa6cde609c69091b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/HShape.prefab using Guid(26b69ddb3afaf334fa6cde609c69091b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a4eb577858d6a9a27249878d2de46ae') in 0.010615 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.500213 seconds.
+  path: Assets/Resources/Prefabs/Parts/0_HookShape.prefab
+  artifactKey: Guid(5c6eda2fdaa7e434895aeeac651e155b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/0_HookShape.prefab using Guid(5c6eda2fdaa7e434895aeeac651e155b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c5cafe72668880260ed215b3e6ce191') in 0.009450 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.269634 seconds.
+  path: Assets/Resources/Prefabs/Parts/HShape.prefab
+  artifactKey: Guid(26b69ddb3afaf334fa6cde609c69091b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/HShape.prefab using Guid(26b69ddb3afaf334fa6cde609c69091b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29602508640c590514332b25eb512973') in 0.008289 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Resources/Prefabs/Parts/SShape.prefab
+  artifactKey: Guid(6a9272dcdba988f4a893a184451a8669) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/SShape.prefab using Guid(6a9272dcdba988f4a893a184451a8669) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38e0189f971011e2281a13e2f1a13500') in 0.008507 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Resources/Prefabs/Parts/LonglongShape.prefab
+  artifactKey: Guid(e4828dfefcb2c0642af46eeb8970347c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/LonglongShape.prefab using Guid(e4828dfefcb2c0642af46eeb8970347c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db9c8fcd02b3c9c0d8dc9bc26e084e63') in 0.008445 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Resources/Prefabs/Parts/OShape.prefab
+  artifactKey: Guid(483ba382064f14b4ca36753666bb1a8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/OShape.prefab using Guid(483ba382064f14b4ca36753666bb1a8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a4d75add5c81298c7f2430d9a74aa43') in 0.008256 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.760385 seconds.
+  path: Assets/Resources/Prefabs/Parts/LongHShape.prefab
+  artifactKey: Guid(3f11d5e8ac6678048bb1e2e8e130f61a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/LongHShape.prefab using Guid(3f11d5e8ac6678048bb1e2e8e130f61a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07e71965c458d40173895647a9c4185f') in 0.009629 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Resources/Prefabs/Parts/UShape.prefab
+  artifactKey: Guid(276d3915cda34444fb4f4292212e5e98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/UShape.prefab using Guid(276d3915cda34444fb4f4292212e5e98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '150edfa12c855994d06cd172cf00bc8a') in 0.009875 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Resources/Prefabs/Parts/OShape.prefab
+  artifactKey: Guid(483ba382064f14b4ca36753666bb1a8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/OShape.prefab using Guid(483ba382064f14b4ca36753666bb1a8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '307d008e002fd9c1afbaea232613af3b') in 0.009469 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 15.940365 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c170d3ea11274e792d80c468f10306b7') in 0.006639 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.876876 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1184076775a81154ef23380f3dc1e495') in 0.005867 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.393799 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd9d616587b5a74e6da1b51e08b366f5') in 0.005608 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.860253 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0bc90965aec87a35d2280dad8c90feb6') in 0.006371 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.675549 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e2266c7e4461bd450f1402271a4bf9de') in 0.070740 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 37.566207 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6df4bcfa51b4b468a51b9d473d0713e7') in 0.006437 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.623384 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f6ee245c00b17848fde682745653cbb') in 0.008248 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.406064 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40aa85ca6c5433ab4b3fb3d84afe8c9e') in 0.008323 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.224692 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93f2ee1a2cfdc55a1a19217cc08f3e8d') in 0.008359 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.924921 seconds.
+  path: Assets/Resources/Component/ColliderMeshes/9ShapeCollider.obj
+  artifactKey: Guid(289a7c12214ae0b439c7ddc2db74e032) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Component/ColliderMeshes/9ShapeCollider.obj using Guid(289a7c12214ae0b439c7ddc2db74e032) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9d5e8e457af461cf01a7f9809fccf4f') in 0.028747 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.845687 seconds.
+  path: Assets/Resources/Pix2PixMaterials/YELLOW.mat
+  artifactKey: Guid(706a0196bafd7e04bae832cd95c761ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Pix2PixMaterials/YELLOW.mat using Guid(706a0196bafd7e04bae832cd95c761ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f1af3b31ce50aec22b35501049ae477') in 0.022657 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.043679 seconds.
+  path: Assets/Resources/Pix2PixMaterials/Void.mat
+  artifactKey: Guid(7c1e48eb9e7576f4e873d901a986001c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Pix2PixMaterials/Void.mat using Guid(7c1e48eb9e7576f4e873d901a986001c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d6c731b038fd820d88ba63ec5247ab0') in 0.011568 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.165048 seconds.
+  path: Assets/Resources/Pix2PixMaterials/Target.mat
+  artifactKey: Guid(f5a5c07398ba82b42bd61911a7d914dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Pix2PixMaterials/Target.mat using Guid(f5a5c07398ba82b42bd61911a7d914dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3e13e877c9d9d19dc3f980dbfc13af8') in 0.012075 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.022503 seconds.
+  path: Assets/Resources/Pix2PixMaterials/Path.mat
+  artifactKey: Guid(50d6cc53a27f8834f998a06e15d5a584) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Pix2PixMaterials/Path.mat using Guid(50d6cc53a27f8834f998a06e15d5a584) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39275eb5426df0ee3dc23ccf2ac31281') in 0.011386 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.235636 seconds.
+  path: Assets/Resources/Materials/matTrans.mat
+  artifactKey: Guid(98ef2cab0dacb63458a02d8625ca24c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Materials/matTrans.mat using Guid(98ef2cab0dacb63458a02d8625ca24c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '664483e6d7068714d6659f526031dc25') in 0.012252 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.015203 seconds.
+  path: Assets/Resources/Materials/matConnection.mat
+  artifactKey: Guid(77699f7d71a441b488b0a81663f2427c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Materials/matConnection.mat using Guid(77699f7d71a441b488b0a81663f2427c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '860e05635a7dd9100ea9de8e91729616') in 0.012138 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.309106 seconds.
+  path: Assets/Resources/Pix2PixMaterials/GREEN.mat
+  artifactKey: Guid(7c36fa711ab0b964d944d9b6da2c03aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Pix2PixMaterials/GREEN.mat using Guid(7c36fa711ab0b964d944d9b6da2c03aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30348f96b00eabe0b3c15d9aca27fd35') in 0.013442 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.457923 seconds.
+  path: Assets/Resources/BoundingBoxTesting/Boundingbox2.obj
+  artifactKey: Guid(1dae955305ccb8a4fa9d9bf4fcfa9700) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/BoundingBoxTesting/Boundingbox2.obj using Guid(1dae955305ccb8a4fa9d9bf4fcfa9700) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a82953950ddabd5ed0a48b03c9c955a0') in 0.017987 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.723085 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33b597e4699346c59e14fd89f9c6be36') in 0.008806 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.260237 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e07d20dc12a75beb5c93eb8e1047ab62') in 0.005997 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 13.485203 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '692cc1f8d97155bc2ed21037549eae09') in 0.008374 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.003843 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b8804175f2786b85497776e01eacd27') in 0.008600 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.231314 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d2054fae0571fed7cfcd8358bff182e') in 0.009015 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.634650 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43bdba628b4b60af0dfd54995e74b4f6') in 0.008566 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 9.273542 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4748e7191028c81a46b7e3d4f2af0b6') in 0.008528 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.810845 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '61f82c48572ad2d9a6af606896218625') in 0.008938 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.005400 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c30dc752d0db1c2e49bfffb21a66bf38') in 0.008730 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.218628 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '620fbe03f83158e441157ee422d4c658') in 0.008971 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.848503 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f148704fbd7c59a415ef97ad9b89d9ed') in 0.008803 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.214572 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5f72df30f06ca83a2e356f196f279a9') in 0.011158 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.806393 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df96b04b654fbf30477c7fdcf1274548') in 0.009485 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.640817 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3099cf20010288fe7c5565d754785c71') in 0.010150 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.014020 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f5ef90dd1459750ed49ee04afccb4deb') in 0.008861 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.456866 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4946fdaa93dd1038d65b29e90d207c15') in 0.009166 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 376.651199 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59be872b2621eaf428848e414cb77b18') in 0.010656 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.772942 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b1c7dae338ab4b81320c8da282da95d') in 0.008678 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.854902 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d27fb1fe3eb78301f8676e77b75e698') in 0.006691 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.491182 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a5b7b0250e90bc3d0158a9e55951b2f') in 0.006268 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.912093 seconds.
+  path: Assets/Resources/Materials/1.mat
+  artifactKey: Guid(569b92215decaec4b9332c4f9c271fc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Materials/1.mat using Guid(569b92215decaec4b9332c4f9c271fc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ddf80517c9d93901413dc6928c92d98') in 0.010104 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Resources/Materials/Plastic.png
+  artifactKey: Guid(b302381b974f1794a9313f532a5b8217) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Materials/Plastic.png using Guid(b302381b974f1794a9313f532a5b8217) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1119585b5c04262b1ee11fc824e8523b') in 0.020143 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Resources/Materials/bai.png
+  artifactKey: Guid(5b195ecf20e6ef94fb13c8590e75c754) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Materials/bai.png using Guid(5b195ecf20e6ef94fb13c8590e75c754) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ab2f82b5c97264e1f4e1837a863bd52') in 0.009816 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 72.452403 seconds.
+  path: Assets/Resources/Component
+  artifactKey: Guid(cfacb4cca005d61459c24092cf8ff2ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Component using Guid(cfacb4cca005d61459c24092cf8ff2ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a764b4ed3a0c09101ff18367dbdfa983') in 0.006734 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 26.615668 seconds.
+  path: Assets/Resources/Prefabs
+  artifactKey: Guid(ddf150faa2fb0bb4ebae051d6f102f60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs using Guid(ddf150faa2fb0bb4ebae051d6f102f60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd142c033fb062f7740ba1d9e17e5837') in 0.005304 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.861142 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7e794bce74421080aef6ef9881eeec9') in 0.009269 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 36.613973 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0fe1c1455a9a59a9310b97f3fdf34edc') in 0.007911 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 47.146974 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73f03fbb7ad0686cd0e6ef91ef9e5f46') in 0.006716 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 13.632807 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8fc913dc8af853391f49f29991a31077') in 0.009430 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.612936 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3e30bbc2a5ccfb2cebe20494ef6eab7') in 0.009423 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.004368 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'abf491e3df508335502d85763130059c') in 0.009155 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.405908 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b6e18a790abff460f50d86b21121c38') in 0.008889 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.485268 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33b562a7aed34cee1c369f46c0daac1d') in 0.010303 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.610836 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0e61b993ed9c16631b661bb70fc3f70') in 0.009222 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.401337 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dcfc92470844411f4c0599cf2c6dc604') in 0.009483 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 57.393109 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b05135d5db98ba89c484c53c3f49dd96') in 0.009566 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.198997 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5860709ad007532fc7232fada4767338') in 0.008662 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 22.585453 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0fdda379c8c642a9032aaf25fc1421fd') in 0.006950 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.234771 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'da370e413fdb381ff1e8536af068fd9b') in 0.006694 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.403433 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '666d03f065198366c307d070c591eb62') in 0.006788 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.832076 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53caa12b4141845f1d5bd468949525c0') in 0.006959 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.211436 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '968791ee6e3511e049e65f7031cd1a3e') in 0.006655 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.216286 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c52bd09862796c49d5b89cbd8d46a18') in 0.006988 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.624915 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '247e24718f849b3f9c4938269d831b6e') in 0.007012 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.406837 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f08ff6b8ff292b1538f97309a6188b8') in 0.006587 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.819532 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75c621287686959328bdfb67848495a9') in 0.006935 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.423636 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e8f557b6a6131017a497f006a2fddad') in 0.006983 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.801097 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '958b58efe5ccc44497e7034bd5c0ef39') in 0.006985 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.237305 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'accc6f5ce744aa2c6ab7b1e2c2aa33d9') in 0.007082 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.403408 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b186110efaed4345b4abb578edf10e5') in 0.007144 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.216409 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed263bff564e403f1e0bf88c4572b903') in 0.006720 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.410595 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eeaf741294ef0df85c5c530fc903773f') in 0.008460 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.218615 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4860265a100396a0f9c058ba6b701b8') in 0.006621 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.405044 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '204d24bd1c0636d9c8f6dc7b60a75268') in 0.009126 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.627757 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3ae82ddb820dab3c6009edcbd305d28') in 0.006764 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.011934 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fbebf2ac648e6c9ee32bb6069efc5e1e') in 0.007155 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.629085 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3ea53192a0763f77de9f168262c54763') in 0.006797 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.027715 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb9ee80347aa67c06a2bb135d6c3c88e') in 0.006775 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.003896 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e438f686d5c902c11e4cb563faf0840') in 0.007219 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.023294 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '18f1629e1741fde86dfa71b5bc6f9a96') in 0.006871 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.614317 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29eaa30e2624884852b0dd8d64969846') in 0.006617 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.034463 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c46216db161319cf805020f2deac64a') in 0.007280 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.222895 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37cdeb6172101b94c535b3a970aaf948') in 0.006833 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.004832 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c29466bc606380c5b474de935434f94e') in 0.007365 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.028918 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d3a85df1b9e2953930785e3443eab99') in 0.006961 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.214189 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba86fed908d3111798c0393d64ac88ce') in 0.007088 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.211189 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b6dcea82f04a6a31411910eac82778e') in 0.006854 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 21.684744 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHHshape.prefab
+  artifactKey: Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHHshape.prefab using Guid(60087c1851638084db148a3ad7d2084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac1ff870a5e1835a82fdaa5d63ec29c1') in 0.007236 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 181.953382 seconds.
+  path: Assets/Resources/Component/BIGHshape.obj
+  artifactKey: Guid(8a0707ec7e5807d47a1dfedd8ab930a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Component/BIGHshape.obj using Guid(8a0707ec7e5807d47a1dfedd8ab930a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '70981be547d6af7b6aa9a1b0d175f280') in 0.018720 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.144502 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f5f76829d739d53dc8f0a66314433cc6') in 0.010434 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.100841 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c0361055f1bfee08767fc36c5fd9b3a') in 0.006594 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.244555 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '322157405053f44981d36e38285dfb8f') in 0.006069 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.273351 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b1af81ac114b03657705eade1eec9d0') in 0.006101 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 9.015640 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90df98262db657b0978951f846761269') in 0.008363 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 31.644853 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7cf958a8c93c65d02bac13f1e5736d19') in 0.009216 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.228572 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe5bb81d0bdaa206936c0e010c2316ef') in 0.008614 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.417535 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d77c723185aca2aee397261ced31a29') in 0.008927 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.801667 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c591e09d9af7fd9a100e839aec64aa8b') in 0.009626 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.618734 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '468bbdfd16979a01413a641e9f9f624b') in 0.008820 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.402721 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22315b0d6bdebcfc44f2d1a8f19630f5') in 0.009079 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 11.682066 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f31daf21e31593e1ae9f45361fe840d') in 0.009027 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.609323 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd56c6ba99b72daf74587c6ed95201a48') in 0.010638 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.623560 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6477aa203c908b5df9af4880c8ac9f8d') in 0.009073 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.408657 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3624a9be6a93806eaa26b4d2535f384') in 0.008944 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.814983 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5de0f3184ba01ad74fc3e8a9f31c4bbe') in 0.008203 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.840565 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd07186843274fc4a1f683b052e25c443') in 0.010876 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.017877 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac15231b88b088273ef781862082abe3') in 0.007027 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.424423 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b7e363c0ba4ab6677bb5ab024b31b86') in 0.009325 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.002097 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '916317d6a00c1a17c0264086cff7e847') in 0.011160 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.005508 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20295b73c68ab9cd20fb60a4542f7af6') in 0.009517 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.813062 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91f6029eec68ebc58834b196197d9f80') in 0.009490 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.609568 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5527f0d3a2f745f001420389e847705') in 0.010222 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.234646 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf064accb36e9b605e73a779a9ce1357') in 0.006540 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.814781 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '67688f9294af891fdc6744ee7d953438') in 0.009814 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 139.463597 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5b68ee22976c5ecc97c3d71a4762eae') in 0.010415 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.900806 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4cbc93586d4d68fc3346114c375872ec') in 0.006534 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.007976 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4998ab6c22814f4ad2a131a2f23e8530') in 0.009011 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.220821 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27f4e0e760aebd62d9b572fecf74a2fa') in 0.009859 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 27.189367 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0684f35987db6166f44ed013d7a8ddf8') in 0.009168 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.613874 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0293e50fb9556c77ca2948658ea43c5f') in 0.009266 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 14.497754 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c11785522d5ff28c64cf5974009c87f4') in 0.009021 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.594124 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3463d4247b6cb36f61c74e1a1fb59a2f') in 0.009405 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 15.936514 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40ee9af6c307709a47dc6958607fa5fb') in 0.009689 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.010062 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '713ab09b29bb9484d766b0f692ad0ddf') in 0.006944 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 50.408838 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '65b019f306af712a0abc2918bf899b8a') in 0.009600 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 14.920124 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9886bdec9e56cec41558991a98f91a3') in 0.009425 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.423344 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9984adc3ab26775cc4fbdaa7ba90b503') in 0.008771 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.018938 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13132fcc0ca87c16cae2fd744bed7e63') in 0.009685 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 15.121342 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf9b1aad35ff05839cec145505743518') in 0.006651 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.814525 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f64bc2dd878801a053afbc0ee17b9c9') in 0.009037 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.441029 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df0f4330514b6f975405260eb1ee5255') in 0.007121 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.039861 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ccc66fc323c0c6f1b5b8b1a43c8e2ce') in 0.006209 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.040593 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a7e281c7babc859e67ec742fe415ca4') in 0.006600 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.213902 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6daa616c119c93b19c9387d7ac3e1dc6') in 0.006847 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.403489 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f4a67b2a61dbd2e9ea36d3d3a834d7e') in 0.006643 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.247232 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35be5a6d068578eee30e1263564790c1') in 0.007677 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.812080 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d2d49373f9372653be86f0c8c8f12e6') in 0.009391 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.599952 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '266a39324386fd9ee5813bd24ef2ce6b') in 0.008685 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.615020 seconds.
+  path: Assets/Resources/Prefabs/Parts/BIGHshape.prefab
+  artifactKey: Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Parts/BIGHshape.prefab using Guid(a005358c2e38601459d8405e118ca688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd88493e16c3fdd6771e6824f0b0798cb') in 0.009408 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 81.943765 seconds.
+  path: Assets/Resources/BoundingBoxTesting
+  artifactKey: Guid(141dfade88443514e81e7978d14e4e9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/BoundingBoxTesting using Guid(141dfade88443514e81e7978d14e4e9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9c4e4ad7128f15bfd94902429bd851f') in 0.004769 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.171928 seconds.
+  path: Assets/Resources/BoundingBoxTesting/1.obj
+  artifactKey: Guid(8ce732150c9ad1344bbba6d2356e03b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/BoundingBoxTesting/1.obj using Guid(8ce732150c9ad1344bbba6d2356e03b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '525b71822435c591ce31a7d04bfce59a') in 0.020792 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Resources/BoundingBoxTesting/5.obj
+  artifactKey: Guid(c58b0384ca0795e4ea231361c96b882a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/BoundingBoxTesting/5.obj using Guid(c58b0384ca0795e4ea231361c96b882a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba759ae4db94fb23f59e2caca73d1a74') in 0.021694 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Resources/BoundingBoxTesting/Boundingbox3.obj
+  artifactKey: Guid(22d348b72a0ede8489b24f180b1e0367) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/BoundingBoxTesting/Boundingbox3.obj using Guid(22d348b72a0ede8489b24f180b1e0367) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '160904f6e960e5c4f12387ae1695f81d') in 0.022809 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Resources/BoundingBoxTesting/Boundingbox7.obj
+  artifactKey: Guid(b60340f86bffca944bf8069a5b89065c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/BoundingBoxTesting/Boundingbox7.obj using Guid(b60340f86bffca944bf8069a5b89065c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9e8a4dba1a0044ac03f13d0257a8086') in 0.018803 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Resources/BoundingBoxTesting/Boundingbox.obj
+  artifactKey: Guid(0d9ea478956626944886606d2260acf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/BoundingBoxTesting/Boundingbox.obj using Guid(0d9ea478956626944886606d2260acf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b84c894877e582eb0a817ae456e3009') in 0.019447 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Resources/BoundingBoxTesting/10.obj
+  artifactKey: Guid(c6c297fe842e42244888ead88000c4b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/BoundingBoxTesting/10.obj using Guid(c6c297fe842e42244888ead88000c4b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c677b76df4fc04b8a58ad3ed47116de') in 0.017826 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Resources/BoundingBoxTesting/4.obj
+  artifactKey: Guid(96a2c10d6465e7b4f84a73caade4dc5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/BoundingBoxTesting/4.obj using Guid(96a2c10d6465e7b4f84a73caade4dc5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd51b5b3bf8fc9909bce7ebe728c3e08a') in 0.020147 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Resources/BoundingBoxTesting/Boundingbox5.obj
+  artifactKey: Guid(bbbcee76936672b4a9af8913f016a680) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/BoundingBoxTesting/Boundingbox5.obj using Guid(bbbcee76936672b4a9af8913f016a680) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93247464fe93b01b874f4397be813aa3') in 0.020300 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Resources/BoundingBoxTesting/9.obj
+  artifactKey: Guid(39d9b83082c3f23469df709d4afb888e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/BoundingBoxTesting/9.obj using Guid(39d9b83082c3f23469df709d4afb888e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c38fbf10017b6fc364a38ed6f1f2cdec') in 0.019512 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Resources/BoundingBoxTesting/3.obj
+  artifactKey: Guid(e4b77660128b481498eb3c21aa25485f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/BoundingBoxTesting/3.obj using Guid(e4b77660128b481498eb3c21aa25485f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35f1974c724f2403fd5a0e966d8e0239') in 0.019384 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Resources/BoundingBoxTesting/6.obj
+  artifactKey: Guid(71c0e894d5fe204479a5b11858a44f2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/BoundingBoxTesting/6.obj using Guid(71c0e894d5fe204479a5b11858a44f2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd1ebad2c2987d903d0f2eba4ac900c87') in 0.018331 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
