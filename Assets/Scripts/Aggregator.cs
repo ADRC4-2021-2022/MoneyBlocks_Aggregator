@@ -25,7 +25,7 @@ public class Aggregator : MonoBehaviour
     private List<Voxel> _nonDeadVoxels;
 
 
-    private float _voxelSize = 0.09f;
+    private float _voxelSize = 0.3f;
     private int _voxelOffset = 1;
 
     private int _triesPerIteration = 10000;

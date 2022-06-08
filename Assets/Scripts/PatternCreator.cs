@@ -10,7 +10,7 @@ public class PatternCreator : MonoBehaviour
     //Please create your regions
     #region Private fields
     [SerializeField]
-    private readonly float _voxelSize = 0.09f;
+    private readonly float _voxelSize = 0.3f;
 
     //private Vector3Int _dimensions;
     //private Vector3 _origin;
@@ -45,27 +45,34 @@ public class PatternCreator : MonoBehaviour
         //    GameObject.Destroy(goComponent);
         //}
 
+
+
+
+
+
         //Loop over all your prefabs and run AddPattern()
-        //int count = 0;
-        //GameObject goComponent = GameObject.Instantiate(goPrefabs[2]);
-        //AddPattern(goComponent, count++);
-        //GameObject.Destroy(goComponent);
-
-
         int count = 0;
-        for (int i = 0; i < goPrefabs.Count(); i++)
-        {
+        GameObject goComponent = GameObject.Instantiate(goPrefabs[2]);
+        AddPattern(goComponent, count++);
+        GameObject.Destroy(goComponent);
 
 
 
-            var goPrefab = goPrefabs[i];
-            GameObject goComponent = GameObject.Instantiate(goPrefab);
-            AddPattern(goComponent, count++);
-            GameObject.Destroy(goComponent);
+
+        //int count = 0;
+        //for (int i = 0; i < goPrefabs.Count(); i++)
+        //{
+        //    var goPrefab = goPrefabs[i];
+        //    GameObject goComponent = GameObject.Instantiate(goPrefab);
+        //    AddPattern(goComponent, count++);
+        //    GameObject.Destroy(goComponent);
+        //}
 
 
 
-        }
+
+
+
 
     }
 

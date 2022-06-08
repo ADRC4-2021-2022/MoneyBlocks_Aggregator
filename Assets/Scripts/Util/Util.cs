@@ -22,21 +22,32 @@ public static class Util
         new Vector3Int(-1,0,0),// min x
         new Vector3Int(-1,1,0),// min x
         new Vector3Int(-1,-1,0),// min x
+        new Vector3Int(-1,2,0),// min x
+
         new Vector3Int(1,0,0),// plus x
         new Vector3Int(1,1,0),// plus x
         new Vector3Int(1,-1,0),// plus x
+        new Vector3Int(1,2,0),// plus x
+
         new Vector3Int(0,-1,0),// min y
         new Vector3Int(1,-1,0),// min y
         new Vector3Int(-1,-1,0),// min y
+        new Vector3Int(2,-1,0),// min y
+
         new Vector3Int(0,1,0),// plus y
         new Vector3Int(1,1,0),// plus y
         new Vector3Int(-1,1,0),// plus y
+        new Vector3Int(2,1,0),// plus y
+
         new Vector3Int(0,0,-1),// min z
         new Vector3Int(0,1,-1),// min z
         new Vector3Int(0,-1,-1),// min z
+        new Vector3Int(0,2,-1),// min z
+
         new Vector3Int(0,0,1),// plus z
         new Vector3Int(0,1,1),// plus z
-        new Vector3Int(0,-1,1)// plus z
+        new Vector3Int(0,-1,1),// plus z
+        new Vector3Int(0,2,1),// plus z
     };
 
     public static Dictionary<FunctionColour, Material> MaterialPerFunction = new()
