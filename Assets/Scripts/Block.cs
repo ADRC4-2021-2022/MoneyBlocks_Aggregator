@@ -24,6 +24,9 @@ public class Block
     {
         get
         {
+            //Debug.Log($"{new List<Voxel>(_grid.GetVoxels()).Count(v => v.Status == VoxelState.Alive)} alive");
+            //Debug.Log($"{new List<Voxel>(_grid.GetVoxels()).Count(v => v.Status == VoxelState.Dead)} dead");
+
             if (_placed) return BlockState.Placed;
             if (Voxels.Count < _pattern.Indices.Count) return BlockState.OutOfBounds;
             if (Voxels.Count(v => v.Status != VoxelState.Available) > 0)

@@ -8,9 +8,24 @@ public class Aggregator : MonoBehaviour
     private List<Connection> _connections = new List<Connection>();
     private VoxelGrid _grid;
     //public Coroutine coroutine;
+    public List<Voxel> NonDeadVoxels
+    {
+        get
+        {
+            if (_nonDeadVoxels == null)
+            {
+                _nonDeadVoxels = _grid.GetVoxels().Where(v => v.Status != VoxelState.Dead).ToList();
+                return _nonDeadVoxels;
+            }
+            else
+                return _nonDeadVoxels;
+        }
+    }
+
     private List<Voxel> _nonDeadVoxels;
 
-    private float _voxelSize = 0.3f;
+
+    private float _voxelSize = 0.09f;
     private int _voxelOffset = 1;
 
     private int _triesPerIteration = 10000;
@@ -37,6 +52,7 @@ public class Aggregator : MonoBehaviour
         //_grid = new VoxelGrid(20, 20, 20, 0.095f, Vector3.zero);
         _grid = BoundingMesh.GetVoxelGrid(_voxelOffset, _voxelSize);
         KillVoxelsInOutBounds(true);
+        //_grid.SetGridState(VoxelState.Available);
 
         //Find the GameObject
 
@@ -65,6 +81,14 @@ public class Aggregator : MonoBehaviour
         //}
     }
 
+    public void OnGUI()
+    {
+        if (GUI.Button(new Rect(10, 10, 200, 50), "next"))
+        {
+            GenerationStep();
+        }
+    }
+
     /// <summary>
     /// Set the status of all voxels dead inside or outside of the mesh
     /// </summary>
@@ -82,16 +106,15 @@ public class Aggregator : MonoBehaviour
         }
 
         Debug.Log($"Number of available voxels: {_grid.GetVoxels().Count(v => v.Status == VoxelState.Available)} of {_grid.GetVoxels().Count()} voxels");
-        _nonDeadVoxels = _grid.GetVoxels().Where(v => v.Status != VoxelState.Dead).ToList();
     }
 
     public void AddFirstBlock()
     {
 
         //Select a random voxel with Y index = 0
-        int rndIndex = Random.Range(0, _nonDeadVoxels.Count);
+        int rndIndex = Random.Range(0, NonDeadVoxels.Count);
 
-        Vector3Int randomVoxel = _nonDeadVoxels[rndIndex].Index;
+        Vector3Int randomVoxel = NonDeadVoxels[rndIndex].Index;
         //Create a new connection with the voxel index
         Connection connectionZero = new Connection(randomVoxel, _grid);
 
@@ -152,8 +175,10 @@ public class Aggregator : MonoBehaviour
                 //Set the random pattern as current grid pattern
                 _grid.SetPatternIndex(selectedPattern.Index);
 
+                Quaternion xRotation = Quaternion.Euler(new Vector3(90, 0, 0));
+
                 //Try to place a block based on the pattern with the anchorpoint on the connection point
-                _grid.AddBlock(connection.Index, Quaternion.Euler(randomDirection * 90));
+                _grid.AddBlock(connection.Index, Quaternion.Euler(randomDirection * 90)/**xRotation*/);
 
                 //See if the block can be added
                 if (!_grid.TryAddCurrentBlocksToGrid())
