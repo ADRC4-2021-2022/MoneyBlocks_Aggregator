@@ -63,7 +63,7 @@ public class Aggregator : MonoBehaviour
         //Call the function
         //which function
         AddFirstBlock();
-        for (int i = 0; i < 5000; i++)
+        for (int i = 0; i < 8000; i++)
         {
             GenerationStep();
         }
