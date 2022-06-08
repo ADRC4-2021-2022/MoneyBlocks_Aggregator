@@ -44,7 +44,7 @@ public class EnvironmentManager : MonoBehaviour
         //_voxelGrid = new Pix2PixVoxelGrid(new Vector3Int(50, 5, 25), transform.position, 1f);
 
         //09 Read Image from resources
-        _sourceImage = Resources.Load<Texture2D>("Data/new00");
+        _sourceImage = Resources.Load<Texture2D>("Data/1234");
       //  _sourceImageCopy = duplicateTexture(_sourceImage);
 
 

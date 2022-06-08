@@ -5,7 +5,7 @@ using System.Linq;
 
 //Try to use Kevin his voxelgrid class instead of Davids
 
-public enum FunctionColour { Yellow = 1, Green = 2, Blue = 3, Red = 4, White = 5, Purple = 6, Cyan = 7, Black = 8  }
+public enum FunctionColour { Yellow = 1, Green = 2, Blue = 3, Red = 4, White = 5, Purple = 6, Cyan = 7, Black = 8, Void = 9  }
 public class VoxelGrid
 {
 
@@ -84,11 +84,11 @@ public class VoxelGrid
 
     #region public fields
     public ColourIndex colourIndex;
-    public int yellowIndex = 5;
-    public int greenIndex = 5;
-    public int blueIndex = 3;
-    public int redIndex = 2;
-    public int whiteIndex = 1;
+    //public int yellowIndex = 5;
+    //public int greenIndex = 5;
+    //public int blueIndex = 3;
+    //public int redIndex = 2;
+    //public int whiteIndex = 1;
 
 
     public Vector3Int GridDimensions { get; private set; }
@@ -719,7 +719,7 @@ public class VoxelGrid
 
     public void SetStageFromImageReduced(Texture2D sourceImage)
     {
-        FunctionColour[,] combinedColours = new FunctionColour[GridSize.x, GridSize.z];
+        //FunctionColour[,] combinedColours = new FunctionColour[GridSize.x, GridSize.z];
 
         //Loop over all the XZ voxels
         for (int x = 0; x < GridSize.x; x++)
@@ -739,186 +739,45 @@ public class VoxelGrid
                 }
                 //Debug.Log(pixels.Count(p => p == FunctionColour.Green));
                 //Check if the voxel should be green
+
+                var countPerFunction = new Dictionary<FunctionColour, int>();
+                foreach (var pixel in pixels)
+                {
+                    if (countPerFunction.ContainsKey(pixel)) countPerFunction[pixel]++;
+                    else countPerFunction[pixel] = 1;
+                }
+
                 if (pixels.Count(p => p == FunctionColour.Green) > 0)
                 {
                     Debug.Log("Green");
-                    for (int y = 0; y < greenIndex; y++)
+                    for (int y = 0; y < Util.IndexPerFunction[FunctionColour.Green]; y++)
                     {
-
                         Voxel voxel = Voxels[x, y, z];
-
-                        voxel.SetStateGreen(0.1f);
-
+                        voxel.SetState(FunctionColour.Green, false);
                     }
 
-                    for (int y = greenIndex; y < GridSize.y; y++)
+                    for (int y = Util.IndexPerFunction[FunctionColour.Green]; y < GridSize.y; y++)
                     {
-
                         Voxel voxel = Voxels[x, y, z];
-
-                        voxel.SetStateEnable(0.1f);
-
-                    }
-
-                }
-
-                //Check if the voxel should be white
-                if (pixels.Count(p => p == FunctionColour.White) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
-                {
-                    Debug.Log("White");
-                    for (int y = 0; y < whiteIndex; y++)
-                    {
-
-                        Voxel voxel = Voxels[x, y, z];
-
-                        voxel.SetStateWhite(0.1f);
-
-                    }
-
-                    for (int y = whiteIndex; y < GridSize.y; y++)
-                    {
-
-                        Voxel voxel = Voxels[x, y, z];
-
-                        voxel.SetStateEnable(0.1f);
-
+                        voxel.SetState(FunctionColour.Green, true);
                     }
                 }
-
-                //Check if the voxel should be yellow
-                if (pixels.Count(p => p == FunctionColour.Yellow) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
+                else
                 {
-                    Debug.Log("Yellow");
-                    for (int y = 0; y < yellowIndex; y++)
+                    var maxCount = countPerFunction.Values.Max();
+                    var maxColour = countPerFunction.First(p => p.Value == maxCount).Key;
+
+                    for (int y = 0; y < Util.IndexPerFunction[maxColour]; y++)
                     {
-
                         Voxel voxel = Voxels[x, y, z];
-
-                        voxel.SetStateYellow(0.1f);
+                        voxel.SetState(maxColour, false);
 
                     }
 
-                    for (int y = yellowIndex; y < GridSize.y; y++)
+                    for (int y = Util.IndexPerFunction[maxColour]; y < GridSize.y; y++)
                     {
-
                         Voxel voxel = Voxels[x, y, z];
-
-                        voxel.SetStateEnable(0.1f);
-
-                    }
-                }
-
-                //Check if the voxel should be red
-                if (pixels.Count(p => p == FunctionColour.Red) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
-                {
-                    Debug.Log("Red");
-                    for (int y = 0; y < redIndex; y++)
-                    {
-
-                        Voxel voxel = Voxels[x, y, z];
-
-                        voxel.SetStateRed(0.1f);
-
-                    }
-
-                    for (int y = redIndex; y < GridSize.y; y++)
-                    {
-
-                        Voxel voxel = Voxels[x, y, z];
-
-                        voxel.SetStateEnable(0.1f);
-
-                    }
-                }
-
-                //Check if the voxel should be blue
-                if (pixels.Count(p => p == FunctionColour.Blue) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
-                {
-                    Debug.Log("Blue");
-                    for (int y = 0; y < blueIndex; y++)
-                    {
-
-                        Voxel voxel = Voxels[x, y, z];
-
-                        voxel.SetStateBlue(0.1f);
-
-                    }
-
-                    for (int y = blueIndex; y < GridSize.y; y++)
-                    {
-
-                        Voxel voxel = Voxels[x, y, z];
-
-                        voxel.SetStateEnable(0.1f);
-
-                    }
-                }
-
-                //Check if the voxel should be purple
-                if (pixels.Count(p => p == FunctionColour.Purple) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
-                {
-                    Debug.Log("Purple");
-                    for (int y = 0; y < blueIndex; y++)
-                    {
-
-                        Voxel voxel = Voxels[x, y, z];
-
-                        voxel.SetStatePurple(0.1f);
-
-                    }
-
-                    for (int y = blueIndex; y < GridSize.y; y++)
-                    {
-
-                        Voxel voxel = Voxels[x, y, z];
-
-                        voxel.SetStateEnable(0.1f);
-
-                    }
-                }
-
-                //Check if the voxel should be cyan
-                if (pixels.Count(p => p == FunctionColour.Cyan) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
-                {
-                    Debug.Log("Cyan");
-                    for (int y = 0; y < blueIndex; y++)
-                    {
-
-                        Voxel voxel = Voxels[x, y, z];
-
-                        voxel.SetStateCyan(0.1f);
-
-                    }
-
-                    for (int y = blueIndex; y < GridSize.y; y++)
-                    {
-
-                        Voxel voxel = Voxels[x, y, z];
-
-                        voxel.SetStateEnable(0.1f);
-
-                    }
-                }
-
-                //Check if the voxel should be black
-                if (pixels.Count(p => p == FunctionColour.Black) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
-                {
-                    Debug.Log("Black");
-                    for (int y = 0; y < blueIndex; y++)
-                    {
-
-                        Voxel voxel = Voxels[x, y, z];
-
-                        voxel.SetStateBlack(0.1f);
-
-                    }
-
-                    for (int y = blueIndex; y < GridSize.y; y++)
-                    {
-
-                        Voxel voxel = Voxels[x, y, z];
-
-                        voxel.SetStateEnable(0.1f);
+                        voxel.SetState(maxColour, true);
 
                     }
                 }

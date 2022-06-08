@@ -39,6 +39,33 @@ public static class Util
         new Vector3Int(0,-1,1)// plus z
     };
 
+    public static Dictionary<FunctionColour, Material> MaterialPerFunction = new()
+    {
+        [FunctionColour.Green] = Resources.Load<Material>("Pix2PixMaterials/GREEN"),
+        [FunctionColour.Red] = Resources.Load<Material>("Pix2PixMaterials/RED"),
+        [FunctionColour.Cyan] = Resources.Load<Material>("Pix2PixMaterials/CYAN"),
+        [FunctionColour.White] = Resources.Load<Material>("Pix2PixMaterials/WHITE"),
+        [FunctionColour.Black] = Resources.Load<Material>("Pix2PixMaterials/Black"),
+        [FunctionColour.Void] = Resources.Load<Material>("Pix2PixMaterials/Void"),
+        [FunctionColour.Yellow] = Resources.Load<Material>("Pix2PixMaterials/YELLOW"),
+        [FunctionColour.Blue] = Resources.Load<Material>("Pix2PixMaterials/BLUE"),
+        [FunctionColour.Purple] = Resources.Load<Material>("Pix2PixMaterials/PURPLE")
+    };
+
+    public static Dictionary<FunctionColour, int> IndexPerFunction = new()
+    {
+        [FunctionColour.Green] = 5,
+        [FunctionColour.Red] = 1,
+        [FunctionColour.Cyan] = 1,
+        [FunctionColour.White] = 1,
+        [FunctionColour.Black] = 1,
+        [FunctionColour.Void] = 1,
+        [FunctionColour.Yellow] = 5,
+        [FunctionColour.Blue] = 2,
+        [FunctionColour.Purple] = 1
+    };
+
+
     /// <summary>
     /// Generate a random color
     /// </summary>

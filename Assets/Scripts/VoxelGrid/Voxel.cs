@@ -180,6 +180,14 @@ public class Voxel
 
     #region public functions
 
+    public void SetState(FunctionColour colour, bool state)
+    {
+        _voxelGO.GetComponent<MeshRenderer>().material = Util.MaterialPerFunction[colour];
+
+        if (state) SetStateEnable(0.1f);
+        //_voxelGO.tag = "RedVoxel";
+    }
+
     public void SetStateRed(float newState)
     {
        
