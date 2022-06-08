@@ -18,6 +18,11 @@ TagManager:
   - RedVoxel
   - YellowVoxel
   - BasicCube
+  - BlueVoxel
+  - GreenVoxel
+  - PurpleVoxel
+  - CyanVoxel
+  - BlackVoxel
   layers:
   - Default
   - TransparentFX
