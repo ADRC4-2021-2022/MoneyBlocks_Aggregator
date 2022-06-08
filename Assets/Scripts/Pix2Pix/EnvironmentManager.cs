@@ -17,7 +17,7 @@ public class EnvironmentManager : MonoBehaviour
     Texture2D _sourceImageCopy;
     //44 Create list to stores target voxels
     List<Voxel> _targets = new List<Voxel>();
-
+    GameObject originVoxel;
     #endregion
 
     #region Unity methods
@@ -44,7 +44,7 @@ public class EnvironmentManager : MonoBehaviour
         //_voxelGrid = new Pix2PixVoxelGrid(new Vector3Int(50, 5, 25), transform.position, 1f);
 
         //09 Read Image from resources
-        _sourceImage = Resources.Load<Texture2D>("Data/1234");
+        _sourceImage = Resources.Load<Texture2D>("Data/new00");
       //  _sourceImageCopy = duplicateTexture(_sourceImage);
 
 
@@ -54,7 +54,7 @@ public class EnvironmentManager : MonoBehaviour
 
         //SourceField
         //10 Create grid from image
-        _voxelGrid = new VoxelGrid(_sourceImage, 3, 3, transform.position, 0.3f);
+        _voxelGrid = new VoxelGrid(_sourceImage, 3, 5, transform.position, 0.1f);
 
         //30 Read image and set states of GraphVoxels
         //_voxelGrid.SetStatesFromImage(_sourceImage);
@@ -81,7 +81,13 @@ public class EnvironmentManager : MonoBehaviour
         _targets = new List<Voxel>();
     }
 
-   
+   public void ChangeNeibourColour()
+   {
+        
+       
+
+
+   }
 
 
 

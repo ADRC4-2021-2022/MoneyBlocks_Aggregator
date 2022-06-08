@@ -8,4 +8,9 @@ public class VoxelTrigger : MonoBehaviour
     public Pix2PixVoxel Voxel;
     public Voxel Voxel2;
 
+   
+
+
+
+
 }

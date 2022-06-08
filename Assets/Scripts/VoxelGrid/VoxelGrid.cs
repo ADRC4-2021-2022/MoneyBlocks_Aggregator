@@ -5,7 +5,7 @@ using System.Linq;
 
 //Try to use Kevin his voxelgrid class instead of Davids
 
-public enum FunctionColour { Yellow = 1, Green = 2, Blue = 3, Red = 4, White = 5 }
+public enum FunctionColour { Yellow = 1, Green = 2, Blue = 3, Red = 4, White = 5, Purple = 6, Cyan = 7, Black = 8  }
 public class VoxelGrid
 {
 
@@ -46,10 +46,31 @@ public class VoxelGrid
     //HSV WHITE
     private const float HSV_White_H_Max = 360f;
     private const float HSV_White_H_Min = 0f;
-    private const float HSV_White_S_Max = 60f;
+    private const float HSV_White_S_Max = 30f;
     private const float HSV_White_S_Min = 0f;
     private const float HSV_White_V_Max = 255f;
     private const float HSV_White_V_Min = 221f;
+    //HSV PURPLE
+    private const float HSV_Purple_H_Max = 310f;
+    private const float HSV_Purple_H_Min = 125f;
+    private const float HSV_Purple_S_Max = 255f;
+    private const float HSV_Purple_S_Min = 43f;
+    private const float HSV_Purple_V_Max = 255f;
+    private const float HSV_Purple_V_Min = 46f;
+    //HSV CYAN
+    private const float HSV_Cyan_H_Max = 198f;
+    private const float HSV_Cyan_H_Min = 78f;
+    private const float HSV_Cyan_S_Max = 255f;
+    private const float HSV_Cyan_S_Min = 43f;
+    private const float HSV_Cyan_V_Max = 255f;
+    private const float HSV_Cyan_V_Min = 46f;
+    //HSV Black
+    private const float HSV_Black_H_Max = 360f;
+    private const float HSV_Black_H_Min = 0f;
+    private const float HSV_Black_S_Max = 255f;
+    private const float HSV_Black_S_Min = 0f;
+    private const float HSV_Black_V_Max = 46f;
+    private const float HSV_Black_V_Min = 0f;
     #endregion
 
 
@@ -62,6 +83,14 @@ public class VoxelGrid
 
 
     #region public fields
+    public ColourIndex colourIndex;
+    public int yellowIndex = 5;
+    public int greenIndex = 5;
+    public int blueIndex = 3;
+    public int redIndex = 2;
+    public int whiteIndex = 1;
+
+
     public Vector3Int GridDimensions { get; private set; }
     public float VoxelSize { get; private set; }
     public Vector3 Origin { get; private set; }
@@ -170,6 +199,7 @@ public class VoxelGrid
     private Voxel[,,] _voxels;
     private bool _showAliveVoxels = false;
     private bool _showAvailableVoxels = false;
+    
 
     #region block fields
     private List<Block> _blocks = new List<Block>();
@@ -711,8 +741,8 @@ public class VoxelGrid
                 //Check if the voxel should be green
                 if (pixels.Count(p => p == FunctionColour.Green) > 0)
                 {
-                    Debug.Log("green");
-                    for (int y = 0; y < GridSize.y; y++)
+                    Debug.Log("Green");
+                    for (int y = 0; y < greenIndex; y++)
                     {
 
                         Voxel voxel = Voxels[x, y, z];
@@ -720,18 +750,37 @@ public class VoxelGrid
                         voxel.SetStateGreen(0.1f);
 
                     }
+
+                    for (int y = greenIndex; y < GridSize.y; y++)
+                    {
+
+                        Voxel voxel = Voxels[x, y, z];
+
+                        voxel.SetStateEnable(0.1f);
+
+                    }
+
                 }
 
                 //Check if the voxel should be white
                 if (pixels.Count(p => p == FunctionColour.White) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
                 {
                     Debug.Log("White");
-                    for (int y = 0; y < GridSize.y; y++)
+                    for (int y = 0; y < whiteIndex; y++)
                     {
 
                         Voxel voxel = Voxels[x, y, z];
 
                         voxel.SetStateWhite(0.1f);
+
+                    }
+
+                    for (int y = whiteIndex; y < GridSize.y; y++)
+                    {
+
+                        Voxel voxel = Voxels[x, y, z];
+
+                        voxel.SetStateEnable(0.1f);
 
                     }
                 }
@@ -740,12 +789,21 @@ public class VoxelGrid
                 if (pixels.Count(p => p == FunctionColour.Yellow) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
                 {
                     Debug.Log("Yellow");
-                    for (int y = 0; y < GridSize.y; y++)
+                    for (int y = 0; y < yellowIndex; y++)
                     {
 
                         Voxel voxel = Voxels[x, y, z];
 
                         voxel.SetStateYellow(0.1f);
+
+                    }
+
+                    for (int y = yellowIndex; y < GridSize.y; y++)
+                    {
+
+                        Voxel voxel = Voxels[x, y, z];
+
+                        voxel.SetStateEnable(0.1f);
 
                     }
                 }
@@ -754,12 +812,21 @@ public class VoxelGrid
                 if (pixels.Count(p => p == FunctionColour.Red) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
                 {
                     Debug.Log("Red");
-                    for (int y = 0; y < GridSize.y; y++)
+                    for (int y = 0; y < redIndex; y++)
                     {
 
                         Voxel voxel = Voxels[x, y, z];
 
                         voxel.SetStateRed(0.1f);
+
+                    }
+
+                    for (int y = redIndex; y < GridSize.y; y++)
+                    {
+
+                        Voxel voxel = Voxels[x, y, z];
+
+                        voxel.SetStateEnable(0.1f);
 
                     }
                 }
@@ -768,12 +835,90 @@ public class VoxelGrid
                 if (pixels.Count(p => p == FunctionColour.Blue) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
                 {
                     Debug.Log("Blue");
-                    for (int y = 0; y < GridSize.y; y++)
+                    for (int y = 0; y < blueIndex; y++)
                     {
 
                         Voxel voxel = Voxels[x, y, z];
 
                         voxel.SetStateBlue(0.1f);
+
+                    }
+
+                    for (int y = blueIndex; y < GridSize.y; y++)
+                    {
+
+                        Voxel voxel = Voxels[x, y, z];
+
+                        voxel.SetStateEnable(0.1f);
+
+                    }
+                }
+
+                //Check if the voxel should be purple
+                if (pixels.Count(p => p == FunctionColour.Purple) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
+                {
+                    Debug.Log("Purple");
+                    for (int y = 0; y < blueIndex; y++)
+                    {
+
+                        Voxel voxel = Voxels[x, y, z];
+
+                        voxel.SetStatePurple(0.1f);
+
+                    }
+
+                    for (int y = blueIndex; y < GridSize.y; y++)
+                    {
+
+                        Voxel voxel = Voxels[x, y, z];
+
+                        voxel.SetStateEnable(0.1f);
+
+                    }
+                }
+
+                //Check if the voxel should be cyan
+                if (pixels.Count(p => p == FunctionColour.Cyan) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
+                {
+                    Debug.Log("Cyan");
+                    for (int y = 0; y < blueIndex; y++)
+                    {
+
+                        Voxel voxel = Voxels[x, y, z];
+
+                        voxel.SetStateCyan(0.1f);
+
+                    }
+
+                    for (int y = blueIndex; y < GridSize.y; y++)
+                    {
+
+                        Voxel voxel = Voxels[x, y, z];
+
+                        voxel.SetStateEnable(0.1f);
+
+                    }
+                }
+
+                //Check if the voxel should be black
+                if (pixels.Count(p => p == FunctionColour.Black) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
+                {
+                    Debug.Log("Black");
+                    for (int y = 0; y < blueIndex; y++)
+                    {
+
+                        Voxel voxel = Voxels[x, y, z];
+
+                        voxel.SetStateBlack(0.1f);
+
+                    }
+
+                    for (int y = blueIndex; y < GridSize.y; y++)
+                    {
+
+                        Voxel voxel = Voxels[x, y, z];
+
+                        voxel.SetStateEnable(0.1f);
 
                     }
                 }
@@ -796,34 +941,37 @@ public class VoxelGrid
         if (h * HSV_H >= HSV_Red_H_Min && h * HSV_H <= HSV_Red_H_Max && s * HSV_S >= HSV_Red_S_Min && s * HSV_S <= HSV_Red_S_Max && v * HSV_V >= HSV_Red_V_Min && v * HSV_V <= HSV_Red_V_Max)
         {
             return FunctionColour.Red;
-
-
-        }
-        else if (h * HSV_H >= HSV_White_H_Min && h * HSV_H <= HSV_White_H_Max && s * HSV_S >= HSV_White_S_Min && s * HSV_S <= HSV_White_S_Max && v * HSV_V >= HSV_White_V_Min && v * HSV_V <= HSV_White_V_Max)
-        {
-            return FunctionColour.White;
-
         }
 
         else if (h * HSV_H >= HSV_Yellow_H_Min && h * HSV_H <= HSV_Yellow_H_Max && s * HSV_S >= HSV_Yellow_S_Min && s * HSV_S <= HSV_Yellow_S_Max && v * HSV_V >= HSV_Yellow_V_Min && v * HSV_V <= HSV_Yellow_V_Max)
         {
             return FunctionColour.Yellow;
-
         }
-
 
         else if (h * HSV_H >= HSV_Green_H_Min && h * HSV_H <= HSV_Green_H_Max && s * HSV_S >= HSV_Green_S_Min && s * HSV_S <= HSV_Green_S_Max && v * HSV_V >= HSV_Green_V_Min && v * HSV_V <= HSV_Green_V_Max)
         {
             return FunctionColour.Green;
-
         }
-
 
         else if (h * HSV_H >= HSV_Blue_H_Min && h * HSV_H <= HSV_Blue_H_Max && s * HSV_S >= HSV_Blue_S_Min && s * HSV_S <= HSV_Blue_S_Max && v * HSV_V >= HSV_Blue_V_Min && v * HSV_V <= HSV_Blue_V_Max)
         {
             return FunctionColour.Blue;
         }
 
+        else if (h * HSV_H >= HSV_Purple_H_Min && h * HSV_H <= HSV_Purple_H_Max && s * HSV_S >= HSV_Purple_S_Min && s * HSV_S <= HSV_Purple_S_Max && v * HSV_V >= HSV_Purple_V_Min && v * HSV_V <= HSV_Purple_V_Max)
+        {
+            return FunctionColour.Purple;
+        }
+
+        else if (h * HSV_H >= HSV_Cyan_H_Min && h * HSV_H <= HSV_Cyan_H_Max && s * HSV_S >= HSV_Cyan_S_Min && s * HSV_S <= HSV_Cyan_S_Max && v * HSV_V >= HSV_Cyan_V_Min && v * HSV_V <= HSV_Cyan_V_Max)
+        {
+            return FunctionColour.Cyan;
+        }
+
+        else if (h * HSV_H >= HSV_Black_H_Min && h * HSV_H <= HSV_Black_H_Max && s * HSV_S >= HSV_Black_S_Min && s * HSV_S <= HSV_Black_S_Max && v * HSV_V >= HSV_Black_V_Min && v * HSV_V <= HSV_Black_V_Max)
+        {
+            return FunctionColour.Black;
+        }
         return FunctionColour.White;
     }
 

@@ -17,6 +17,7 @@ TagManager:
   - WhiteVoxel
   - RedVoxel
   - YellowVoxel
+  - BasicCube
   layers:
   - Default
   - TransparentFX
