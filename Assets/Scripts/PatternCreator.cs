@@ -47,7 +47,7 @@ public class PatternCreator : MonoBehaviour
 
         //Loop over all your prefabs and run AddPattern()
         int count = 0;
-        GameObject goComponent = GameObject.Instantiate(goPrefabs[2]);
+        GameObject goComponent = GameObject.Instantiate(goPrefabs[3]);
         AddPattern(goComponent, count++);
         GameObject.Destroy(goComponent);
 
