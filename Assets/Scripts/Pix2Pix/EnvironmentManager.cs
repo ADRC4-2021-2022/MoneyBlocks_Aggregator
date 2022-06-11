@@ -39,7 +39,7 @@ public class EnvironmentManager : MonoBehaviour
     public void LoadImage()
     {
         _sourceImage = Resources.Load<Texture2D>("Data/new01");
-        _voxelGrid = new VoxelGrid(_sourceImage, 3, 14, transform.position, 0.3f);
+        _voxelGrid = new VoxelGrid(_sourceImage, 3, 5, transform.position, 0.3f);
     }
 
     //37 Create public method to read image from button

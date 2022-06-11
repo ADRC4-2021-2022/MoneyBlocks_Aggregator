@@ -42,11 +42,10 @@ public class Aggregator : MonoBehaviour
         }
     }
 
-
-    void Start()
+    public void ButtonStart()
     {
         //Random.InitState(66);
-        _patternCreator.CreatePatterns();
+        _patternCreator.xycCreatePatterns();
 
         // Invoke("StopRun", 10f);
         //_grid = new VoxelGrid(20, 20, 20, 0.095f, Vector3.zero);
@@ -63,10 +62,15 @@ public class Aggregator : MonoBehaviour
         //Call the function
         //which function
         AddFirstBlock();
-        for (int i = 0; i < 8000; i++)
+        for (int i = 0; i < 20000; i++)
         {
             GenerationStep();
         }
+    }
+
+    void Start()
+    {
+        
 
     }
     public void Update()
@@ -80,7 +84,7 @@ public class Aggregator : MonoBehaviour
 
         //}
     }
-
+    /*
     public void OnGUI()
     {
         if (GUI.Button(new Rect(10, 10, 200, 50), "next"))
@@ -88,7 +92,7 @@ public class Aggregator : MonoBehaviour
             GenerationStep();
         }
     }
-
+    */
     /// <summary>
     /// Set the status of all voxels dead inside or outside of the mesh
     /// </summary>

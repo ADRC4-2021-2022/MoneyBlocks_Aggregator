@@ -2,11 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 //using System;
 
 
 public class PatternCreator : MonoBehaviour
 {
+    public GameObject[] xycPrefabs;
+    public Toggle active00;
+    public Toggle active01;
+    public Toggle active02;
+    public Toggle active03;
+    public Toggle active04;
+
     //Please create your regions
     #region Private fields
     [SerializeField]
@@ -25,6 +33,77 @@ public class PatternCreator : MonoBehaviour
     #endregion
 
 
+    public void IsActive()
+    {
+        if (active00.isOn)
+        {
+            xycPrefabs[0].SetActive(true);
+        }
+
+        if (active00.isOn == false)
+        {
+            xycPrefabs[0].SetActive(false);
+        }
+
+        if (active01.isOn)
+        {
+            xycPrefabs[1].SetActive(true);
+        }
+
+        if (active01.isOn == false)
+        {
+            xycPrefabs[1].SetActive(false);
+        }
+
+        if (active02.isOn)
+        {
+            xycPrefabs[2].SetActive(true);
+        }
+
+        if (active02.isOn == false)
+        {
+            xycPrefabs[2].SetActive(false);
+        }
+
+        if (active03.isOn)
+        {
+            xycPrefabs[3].SetActive(true);
+        }
+
+        if (active03.isOn == false)
+        {
+            xycPrefabs[3].SetActive(false);
+        }
+
+        if (active04.isOn)
+        {
+            xycPrefabs[4].SetActive(true);
+        }
+
+        if (active04.isOn == false)
+        {
+            xycPrefabs[4].SetActive(false);
+        }
+
+    }
+
+    
+
+
+    public void xycCreatePatterns()
+    {
+        int count = 0;
+        for (int i = 0; i < xycPrefabs.Count(); i++)
+        {
+            
+                var goPrefab = xycPrefabs[i];
+                GameObject goComponent = GameObject.Instantiate(goPrefab);
+                AddPattern(goComponent, count++);
+                GameObject.Destroy(goComponent);
+            
+            
+        }
+    }
 
     public void CreatePatterns()
     {
@@ -46,12 +125,7 @@ public class PatternCreator : MonoBehaviour
         //}
 
 
-
-
-
-
         //Loop over all your prefabs and run AddPattern()
-
 
 
         //int count = 0;
@@ -68,9 +142,6 @@ public class PatternCreator : MonoBehaviour
             AddPattern(goComponent, count++);
             GameObject.Destroy(goComponent);
         }
-
-
-
 
 
 
