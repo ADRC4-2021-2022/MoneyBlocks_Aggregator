@@ -36,40 +36,11 @@ public class EnvironmentManager : MonoBehaviour
 
     #region Public methods
 
-
     public void LoadImage()
     {
-
-        //01 Create a basic Pix2PixVoxelGrid
-        //_voxelGrid = new Pix2PixVoxelGrid(new Vector3Int(50, 5, 25), transform.position, 1f);
-
-        //09 Read Image from resources
-        _sourceImage = Resources.Load<Texture2D>("Data/1234");
-      //  _sourceImageCopy = duplicateTexture(_sourceImage);
-
-
-
-
-
-
-        //SourceField
-        //10 Create grid from image
-        _voxelGrid = new VoxelGrid(_sourceImage, 3, 5, transform.position, 0.1f);
-
-        //30 Read image and set states of GraphVoxels
-        //_voxelGrid.SetStatesFromImage(_sourceImage);
-
-
+        _sourceImage = Resources.Load<Texture2D>("Data/new01");
+        _voxelGrid = new VoxelGrid(_sourceImage, 3, 14, transform.position, 0.3f);
     }
-
-
-
-
-
-
-
-
-
 
     //37 Create public method to read image from button
     /// <summary>
@@ -81,61 +52,22 @@ public class EnvironmentManager : MonoBehaviour
         _targets = new List<Voxel>();
     }
 
-   public void ChangeNeibourColour()
-   {
-        
-       
-
-
-   }
-
-
-
     //38 Create public method to change the visibility of the void voxels
     /// <summary>
     /// Change the visibility of the void GraphVoxels
     /// </summary>
     public void VoidsVisibility()
-    {
-        /*
-        //39 Iterate through every voxel
-        foreach (Pix2PixVoxel voxel in _voxelGrid.Voxels)
-        {
-            //40 FIRST Check if voxel is active and not not an obstacle
-            //59 SECOND Also check if voxel isn't target before toggling visibility
-            //83 THIRD Also check if voxel isn't part of path
-            if (voxel.IsActive && !voxel.IsObstacle && !voxel.IsTarget && !voxel.IsPath)
-            {
-                //42 Implement the Toggle Visibility method
-                voxel.ToggleVisibility();
-            }
-        }
-       */
-        
+    {     
         GameObject[] voidVoxels = GameObject.FindGameObjectsWithTag("VoidVoxel");
         foreach (GameObject item in voidVoxels)
         {
             item.SetActive(false);
-        }
-        
+        }   
     }
-
-   
-
-    //83 Create public method to start coroutine
-    /// <summary>
-    /// Start the animation of the Shortest path algorithm
-    /// </summary>
-    
 
     #endregion
 
     #region Private methods
-
-    
-    
-
-    
 
     /// <summary>
     /// Get the voxels that are part of a Path
@@ -151,7 +83,6 @@ public class EnvironmentManager : MonoBehaviour
             }
         }
     }
-
 
     private Texture2D duplicateTexture(Texture2D source)
     {
@@ -172,9 +103,6 @@ public class EnvironmentManager : MonoBehaviour
         RenderTexture.ReleaseTemporary(renderTex);
         return readableText;
     }
-
-
-
 
     #endregion
 }

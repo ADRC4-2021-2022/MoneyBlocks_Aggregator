@@ -16,14 +16,6 @@ public enum VoxelState { Dead = 0, Alive = 1, Available = 2 }
 /// </summary>
 public class Voxel 
 {
-
-
-
-
-
-
-
-
     #region Protected fields
 
     protected GameObject _voxelGO;
@@ -187,107 +179,7 @@ public class Voxel
         if (state) SetStateEnable(0.1f);
         //_voxelGO.tag = "RedVoxel";
     }
-
-    public void SetStateRed(float newState)
-    {
-       
-        _state = newState;
-        
-        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/RED");
-
-        _voxelGO.tag = "RedVoxel";
-
-    }
-
-    public void SetStateWhite(float newState)
-    {
-
-        _state = newState;
-
-        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/WHITE");
-
-        _voxelGO.tag = "WhiteVoxel";
-
-    }
-
-
-    public void SetStateYellow(float newState)
-    {
-
-        _state = newState;
-
-        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/YELLOW");
-
-        _voxelGO.tag = "YellowVoxel";
-
-    }
-
-    public void SetStateBlue(float newState)
-    {
-
-        _state = newState;
-
-        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/BLUE");
-
-        _voxelGO.tag = "BlueVoxel";
-
-    }
-
-    public void SetStateGreen(float newState)
-    {
-
-        _state = newState;
-
-        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/GREEN");
-
-        _voxelGO.tag = "GreenVoxel";
-
-    }
-
-    public void SetStatePurple(float newState)
-    {
-
-        _state = newState;
-
-        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/PURPLE");
-
-        _voxelGO.tag = "PurpleVoxel";
-
-    }
-
-    public void SetStateCyan(float newState)
-    {
-
-        _state = newState;
-
-        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/CYAN");
-
-        _voxelGO.tag = "CyanVoxel";
-
-    }
-
-    public void SetStateBlack(float newState)
-    {
-
-        _state = newState;
-
-        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/Black");
-
-        _voxelGO.tag = "BlackVoxel";
-
-    }
-
-    public void SetStateVoid(float newState)
-    {
-
-        _state = newState;
-
-        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/Void");
-
-        _voxelGO.tag = "VoidVoxel";
-
-    }
-
+    
     public void SetStateEnable(float newState)
     {
 
@@ -298,7 +190,7 @@ public class Voxel
         _voxelGO.tag = "VoidVoxel";
 
     }
-
+    
 
     //41 Create public method to toggle the visibility of this voxel
     /// <summary>
@@ -432,6 +324,111 @@ public class Voxel
         return Index.GetHashCode();
     }
 
+    #endregion
+
+
+    #region Trash
+    
+    public void SetStateRed(float newState)
+    {
+       
+        _state = newState;
+        
+        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/RED");
+
+        _voxelGO.tag = "RedVoxel";
+
+    }
+
+    public void SetStateWhite(float newState)
+    {
+
+        _state = newState;
+
+        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/WHITE");
+
+        _voxelGO.tag = "WhiteVoxel";
+
+    }
+
+
+    public void SetStateYellow(float newState)
+    {
+
+        _state = newState;
+
+        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/YELLOW");
+
+        _voxelGO.tag = "YellowVoxel";
+
+    }
+
+    public void SetStateBlue(float newState)
+    {
+
+        _state = newState;
+
+        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/BLUE");
+
+        _voxelGO.tag = "BlueVoxel";
+
+    }
+
+    public void SetStateGreen(float newState)
+    {
+
+        _state = newState;
+
+        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/GREEN");
+
+        _voxelGO.tag = "GreenVoxel";
+
+    }
+
+    public void SetStatePurple(float newState)
+    {
+
+        _state = newState;
+
+        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/PURPLE");
+
+        _voxelGO.tag = "PurpleVoxel";
+
+    }
+
+    public void SetStateCyan(float newState)
+    {
+
+        _state = newState;
+
+        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/CYAN");
+
+        _voxelGO.tag = "CyanVoxel";
+
+    }
+
+    public void SetStateBlack(float newState)
+    {
+
+        _state = newState;
+
+        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/Black");
+
+        _voxelGO.tag = "BlackVoxel";
+
+    }
+
+    public void SetStateVoid(float newState)
+    {
+
+        _state = newState;
+
+        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/Void");
+
+        _voxelGO.tag = "VoidVoxel";
+
+    }
+    
     #endregion
 
 }

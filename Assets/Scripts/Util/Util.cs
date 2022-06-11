@@ -56,7 +56,7 @@ public static class Util
         [FunctionColour.Red] = Resources.Load<Material>("Pix2PixMaterials/RED"),
         [FunctionColour.Cyan] = Resources.Load<Material>("Pix2PixMaterials/CYAN"),
         [FunctionColour.White] = Resources.Load<Material>("Pix2PixMaterials/WHITE"),
-        [FunctionColour.Black] = Resources.Load<Material>("Pix2PixMaterials/Black"),
+        [FunctionColour.Black] = Resources.Load<Material>("Pix2PixMaterials/BLACK"),
         [FunctionColour.Void] = Resources.Load<Material>("Pix2PixMaterials/Void"),
         [FunctionColour.Yellow] = Resources.Load<Material>("Pix2PixMaterials/YELLOW"),
         [FunctionColour.Blue] = Resources.Load<Material>("Pix2PixMaterials/BLUE"),
@@ -65,15 +65,15 @@ public static class Util
 
     public static Dictionary<FunctionColour, int> IndexPerFunction = new()
     {
-        [FunctionColour.Green] = 5,
-        [FunctionColour.Red] = 1,
-        [FunctionColour.Cyan] = 1,
+        [FunctionColour.Green] = 4,
+        [FunctionColour.Red] = 2,
+        [FunctionColour.Cyan] = 4,
         [FunctionColour.White] = 1,
-        [FunctionColour.Black] = 1,
+        [FunctionColour.Black] = 14,
         [FunctionColour.Void] = 1,
-        [FunctionColour.Yellow] = 5,
-        [FunctionColour.Blue] = 2,
-        [FunctionColour.Purple] = 1
+        [FunctionColour.Yellow] = 14,
+        [FunctionColour.Blue] = 4,
+        [FunctionColour.Purple] = 4
     };
 
 

@@ -8,64 +8,62 @@ using System.Linq;
 public enum FunctionColour { Yellow = 1, Green = 2, Blue = 3, Red = 4, White = 5, Purple = 6, Cyan = 7, Black = 8, Void = 9  }
 public class VoxelGrid
 {
-
-
     #region  HSVIndex
-    private const int HSV_H = 360;
+    private const int HSV_H = 180;
     private const int HSV_S = 255;
     private const int HSV_V = 255;
 
     //HSV YELLOW
-    private const float HSV_Yellow_H_Max = 68f;
+    private const float HSV_Yellow_H_Max = 34f;
     private const float HSV_Yellow_H_Min = 26f;
     private const float HSV_Yellow_S_Max = 255f;
     private const float HSV_Yellow_S_Min = 43f;
     private const float HSV_Yellow_V_Max = 255f;
     private const float HSV_Yellow_V_Min = 43f;
     //HSV GREEN
-    private const float HSV_Green_H_Max = 154f;
+    private const float HSV_Green_H_Max = 77f;
     private const float HSV_Green_H_Min = 35f;
     private const float HSV_Green_S_Max = 255f;
     private const float HSV_Green_S_Min = 43f;
     private const float HSV_Green_V_Max = 255f;
     private const float HSV_Green_V_Min = 43f;
     //HSV BLUE
-    private const float HSV_Blue_H_Max = 248f;
+    private const float HSV_Blue_H_Max = 124f;
     private const float HSV_Blue_H_Min = 100f;
     private const float HSV_Blue_S_Max = 255f;
     private const float HSV_Blue_S_Min = 43f;
     private const float HSV_Blue_V_Max = 255f;
     private const float HSV_Blue_V_Min = 43f;
     //HSV RED
-    private const float HSV_Red_H_Max = 20f;
+    private const float HSV_Red_H_Max = 10f;
     private const float HSV_Red_H_Min = 0f;
     private const float HSV_Red_S_Max = 255f;
     private const float HSV_Red_S_Min = 43f;
     private const float HSV_Red_V_Max = 255f;
     private const float HSV_Red_V_Min = 43f;
     //HSV WHITE
-    private const float HSV_White_H_Max = 360f;
+    private const float HSV_White_H_Max = 180f;
     private const float HSV_White_H_Min = 0f;
     private const float HSV_White_S_Max = 30f;
     private const float HSV_White_S_Min = 0f;
     private const float HSV_White_V_Max = 255f;
     private const float HSV_White_V_Min = 221f;
     //HSV PURPLE
-    private const float HSV_Purple_H_Max = 310f;
+    private const float HSV_Purple_H_Max = 155f;
     private const float HSV_Purple_H_Min = 125f;
     private const float HSV_Purple_S_Max = 255f;
     private const float HSV_Purple_S_Min = 43f;
     private const float HSV_Purple_V_Max = 255f;
     private const float HSV_Purple_V_Min = 46f;
     //HSV CYAN
-    private const float HSV_Cyan_H_Max = 198f;
+    private const float HSV_Cyan_H_Max = 99f;
     private const float HSV_Cyan_H_Min = 78f;
     private const float HSV_Cyan_S_Max = 255f;
     private const float HSV_Cyan_S_Min = 43f;
     private const float HSV_Cyan_V_Max = 255f;
     private const float HSV_Cyan_V_Min = 46f;
-    //HSV Black
-    private const float HSV_Black_H_Max = 360f;
+    //HSV BLACK
+    private const float HSV_Black_H_Max = 180f;
     private const float HSV_Black_H_Min = 0f;
     private const float HSV_Black_S_Max = 255f;
     private const float HSV_Black_S_Min = 0f;
@@ -73,24 +71,8 @@ public class VoxelGrid
     private const float HSV_Black_V_Min = 0f;
     #endregion
 
-
-
-
-
-
-
-
-
-
     #region public fields
-    public ColourIndex colourIndex;
-    //public int yellowIndex = 5;
-    //public int greenIndex = 5;
-    //public int blueIndex = 3;
-    //public int redIndex = 2;
-    //public int whiteIndex = 1;
-
-
+    
     public Vector3Int GridDimensions { get; private set; }
     public float VoxelSize { get; private set; }
     public Vector3 Origin { get; private set; }
@@ -101,11 +83,7 @@ public class VoxelGrid
     
     public Vector3 Corner;
    
-
-
     public int PixelsPerVoxel;
-
-
 
     public Vector3 Centre => Origin + (Vector3)GridDimensions * VoxelSize / 2;
 
@@ -141,7 +119,6 @@ public class VoxelGrid
         }
     }
 
-
     /// <summary>
     /// what percentage of the available grid has been filled up in percentage
     /// </summary>
@@ -163,7 +140,6 @@ public class VoxelGrid
         {
             availableConnections.AddRange(block.Connections.Where(c=>c.Available));
         }
-
         return availableConnections;
     }
 
@@ -200,7 +176,6 @@ public class VoxelGrid
     private bool _showAliveVoxels = false;
     private bool _showAvailableVoxels = false;
     
-
     #region block fields
     private List<Block> _blocks = new List<Block>();
     private List<Block> _currentBlocks => _blocks.Where(b => b.State != BlockState.Placed).ToList();
@@ -574,8 +549,6 @@ public class VoxelGrid
     #endregion
     #endregion
 
-
-
     #region Grid elements constructors
 
     /// <summary>
@@ -614,8 +587,155 @@ public class VoxelGrid
 
     #endregion
 
-
     #region Grid operations
+    public void SetStageFromImageReduced(Texture2D sourceImage)
+    {
+        //FunctionColour[,] combinedColours = new FunctionColour[GridSize.x, GridSize.z];
+
+        //Loop over all the XZ voxels
+        for (int x = 0; x < GridSize.x; x++)
+        {
+            for (int z = 0; z < GridSize.z; z++)
+            {
+                FunctionColour[] pixels = new FunctionColour[PixelsPerVoxel * PixelsPerVoxel];
+
+                for (int i = 0; i < PixelsPerVoxel; i++)
+                {
+                    for (int j = 0; j < PixelsPerVoxel; j++)
+                    {
+                        int xPixIndex = x * PixelsPerVoxel + i;
+                        int zPixIndex = z * PixelsPerVoxel + j;
+                        pixels[i * PixelsPerVoxel + j] = GetPixelStateFromImage(sourceImage.GetPixel(xPixIndex, zPixIndex));
+                    }
+                }
+                //Debug.Log(pixels.Count(p => p == FunctionColour.Green));
+                //Check if the voxel should be green
+
+                var countPerFunction = new Dictionary<FunctionColour, int>();
+                foreach (var pixel in pixels)
+                {
+                    if (countPerFunction.ContainsKey(pixel)) countPerFunction[pixel]++;
+                    else countPerFunction[pixel] = 1;
+                }
+
+                if (pixels.Count(p => p == FunctionColour.Black) > 0)
+                {
+                    for (int y = 0; y < Util.IndexPerFunction[FunctionColour.Black]; y++)
+                    {
+                        Voxel voxel = Voxels[x, y, z];
+                        voxel.SetState(FunctionColour.Black, false);
+                    }
+
+                    for (int y = Util.IndexPerFunction[FunctionColour.Black]; y < GridSize.y; y++)
+                    {
+                        Voxel voxel = Voxels[x, y, z];
+                        voxel.SetState(FunctionColour.Black, true);
+                    }
+                }
+                else
+                {
+                    var maxCount = countPerFunction.Values.Max();
+                    var maxColour = countPerFunction.First(p => p.Value == maxCount).Key;
+
+                    for (int y = 0; y < Util.IndexPerFunction[maxColour]; y++)
+                    {
+                        Voxel voxel = Voxels[x, y, z];
+                        voxel.SetState(maxColour, false);
+                    }
+
+                    for (int y = Util.IndexPerFunction[maxColour]; y < GridSize.y; y++)
+                    {
+                        Voxel voxel = Voxels[x, y, z];
+                        voxel.SetState(maxColour, true);
+                    }
+                }
+
+            }
+        }
+    }
+
+    private FunctionColour GetPixelStateFromImage(Color pixel)
+    {
+
+        float avgColor = (pixel.r + pixel.g + pixel.b) / 3f;
+
+        float h = 0;
+        float s = 0;
+        float v = 0;
+
+        Color.RGBToHSV(pixel, out h, out s, out v);
+
+        if (h * HSV_H >= HSV_Red_H_Min && h * HSV_H <= HSV_Red_H_Max && s * HSV_S >= HSV_Red_S_Min && s * HSV_S <= HSV_Red_S_Max && v * HSV_V >= HSV_Red_V_Min && v * HSV_V <= HSV_Red_V_Max)
+        {
+            return FunctionColour.Red;
+        }
+
+        else if (h * HSV_H >= HSV_Yellow_H_Min && h * HSV_H <= HSV_Yellow_H_Max && s * HSV_S >= HSV_Yellow_S_Min && s * HSV_S <= HSV_Yellow_S_Max && v * HSV_V >= HSV_Yellow_V_Min && v * HSV_V <= HSV_Yellow_V_Max)
+        {
+            return FunctionColour.Yellow;
+        }
+
+        else if (h * HSV_H >= HSV_Green_H_Min && h * HSV_H <= HSV_Green_H_Max && s * HSV_S >= HSV_Green_S_Min && s * HSV_S <= HSV_Green_S_Max && v * HSV_V >= HSV_Green_V_Min && v * HSV_V <= HSV_Green_V_Max)
+        {
+            return FunctionColour.Green;
+        }
+
+        else if (h * HSV_H >= HSV_Blue_H_Min && h * HSV_H <= HSV_Blue_H_Max && s * HSV_S >= HSV_Blue_S_Min && s * HSV_S <= HSV_Blue_S_Max && v * HSV_V >= HSV_Blue_V_Min && v * HSV_V <= HSV_Blue_V_Max)
+        {
+            return FunctionColour.Blue;
+        }
+
+        else if (h * HSV_H >= HSV_Purple_H_Min && h * HSV_H <= HSV_Purple_H_Max && s * HSV_S >= HSV_Purple_S_Min && s * HSV_S <= HSV_Purple_S_Max && v * HSV_V >= HSV_Purple_V_Min && v * HSV_V <= HSV_Purple_V_Max)
+        {
+            return FunctionColour.Purple;
+        }
+
+        else if (h * HSV_H >= HSV_Cyan_H_Min && h * HSV_H <= HSV_Cyan_H_Max && s * HSV_S >= HSV_Cyan_S_Min && s * HSV_S <= HSV_Cyan_S_Max && v * HSV_V >= HSV_Cyan_V_Min && v * HSV_V <= HSV_Cyan_V_Max)
+        {
+            return FunctionColour.Cyan;
+        }
+
+        else if (h * HSV_H >= HSV_Black_H_Min && h * HSV_H <= HSV_Black_H_Max && s * HSV_S >= HSV_Black_S_Min && s * HSV_S <= HSV_Black_S_Max && v * HSV_V >= HSV_Black_V_Min && v * HSV_V <= HSV_Black_V_Max)
+        {
+            return FunctionColour.Black;
+        }
+
+        else if (h * HSV_H >= HSV_White_H_Min && h * HSV_H <= HSV_White_H_Max && s * HSV_S >= HSV_White_S_Min && s * HSV_S <= HSV_White_S_Max && v * HSV_V >= HSV_White_V_Min && v * HSV_V <= HSV_White_V_Max)
+        {
+            return FunctionColour.White;
+        }
+
+        else
+        {
+            return FunctionColour.Void;
+        }
+    }
+
+    /// <summary>
+    /// Get the Faces of the <see cref="VoxelGrid"/>
+    /// </summary>
+    /// <returns>All the faces</returns>
+    public IEnumerable<Face> GetFaces()
+    {
+        for (int n = 0; n < 3; n++)
+        {
+            int xSize = Faces[n].GetLength(0);
+            int ySize = Faces[n].GetLength(1);
+            int zSize = Faces[n].GetLength(2);
+
+            for (int x = 0; x < xSize; x++)
+                for (int y = 0; y < ySize; y++)
+                    for (int z = 0; z < zSize; z++)
+                    {
+                        yield return Faces[n][x, y, z];
+                    }
+        }
+    }
+
+    #endregion
+
+    #region Trash
+    
     public void SetStatesFromImage(Texture2D source)
     {
 
@@ -715,150 +835,6 @@ public class VoxelGrid
         }
 
     }
-
-
-    public void SetStageFromImageReduced(Texture2D sourceImage)
-    {
-        //FunctionColour[,] combinedColours = new FunctionColour[GridSize.x, GridSize.z];
-
-        //Loop over all the XZ voxels
-        for (int x = 0; x < GridSize.x; x++)
-        {
-            for (int z = 0; z < GridSize.z; z++)
-            {
-                FunctionColour[] pixels = new FunctionColour[PixelsPerVoxel * PixelsPerVoxel];
-
-                for (int i = 0; i < PixelsPerVoxel; i++)
-                {
-                    for (int j = 0; j < PixelsPerVoxel; j++)
-                    {
-                        int xPixIndex = x * PixelsPerVoxel + i;
-                        int zPixIndex = z * PixelsPerVoxel + j;
-                        pixels[i * PixelsPerVoxel + j] = GetPixelStateFromImage(sourceImage.GetPixel(xPixIndex, zPixIndex));
-                    }
-                }
-                //Debug.Log(pixels.Count(p => p == FunctionColour.Green));
-                //Check if the voxel should be green
-
-                var countPerFunction = new Dictionary<FunctionColour, int>();
-                foreach (var pixel in pixels)
-                {
-                    if (countPerFunction.ContainsKey(pixel)) countPerFunction[pixel]++;
-                    else countPerFunction[pixel] = 1;
-                }
-
-                if (pixels.Count(p => p == FunctionColour.Green) > 0)
-                {
-                    Debug.Log("Green");
-                    for (int y = 0; y < Util.IndexPerFunction[FunctionColour.Green]; y++)
-                    {
-                        Voxel voxel = Voxels[x, y, z];
-                        voxel.SetState(FunctionColour.Green, false);
-                    }
-
-                    for (int y = Util.IndexPerFunction[FunctionColour.Green]; y < GridSize.y; y++)
-                    {
-                        Voxel voxel = Voxels[x, y, z];
-                        voxel.SetState(FunctionColour.Green, true);
-                    }
-                }
-                else
-                {
-                    var maxCount = countPerFunction.Values.Max();
-                    var maxColour = countPerFunction.First(p => p.Value == maxCount).Key;
-
-                    for (int y = 0; y < Util.IndexPerFunction[maxColour]; y++)
-                    {
-                        Voxel voxel = Voxels[x, y, z];
-                        voxel.SetState(maxColour, false);
-
-                    }
-
-                    for (int y = Util.IndexPerFunction[maxColour]; y < GridSize.y; y++)
-                    {
-                        Voxel voxel = Voxels[x, y, z];
-                        voxel.SetState(maxColour, true);
-
-                    }
-                }
-
-            }
-        }
-    }
-
-    private FunctionColour GetPixelStateFromImage(Color pixel)
-    {
-
-        float avgColor = (pixel.r + pixel.g + pixel.b) / 3f;
-
-        float h = 0;
-        float s = 0;
-        float v = 0;
-
-        Color.RGBToHSV(pixel, out h, out s, out v);
-
-        if (h * HSV_H >= HSV_Red_H_Min && h * HSV_H <= HSV_Red_H_Max && s * HSV_S >= HSV_Red_S_Min && s * HSV_S <= HSV_Red_S_Max && v * HSV_V >= HSV_Red_V_Min && v * HSV_V <= HSV_Red_V_Max)
-        {
-            return FunctionColour.Red;
-        }
-
-        else if (h * HSV_H >= HSV_Yellow_H_Min && h * HSV_H <= HSV_Yellow_H_Max && s * HSV_S >= HSV_Yellow_S_Min && s * HSV_S <= HSV_Yellow_S_Max && v * HSV_V >= HSV_Yellow_V_Min && v * HSV_V <= HSV_Yellow_V_Max)
-        {
-            return FunctionColour.Yellow;
-        }
-
-        else if (h * HSV_H >= HSV_Green_H_Min && h * HSV_H <= HSV_Green_H_Max && s * HSV_S >= HSV_Green_S_Min && s * HSV_S <= HSV_Green_S_Max && v * HSV_V >= HSV_Green_V_Min && v * HSV_V <= HSV_Green_V_Max)
-        {
-            return FunctionColour.Green;
-        }
-
-        else if (h * HSV_H >= HSV_Blue_H_Min && h * HSV_H <= HSV_Blue_H_Max && s * HSV_S >= HSV_Blue_S_Min && s * HSV_S <= HSV_Blue_S_Max && v * HSV_V >= HSV_Blue_V_Min && v * HSV_V <= HSV_Blue_V_Max)
-        {
-            return FunctionColour.Blue;
-        }
-
-        else if (h * HSV_H >= HSV_Purple_H_Min && h * HSV_H <= HSV_Purple_H_Max && s * HSV_S >= HSV_Purple_S_Min && s * HSV_S <= HSV_Purple_S_Max && v * HSV_V >= HSV_Purple_V_Min && v * HSV_V <= HSV_Purple_V_Max)
-        {
-            return FunctionColour.Purple;
-        }
-
-        else if (h * HSV_H >= HSV_Cyan_H_Min && h * HSV_H <= HSV_Cyan_H_Max && s * HSV_S >= HSV_Cyan_S_Min && s * HSV_S <= HSV_Cyan_S_Max && v * HSV_V >= HSV_Cyan_V_Min && v * HSV_V <= HSV_Cyan_V_Max)
-        {
-            return FunctionColour.Cyan;
-        }
-
-        else if (h * HSV_H >= HSV_Black_H_Min && h * HSV_H <= HSV_Black_H_Max && s * HSV_S >= HSV_Black_S_Min && s * HSV_S <= HSV_Black_S_Max && v * HSV_V >= HSV_Black_V_Min && v * HSV_V <= HSV_Black_V_Max)
-        {
-            return FunctionColour.Black;
-        }
-        return FunctionColour.White;
-    }
-
-    /// <summary>
-    /// Get the Faces of the <see cref="VoxelGrid"/>
-    /// </summary>
-    /// <returns>All the faces</returns>
-    public IEnumerable<Face> GetFaces()
-    {
-        for (int n = 0; n < 3; n++)
-        {
-            int xSize = Faces[n].GetLength(0);
-            int ySize = Faces[n].GetLength(1);
-            int zSize = Faces[n].GetLength(2);
-
-            for (int x = 0; x < xSize; x++)
-                for (int y = 0; y < ySize; y++)
-                    for (int z = 0; z < zSize; z++)
-                    {
-                        yield return Faces[n][x, y, z];
-                    }
-        }
-    }
-
-
-
-
-
-
+    
     #endregion
 }
