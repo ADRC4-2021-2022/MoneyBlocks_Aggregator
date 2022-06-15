@@ -129,7 +129,7 @@ public class PatternCreator : MonoBehaviour
 
 
         //int count = 0;
-        //GameObject goComponent = GameObject.Instantiate(goPrefabs[7]);
+        //GameObject goComponent = GameObject.Instantiate(goPrefabs[6]);
         //AddPattern(goComponent, count++);
         //GameObject.Destroy(goComponent);
 

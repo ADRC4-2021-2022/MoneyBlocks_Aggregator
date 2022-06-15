@@ -45,7 +45,7 @@ public class Aggregator : MonoBehaviour
     public void ButtonStart()
     {
         //Random.InitState(66);
-        _patternCreator.xycCreatePatterns();
+        _patternCreator.CreatePatterns();
 
         // Invoke("StopRun", 10f);
         //_grid = new VoxelGrid(20, 20, 20, 0.095f, Vector3.zero);
@@ -62,7 +62,7 @@ public class Aggregator : MonoBehaviour
         //Call the function
         //which function
         AddFirstBlock();
-        for (int i = 0; i < 20000; i++)
+        for (int i = 0; i < 15000; i++)
         {
             GenerationStep();
         }
