@@ -92,16 +92,23 @@ public class PatternCreator : MonoBehaviour
 
     public void NewCreatePatterns()
     {
+        
         int count = 0;
         for (int i = 0; i < newPrefabs.Count(); i++)
         {
-            
+                      
+            if (newPrefabs[i].activeInHierarchy)
+            {
                 var goPrefab = newPrefabs[i];
                 GameObject goComponent = GameObject.Instantiate(goPrefab);
                 AddPattern(goComponent, count++);
                 GameObject.Destroy(goComponent);
-            
-            
+            }
+            else
+            {
+                count++;
+            }
+
         }
     }
 

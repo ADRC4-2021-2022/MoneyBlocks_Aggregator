@@ -59,6 +59,7 @@ public class Aggregator : MonoBehaviour
 
     public void ButtonGenerate()
     {
+       
         //Random.InitState(66);
         _patternCreator.NewCreatePatterns();
 
