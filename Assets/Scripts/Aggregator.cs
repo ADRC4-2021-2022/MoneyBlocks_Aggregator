@@ -60,12 +60,12 @@ public class Aggregator : MonoBehaviour
     public void ButtonGenerate()
     {
         //Random.InitState(66);
-        _patternCreator.CreatePatterns();
+        _patternCreator.NewCreatePatterns();
 
         // Invoke("StopRun", 10f);
         //_grid = new VoxelGrid(20, 20, 20, 0.095f, Vector3.zero);
 
-        //_grid = BoundingMesh.GetVoxelGrid(_voxelOffset, _voxelSize);
+        _grid = BoundingMesh.GetVoxelGrid(_voxelOffset, _voxelSize);
         KillVoxelsInOutBounds(true);
         //_grid.SetGridState(VoxelState.Available);
 
@@ -78,7 +78,7 @@ public class Aggregator : MonoBehaviour
         //Call the function
         //which function
         AddFirstBlock();
-        for (int i = 0; i < 6000; i++)
+        for (int i = 0; i < 8000; i++)
         {
             GenerationStep();
         }

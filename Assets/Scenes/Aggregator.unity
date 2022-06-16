@@ -1904,7 +1904,7 @@ GameObject:
   - component: {fileID: 819322176}
   - component: {fileID: 819322175}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: BTN ReadImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2127,7 +2127,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e95a840f1f92d449b4dd19a99395581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newPrefabs: []
+  newPrefabs:
+  - {fileID: 3124272494066781309, guid: a005358c2e38601459d8405e118ca688, type: 3}
+  - {fileID: 3023029592986231960, guid: 326409a9ca83a2b4b801f4cee1980ba5, type: 3}
+  - {fileID: 546916920950675558, guid: 750f3707514b6c04eac58214cdf08716, type: 3}
+  - {fileID: 7719401901616091763, guid: 6f7a4a27dd49c4b41b80ae20ab3513a0, type: 3}
+  - {fileID: 3559850157297448037, guid: d16933cb20222bd4d9e96b8f801c3575, type: 3}
   active00: {fileID: 2099654891}
   active01: {fileID: 2055734355}
   active02: {fileID: 1004574600}
@@ -3888,7 +3893,7 @@ GameObject:
   - component: {fileID: 1476958267}
   - component: {fileID: 1476958266}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BTN Generate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3961,7 +3966,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1384461560}
         m_TargetAssemblyTypeName: Aggregator, Assembly-CSharp
-        m_MethodName: ButtonStart
+        m_MethodName: ButtonGenerate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

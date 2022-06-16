@@ -90,7 +90,7 @@ public class PatternCreator : MonoBehaviour
     
 
 
-    public void newCreatePatterns()
+    public void NewCreatePatterns()
     {
         int count = 0;
         for (int i = 0; i < newPrefabs.Count(); i++)
