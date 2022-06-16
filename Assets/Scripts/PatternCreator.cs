@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class PatternCreator : MonoBehaviour
 {
-    public GameObject[] xycPrefabs;
+    public GameObject[] newPrefabs;
     public Toggle active00;
     public Toggle active01;
     public Toggle active02;
@@ -37,52 +37,52 @@ public class PatternCreator : MonoBehaviour
     {
         if (active00.isOn)
         {
-            xycPrefabs[0].SetActive(true);
+            newPrefabs[0].SetActive(true);
         }
 
         if (active00.isOn == false)
         {
-            xycPrefabs[0].SetActive(false);
+            newPrefabs[0].SetActive(false);
         }
 
         if (active01.isOn)
         {
-            xycPrefabs[1].SetActive(true);
+            newPrefabs[1].SetActive(true);
         }
 
         if (active01.isOn == false)
         {
-            xycPrefabs[1].SetActive(false);
+            newPrefabs[1].SetActive(false);
         }
 
         if (active02.isOn)
         {
-            xycPrefabs[2].SetActive(true);
+            newPrefabs[2].SetActive(true);
         }
 
         if (active02.isOn == false)
         {
-            xycPrefabs[2].SetActive(false);
+            newPrefabs[2].SetActive(false);
         }
 
         if (active03.isOn)
         {
-            xycPrefabs[3].SetActive(true);
+            newPrefabs[3].SetActive(true);
         }
 
         if (active03.isOn == false)
         {
-            xycPrefabs[3].SetActive(false);
+            newPrefabs[3].SetActive(false);
         }
 
         if (active04.isOn)
         {
-            xycPrefabs[4].SetActive(true);
+            newPrefabs[4].SetActive(true);
         }
 
         if (active04.isOn == false)
         {
-            xycPrefabs[4].SetActive(false);
+            newPrefabs[4].SetActive(false);
         }
 
     }
@@ -90,13 +90,13 @@ public class PatternCreator : MonoBehaviour
     
 
 
-    public void xycCreatePatterns()
+    public void newCreatePatterns()
     {
         int count = 0;
-        for (int i = 0; i < xycPrefabs.Count(); i++)
+        for (int i = 0; i < newPrefabs.Count(); i++)
         {
             
-                var goPrefab = xycPrefabs[i];
+                var goPrefab = newPrefabs[i];
                 GameObject goComponent = GameObject.Instantiate(goPrefab);
                 AddPattern(goComponent, count++);
                 GameObject.Destroy(goComponent);

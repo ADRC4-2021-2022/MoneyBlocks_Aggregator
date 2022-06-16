@@ -23,8 +23,8 @@ public class Aggregator : MonoBehaviour
     }
 
     private List<Voxel> _nonDeadVoxels;
-
-
+    List<Voxel> _targets = new List<Voxel>();
+    Texture2D _sourceImage;
     private float _voxelSize = 0.3f;
     private int _voxelOffset = 1;
 
@@ -42,14 +42,30 @@ public class Aggregator : MonoBehaviour
         }
     }
 
-    public void ButtonStart()
+    
+
+    //37 Create public method to read image from button
+    /// <summary>
+    /// Read the image and set the states of the Voxels
+    /// </summary>
+    public void ReadImage()
+    {
+        _sourceImage = Resources.Load<Texture2D>("Data/new01");
+        _grid = new VoxelGrid(_sourceImage, 3, 5, transform.position, 0.3f);
+        _grid.SetStageFromImageReduced(_sourceImage);
+        _targets = new List<Voxel>();
+    }
+
+
+    public void ButtonGenerate()
     {
         //Random.InitState(66);
         _patternCreator.CreatePatterns();
 
         // Invoke("StopRun", 10f);
         //_grid = new VoxelGrid(20, 20, 20, 0.095f, Vector3.zero);
-        _grid = BoundingMesh.GetVoxelGrid(_voxelOffset, _voxelSize);
+
+        //_grid = BoundingMesh.GetVoxelGrid(_voxelOffset, _voxelSize);
         KillVoxelsInOutBounds(true);
         //_grid.SetGridState(VoxelState.Available);
 
@@ -62,7 +78,7 @@ public class Aggregator : MonoBehaviour
         //Call the function
         //which function
         AddFirstBlock();
-        for (int i = 0; i < 15000; i++)
+        for (int i = 0; i < 6000; i++)
         {
             GenerationStep();
         }
