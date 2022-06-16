@@ -8,12 +8,17 @@ using UnityEngine.UI;
 
 public class PatternCreator : MonoBehaviour
 {
-    public GameObject[] newPrefabs;
-    public Toggle active00;
-    public Toggle active01;
-    public Toggle active02;
-    public Toggle active03;
-    public Toggle active04;
+    //public GameObject[] newPrefabs;
+    //public Toggle active00;
+    //public Toggle active01;
+    //public Toggle active02;
+    //public Toggle active03;
+    //public Toggle active04;
+
+    private GameObject[] _prefabs;
+    private bool[] _selected;
+
+
 
     //Please create your regions
     #region Private fields
@@ -33,125 +38,99 @@ public class PatternCreator : MonoBehaviour
     #endregion
 
 
-    public void IsActive()
+    //public void IsActive()
+    //{
+    //    if (active00.isOn)
+    //    {
+    //        newPrefabs[0].SetActive(true);
+    //    }
+
+    //    if (active00.isOn == false)
+    //    {
+    //        newPrefabs[0].SetActive(false);
+    //    }
+
+    //    if (active01.isOn)
+    //    {
+    //        newPrefabs[1].SetActive(true);
+    //    }
+
+    //    if (active01.isOn == false)
+    //    {
+    //        newPrefabs[1].SetActive(false);
+    //    }
+
+    //    if (active02.isOn)
+    //    {
+    //        newPrefabs[2].SetActive(true);
+    //    }
+
+    //    if (active02.isOn == false)
+    //    {
+    //        newPrefabs[2].SetActive(false);
+    //    }
+
+    //    if (active03.isOn)
+    //    {
+    //        newPrefabs[3].SetActive(true);
+    //    }
+
+    //    if (active03.isOn == false)
+    //    {
+    //        newPrefabs[3].SetActive(false);
+    //    }
+
+    //    if (active04.isOn)
+    //    {
+    //        newPrefabs[4].SetActive(true);
+    //    }
+
+    //    if (active04.isOn == false)
+    //    {
+    //        newPrefabs[4].SetActive(false);
+    //    }
+
+    //}
+
+    public void Start()
     {
-        if (active00.isOn)
+        LoadPrefabs();
+    }
+    private void LoadPrefabs()
+    {
+        _prefabs = Resources.LoadAll<GameObject>("Prefabs/Parts");
+        _selected = new bool[_prefabs.Length];
+        
+        for (int i = 0; i < _prefabs.Length; i++)
         {
-            newPrefabs[0].SetActive(true);
+            _selected[i] = true;
         }
-
-        if (active00.isOn == false)
-        {
-            newPrefabs[0].SetActive(false);
-        }
-
-        if (active01.isOn)
-        {
-            newPrefabs[1].SetActive(true);
-        }
-
-        if (active01.isOn == false)
-        {
-            newPrefabs[1].SetActive(false);
-        }
-
-        if (active02.isOn)
-        {
-            newPrefabs[2].SetActive(true);
-        }
-
-        if (active02.isOn == false)
-        {
-            newPrefabs[2].SetActive(false);
-        }
-
-        if (active03.isOn)
-        {
-            newPrefabs[3].SetActive(true);
-        }
-
-        if (active03.isOn == false)
-        {
-            newPrefabs[3].SetActive(false);
-        }
-
-        if (active04.isOn)
-        {
-            newPrefabs[4].SetActive(true);
-        }
-
-        if (active04.isOn == false)
-        {
-            newPrefabs[4].SetActive(false);
-        }
-
     }
 
-    
-
-
-    public void NewCreatePatterns()
+    public void OnGUI()
     {
-        
-        int count = 0;
-        for (int i = 0; i < newPrefabs.Count(); i++)
+        int counter = 0;
+        int height = 50;
+        for (int i = 0; i < _selected.Length; i++)
         {
-                      
-            if (newPrefabs[i].activeInHierarchy)
-            {
-                var goPrefab = newPrefabs[i];
-                GameObject goComponent = GameObject.Instantiate(goPrefab);
-                AddPattern(goComponent, count++);
-                GameObject.Destroy(goComponent);
-            }
-            else
-            {
-                count++;
-            }
-
+            _selected[i] = GUI.Toggle(new Rect(10, 10 + height * counter++, 100, 30), _selected[i], $"{_prefabs[i].name}");
         }
+
     }
 
     public void CreatePatterns()
     {
-        //Load all the prefabs out of the resources  .get and make them to gameobject
-        //GameObject[] prefabs = (GameObject[])Resources.LoadAll(@"Prefabs");
-
-        //Load all the component prefabs in the list
-        //_componentPrefabs = prefabs.Where(g => g.tag == "Component").ToList();
-
-        GameObject[] goPrefabs = Resources.LoadAll<GameObject>("Prefabs/Parts");
-
-        //var parent = GameObject.Find("Prefabs").transform;
-        //for (int i = 0; i < parent.childCount; i++)
-        //{
-        //    var goComponent = parent.GetChild(i).gameObject;
-        //    //ameObject goComponent = GameObject.Instantiate(goPrefab);
-        //    AddPattern(goComponent);
-        //    GameObject.Destroy(goComponent);
-        //}
-
-
-        //Loop over all your prefabs and run AddPattern()
-
-
-        //int count = 0;
-        //GameObject goComponent = GameObject.Instantiate(goPrefabs[6]);
-        //AddPattern(goComponent, count++);
-        //GameObject.Destroy(goComponent);
-
-
         int count = 0;
-        for (int i = 0; i < goPrefabs.Count(); i++)
+        for (int i = 0; i < _prefabs.Length; i++)
         {
-            var goPrefab = goPrefabs[i];
-            GameObject goComponent = GameObject.Instantiate(goPrefab);
-            AddPattern(goComponent, count++);
-            GameObject.Destroy(goComponent);
+            if (_selected[i])
+            {
+                var goPrefab = _prefabs[i];
+                GameObject goComponent = GameObject.Instantiate(goPrefab);
+                AddPattern(goComponent, count++);
+                GameObject.Destroy(goComponent);
+            }
         }
-
-
-
 
     }
 

@@ -14,13 +14,13 @@ public enum VoxelState { Dead = 0, Alive = 1, Available = 2 }
 /// <summary>
 /// Data structure for a voxel in a grid
 /// </summary>
-public class Voxel 
+public class Voxel
 {
     #region Protected fields
 
-    protected GameObject _voxelGO;
-    protected VoxelGrid _voxelGrid;
-    protected float _size;
+    //protected GameObject _voxelGO;
+    //protected VoxelGrid _voxelGrid;
+    //protected float _size;
 
     #endregion
 
@@ -29,9 +29,9 @@ public class Voxel
     //index can not be set outside of the scope of this class
     public Vector3Int Index { get; private set; }
 
-    
+
     public List<Face> Faces = new List<Face>(6);
-    public Vector3 Center => (Index + _voxelGrid.Origin) * _size;
+    public Vector3 Center => (Index + _grid.Origin) * _voxelSixe;
     public bool IsActive;
 
     //23 Create IsObstacle field
@@ -125,6 +125,7 @@ public class Voxel
     {
         Index = index;
         _grid = grid;
+        _state = 1;
         CreateGameobject();
 
         Status = VoxelState.Available;
@@ -136,22 +137,29 @@ public class Voxel
     /// <param name="index">The index of the Pix2PixVoxel</param>
     /// <param name="voxelgrid">The <see cref="VoxelGrid"/> this <see cref="Voxel"/> is attached to</param>
     /// <param name="voxelGameObject">The <see cref="GameObject"/> used on the Pix2PixVoxel</param>
-    public Voxel(Vector3Int index, VoxelGrid voxelGrid, float state, float sizeFactor = 1f)
-    {
-        Index = index;
-        _voxelGrid = voxelGrid;
-        _size = _voxelGrid.VoxelSize;
+    //public Voxel(Vector3Int index, VoxelGrid voxelGrid, float state, float sizeFactor = 1f)
+    //{
+    //    Index = index;
+    //    _grid= voxelGrid;
 
-        //04 Add state to the voxel constructor
-        _state = state;
-
-        _voxelGO = GameObject.Instantiate(Resources.Load<GameObject>("Pix2PixPrefabs/Basic Cube"));
-        _voxelGO.transform.position = (_voxelGrid.Origin + Index) * _size;
-        _voxelGO.transform.localScale *= _voxelGrid.VoxelSize * sizeFactor;
-        _voxelGO.name = $"Voxel_{Index.x}_{Index.y}_{Index.z}";
-        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/Basic");
-        _voxelGO.GetComponent<VoxelTrigger>().Voxel2 = this;
-    }
+    //    //04 Add state to the voxel constructor
+    //    _state = state;
+    //    Status = VoxelState.Available;
+    //    CreateGameobject();
+    //    //_voxelGO = GameObject.Instantiate(Resources.Load<GameObject>("Pix2PixPrefabs/Basic Cube"));
+    //    //_voxelGO.transform.position = (_voxelGrid.Origin + Index) * _size;
+    //    //_voxelGO.transform.localScale *= _voxelGrid.VoxelSize * sizeFactor;
+    //    //_voxelGO.name = $"Voxel_{Index.x}_{Index.y}_{Index.z}";
+    //    //_voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/Basic");
+    //    //_voxelGO.GetComponent<VoxelTrigger>().AttachedVoxel = this;
+    //      _goVoxelTrigger = GameObject.CreatePrimitive(PrimitiveType.Cube);
+    //      _goVoxelTrigger.name = $"Voxel {Index}";
+    //      _goVoxelTrigger.tag = "Voxel";
+    //      _goVoxelTrigger.transform.position = Centre;
+    //      _goVoxelTrigger.transform.localScale = Vector3.one* _voxelSixe * _scalefactor;
+    //      VoxelTrigger trigger = _goVoxelTrigger.AddComponent<VoxelTrigger>();
+    //      trigger.AttachedVoxel = this;
+    //}
 
 
 
@@ -174,23 +182,30 @@ public class Voxel
 
     public void SetState(FunctionColour colour, bool state)
     {
-        _voxelGO.GetComponent<MeshRenderer>().material = Util.MaterialPerFunction[colour];
+        _goVoxelTrigger.GetComponent<MeshRenderer>().material = Util.MaterialPerFunction[colour];
+        if (colour == FunctionColour.Yellow || colour == FunctionColour.White || colour == FunctionColour.Red)
+        {
+            Status = VoxelState.Dead;
+            SetStateEnable(0.1f, false);
+        }
+        else
+        {
+            SetStateEnable(0.1f, state);
+        }
 
-        if (state) SetStateEnable(0.1f);
-        //_voxelGO.tag = "RedVoxel";
     }
-    
-    public void SetStateEnable(float newState)
+
+    public void SetStateEnable(float newState, bool visibility)
     {
 
         _state = newState;
-        
-        _voxelGO.SetActive (false);
 
-        _voxelGO.tag = "VoidVoxel";
+        _goVoxelTrigger.SetActive(visibility);
+
+        if(!visibility)_goVoxelTrigger.tag = "VoidVoxel";
 
     }
-    
+
 
     //41 Create public method to toggle the visibility of this voxel
     /// <summary>
@@ -198,33 +213,33 @@ public class Voxel
     /// </summary>
     public void ToggleVisibility()
     {
-        _voxelGO.GetComponent<MeshRenderer>().enabled = !_voxelGO.GetComponent<MeshRenderer>().enabled;
+        _goVoxelTrigger.GetComponent<MeshRenderer>().enabled = !_goVoxelTrigger.GetComponent<MeshRenderer>().enabled;
     }
 
-    
+
 
     public IEnumerable<Voxel> GetFaceNeighbours()
     {
         int x = Index.x;
         int y = Index.y;
         int z = Index.z;
-        var s = _voxelGrid.GridSize;
+        var s = _grid.GridDimensions;
 
-        if (x != 0) yield return _voxelGrid.Voxels[x - 1, y, z];
-        if (x != s.x - 1) yield return _voxelGrid.Voxels[x + 1, y, z];
+        if (x != 0) yield return _grid.Voxels[x - 1, y, z];
+        if (x != s.x - 1) yield return _grid.Voxels[x + 1, y, z];
 
-        if (y != 0) yield return _voxelGrid.Voxels[x, y - 1, z];
-        if (y != s.y - 1) yield return _voxelGrid.Voxels[x, y + 1, z];
+        if (y != 0) yield return _grid.Voxels[x, y - 1, z];
+        if (y != s.y - 1) yield return _grid.Voxels[x, y + 1, z];
 
-        if (z != 0) yield return _voxelGrid.Voxels[x, y, z - 1];
-        if (z != s.z - 1) yield return _voxelGrid.Voxels[x, y, z + 1];
+        if (z != 0) yield return _grid.Voxels[x, y, z - 1];
+        if (z != s.z - 1) yield return _grid.Voxels[x, y, z + 1];
     }
 
     public void ActivateVoxel(bool state)
     {
         IsActive = state;
-        _voxelGO.GetComponent<MeshRenderer>().enabled = state;
-        _voxelGO.GetComponent<BoxCollider>().enabled = state;
+        _goVoxelTrigger.GetComponent<MeshRenderer>().enabled = state;
+        _goVoxelTrigger.GetComponent<BoxCollider>().enabled = state;
     }
 
     public void CreateGameobject()
@@ -234,7 +249,6 @@ public class Voxel
         _goVoxelTrigger.tag = "Voxel";
         _goVoxelTrigger.transform.position = Centre;
         _goVoxelTrigger.transform.localScale = Vector3.one * _voxelSixe * _scalefactor;
-
         VoxelTrigger trigger = _goVoxelTrigger.AddComponent<VoxelTrigger>();
         trigger.AttachedVoxel = this;
     }
@@ -328,15 +342,15 @@ public class Voxel
 
 
     #region Trash
-    
+
     public void SetStateRed(float newState)
     {
-       
-        _state = newState;
-        
-        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/RED");
 
-        _voxelGO.tag = "RedVoxel";
+        _state = newState;
+
+        _goVoxelTrigger.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/RED");
+
+        _goVoxelTrigger.tag = "RedVoxel";
 
     }
 
@@ -345,9 +359,9 @@ public class Voxel
 
         _state = newState;
 
-        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/WHITE");
+        _goVoxelTrigger.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/WHITE");
 
-        _voxelGO.tag = "WhiteVoxel";
+        _goVoxelTrigger.tag = "WhiteVoxel";
 
     }
 
@@ -357,9 +371,9 @@ public class Voxel
 
         _state = newState;
 
-        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/YELLOW");
+        _goVoxelTrigger.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/YELLOW");
 
-        _voxelGO.tag = "YellowVoxel";
+        _goVoxelTrigger.tag = "YellowVoxel";
 
     }
 
@@ -368,9 +382,9 @@ public class Voxel
 
         _state = newState;
 
-        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/BLUE");
+        _goVoxelTrigger.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/BLUE");
 
-        _voxelGO.tag = "BlueVoxel";
+        _goVoxelTrigger.tag = "BlueVoxel";
 
     }
 
@@ -379,9 +393,9 @@ public class Voxel
 
         _state = newState;
 
-        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/GREEN");
+        _goVoxelTrigger.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/GREEN");
 
-        _voxelGO.tag = "GreenVoxel";
+        _goVoxelTrigger.tag = "GreenVoxel";
 
     }
 
@@ -390,9 +404,9 @@ public class Voxel
 
         _state = newState;
 
-        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/PURPLE");
+        _goVoxelTrigger.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/PURPLE");
 
-        _voxelGO.tag = "PurpleVoxel";
+        _goVoxelTrigger.tag = "PurpleVoxel";
 
     }
 
@@ -401,9 +415,9 @@ public class Voxel
 
         _state = newState;
 
-        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/CYAN");
+        _goVoxelTrigger.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/CYAN");
 
-        _voxelGO.tag = "CyanVoxel";
+        _goVoxelTrigger.tag = "CyanVoxel";
 
     }
 
@@ -412,9 +426,9 @@ public class Voxel
 
         _state = newState;
 
-        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/Black");
+        _goVoxelTrigger.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/Black");
 
-        _voxelGO.tag = "BlackVoxel";
+        _goVoxelTrigger.tag = "BlackVoxel";
 
     }
 
@@ -423,12 +437,12 @@ public class Voxel
 
         _state = newState;
 
-        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/Void");
+        _goVoxelTrigger.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/Void");
 
-        _voxelGO.tag = "VoidVoxel";
+        _goVoxelTrigger.tag = "VoidVoxel";
 
     }
-    
+
     #endregion
 
 }

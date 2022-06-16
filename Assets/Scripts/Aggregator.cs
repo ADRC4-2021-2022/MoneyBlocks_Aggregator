@@ -51,7 +51,7 @@ public class Aggregator : MonoBehaviour
     public void ReadImage()
     {
         _sourceImage = Resources.Load<Texture2D>("Data/new01");
-        _grid = new VoxelGrid(_sourceImage, 3, 5, transform.position, 0.3f);
+        _grid = new VoxelGrid(_sourceImage, 3, 5, Vector3.zero, 0.3f);
         _grid.SetStageFromImageReduced(_sourceImage);
         _targets = new List<Voxel>();
     }
@@ -61,13 +61,15 @@ public class Aggregator : MonoBehaviour
     {
        
         //Random.InitState(66);
-        _patternCreator.NewCreatePatterns();
+        _patternCreator.CreatePatterns();
 
         // Invoke("StopRun", 10f);
         //_grid = new VoxelGrid(20, 20, 20, 0.095f, Vector3.zero);
 
-        _grid = BoundingMesh.GetVoxelGrid(_voxelOffset, _voxelSize);
-        KillVoxelsInOutBounds(true);
+        //_grid = BoundingMesh.GetVoxelGrid(_voxelOffset, _voxelSize);
+        //KillVoxelsInOutBounds(true);
+
+
         //_grid.SetGridState(VoxelState.Available);
 
         //Find the GameObject

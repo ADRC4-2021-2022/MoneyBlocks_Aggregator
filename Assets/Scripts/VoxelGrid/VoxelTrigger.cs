@@ -5,8 +5,8 @@ using UnityEngine;
 public class VoxelTrigger : MonoBehaviour
 {
     public Voxel AttachedVoxel;
-    public Pix2PixVoxel Voxel;
-    public Voxel Voxel2;
+    //public Pix2PixVoxel Voxel;
+    //public Voxel Voxel2;
 
    
 

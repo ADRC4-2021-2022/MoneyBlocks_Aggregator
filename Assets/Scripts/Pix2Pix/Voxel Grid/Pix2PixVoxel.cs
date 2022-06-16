@@ -57,12 +57,6 @@ public class Pix2PixVoxel : IEquatable<Pix2PixVoxel>
         //04 Add state to the voxel constructor
         _state = state;
 
-        _voxelGO = GameObject.Instantiate(Resources.Load<GameObject>("Pix2PixPrefabs/Basic Cube"));
-        _voxelGO.transform.position = (_voxelGrid.Origin + Index) * _size;
-        _voxelGO.transform.localScale *= _voxelGrid.VoxelSize * sizeFactor;
-        _voxelGO.name = $"Voxel_{Index.x}_{Index.y}_{Index.z}";
-        _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/Basic");
-        _voxelGO.GetComponent<VoxelTrigger>().Voxel = this;
     }
 
     #endregion
@@ -80,7 +74,7 @@ public class Pix2PixVoxel : IEquatable<Pix2PixVoxel>
         _state = newState;
         /*
         //21 Set voxel as void if value is below threshold
-        if (_state <= 1 / _voxelGrid.GridSize.y)
+        if (_state <= 1 / _voxelGrid.GridDimensions.y)
         {
             //22 Read material and set
             _voxelGO.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/Void");
@@ -228,7 +222,7 @@ public class Pix2PixVoxel : IEquatable<Pix2PixVoxel>
         int x = Index.x;
         int y = Index.y;
         int z = Index.z;
-        var s = _voxelGrid.GridSize;
+        var s = _voxelGrid.GridDimensions;
 
         if (x != 0) yield return _voxelGrid.Voxels[x - 1, y, z];
         if (x != s.x - 1) yield return _voxelGrid.Voxels[x + 1, y, z];

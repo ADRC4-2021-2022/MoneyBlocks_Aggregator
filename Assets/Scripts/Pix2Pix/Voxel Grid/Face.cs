@@ -139,19 +139,19 @@ public class Face
                 return new[]
                 {
                    x == 0 ? null : _grid.Voxels[x - 1, y, z],
-                   x == _grid.GridSize.x ? null : _grid.Voxels[x, y, z]
+                   x == _grid.GridDimensions.x ? null : _grid.Voxels[x, y, z]
                 };
             case Axis.Y:
                 return new[]
                 {
                    y == 0 ? null : _grid.Voxels[x, y - 1, z],
-                   y == _grid.GridSize.y ? null : _grid.Voxels[x, y, z]
+                   y == _grid.GridDimensions.y ? null : _grid.Voxels[x, y, z]
                 };
             case Axis.Z:
                 return new[]
                 {
                    z == 0 ? null : _grid.Voxels[x, y, z - 1],
-                   z == _grid.GridSize.z ? null : _grid.Voxels[x, y, z]
+                   z == _grid.GridDimensions.z ? null : _grid.Voxels[x, y, z]
                 };
             default:
                 throw new Exception("Wrong direction.");

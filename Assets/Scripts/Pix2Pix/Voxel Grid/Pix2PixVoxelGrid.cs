@@ -56,7 +56,7 @@ public class Pix2PixVoxelGrid
 
     #region Public fields
 
-    public Vector3Int GridSize;
+    public Vector3Int GridDimensions;
     public Pix2PixVoxel[,,] Voxels;
     public Face[][,,] Faces = new Face[3][,,];
     public Vector3 Origin;
@@ -77,17 +77,17 @@ public class Pix2PixVoxelGrid
     /// <param name="voxelSize">The size of each <see cref="Voxel"/></param>
     public Pix2PixVoxelGrid(Vector3Int size, Vector3 origin, float voxelSize)
     {
-        GridSize = size;
+        GridDimensions = size;
         Origin = origin;
         VoxelSize = voxelSize;
 
-        Voxels = new Pix2PixVoxel[GridSize.x, GridSize.y, GridSize.z];
+        Voxels = new Pix2PixVoxel[GridDimensions.x, GridDimensions.y, GridDimensions.z];
 
-        for (int x = 0; x < GridSize.x; x++)
+        for (int x = 0; x < GridDimensions.x; x++)
         {
-            for (int y = 0; y < GridSize.y; y++)
+            for (int y = 0; y < GridDimensions.y; y++)
             {
-                for (int z = 0; z < GridSize.z; z++)
+                for (int z = 0; z < GridDimensions.z; z++)
                 {
                     Voxels[x, y, z] = new Pix2PixVoxel(
                         new Vector3Int(x, y, z),
@@ -111,18 +111,18 @@ public class Pix2PixVoxelGrid
     public Pix2PixVoxelGrid(Texture2D source, int height, Vector3 origin, float voxelSize)
     {
         //06 Read grid dimensions in X and Z from image
-        GridSize = new Vector3Int(source.width, height, source.height);
+        GridDimensions = new Vector3Int(source.width, height, source.height);
 
         Origin = origin;
         VoxelSize = voxelSize;
 
-        Voxels = new Pix2PixVoxel[GridSize.x, GridSize.y, GridSize.z];
+        Voxels = new Pix2PixVoxel[GridDimensions.x, GridDimensions.y, GridDimensions.z];
 
-        for (int x = 0; x < GridSize.x; x++)
+        for (int x = 0; x < GridDimensions.x; x++)
         {
-            for (int y = 0; y < GridSize.y; y++)
+            for (int y = 0; y < GridDimensions.y; y++)
             {
-                for (int z = 0; z < GridSize.z; z++)
+                for (int z = 0; z < GridDimensions.z; z++)
                 {
                     Voxels[x, y, z] = new Pix2PixVoxel(new Vector3Int(x, y, z), this, 1f, 0.96f);
                 }
@@ -145,19 +145,19 @@ public class Pix2PixVoxelGrid
     public Pix2PixVoxelGrid(Texture2D source, int pixelPerVoxel, int height, Vector3 origin, float voxelSize)
     {
         //06 Read grid dimensions in X and Z from image
-        GridSize = new Vector3Int(source.width / pixelPerVoxel, height, source.height / pixelPerVoxel);
+        GridDimensions = new Vector3Int(source.width / pixelPerVoxel, height, source.height / pixelPerVoxel);
 
         Origin = origin;
         VoxelSize = voxelSize;
         PixelsPerVoxel = pixelPerVoxel;
 
-        Voxels = new Pix2PixVoxel[GridSize.x, GridSize.y, GridSize.z];
+        Voxels = new Pix2PixVoxel[GridDimensions.x, GridDimensions.y, GridDimensions.z];
 
-        for (int x = 0; x < GridSize.x; x++)
+        for (int x = 0; x < GridDimensions.x; x++)
         {
-            for (int y = 0; y < GridSize.y; y++)
+            for (int y = 0; y < GridDimensions.y; y++)
             {
-                for (int z = 0; z < GridSize.z; z++)
+                for (int z = 0; z < GridDimensions.z; z++)
                 {
                     Voxels[x, y, z] = new Pix2PixVoxel(new Vector3Int(x, y, z), this, 1f, 0.96f);
                 }
@@ -178,29 +178,29 @@ public class Pix2PixVoxelGrid
     private void MakeFaces()
     {
         // make faces
-        Faces[0] = new Face[GridSize.x + 1, GridSize.y, GridSize.z];
+        Faces[0] = new Face[GridDimensions.x + 1, GridDimensions.y, GridDimensions.z];
 
-        for (int x = 0; x < GridSize.x + 1; x++)
-            for (int y = 0; y < GridSize.y; y++)
-                for (int z = 0; z < GridSize.z; z++)
+        for (int x = 0; x < GridDimensions.x + 1; x++)
+            for (int y = 0; y < GridDimensions.y; y++)
+                for (int z = 0; z < GridDimensions.z; z++)
                 {
                     Faces[0][x, y, z] = new Face(x, y, z, Axis.X, this);
                 }
 
-        Faces[1] = new Face[GridSize.x, GridSize.y + 1, GridSize.z];
+        Faces[1] = new Face[GridDimensions.x, GridDimensions.y + 1, GridDimensions.z];
 
-        for (int x = 0; x < GridSize.x; x++)
-            for (int y = 0; y < GridSize.y + 1; y++)
-                for (int z = 0; z < GridSize.z; z++)
+        for (int x = 0; x < GridDimensions.x; x++)
+            for (int y = 0; y < GridDimensions.y + 1; y++)
+                for (int z = 0; z < GridDimensions.z; z++)
                 {
                     Faces[1][x, y, z] = new Face(x, y, z, Axis.Y, this);
                 }
 
-        Faces[2] = new Face[GridSize.x, GridSize.y, GridSize.z + 1];
+        Faces[2] = new Face[GridDimensions.x, GridDimensions.y, GridDimensions.z + 1];
 
-        for (int x = 0; x < GridSize.x; x++)
-            for (int y = 0; y < GridSize.y; y++)
-                for (int z = 0; z < GridSize.z + 1; z++)
+        for (int x = 0; x < GridDimensions.x; x++)
+            for (int y = 0; y < GridDimensions.y; y++)
+                for (int z = 0; z < GridDimensions.z + 1; z++)
                 {
                     Faces[2][x, y, z] = new Face(x, y, z, Axis.Z, this);
                 }
@@ -218,9 +218,9 @@ public class Pix2PixVoxelGrid
     public void SetStatesFromImage(Texture2D source)
     {
         
-        for (int x = 0; x < GridSize.x; x++)
+        for (int x = 0; x < GridDimensions.x; x++)
         {
-            for (int z = 0; z < GridSize.z; z++)
+            for (int z = 0; z < GridDimensions.z; z++)
             {
 
                 Color pixel = source.GetPixel(x, z);
@@ -235,7 +235,7 @@ public class Pix2PixVoxelGrid
                 if (h * HSV_H >= HSV_Red_H_Min && h * HSV_H <= HSV_Red_H_Max && s * HSV_S >= HSV_Red_S_Min && s * HSV_S <= HSV_Red_S_Max && v * HSV_V >= HSV_Red_V_Min && v * HSV_V <= HSV_Red_V_Max)
                 {
                     Debug.Log("red");
-                    for (int y = 0; y < GridSize.y; y++)
+                    for (int y = 0; y < GridDimensions.y; y++)
                     {
                         //16 Get Pix2PixVoxel on Coordinate as Pix2PixVoxel
                         Pix2PixVoxel voxel = Voxels[x, y, z];
@@ -253,7 +253,7 @@ public class Pix2PixVoxelGrid
                 else if (h * HSV_H >= HSV_White_H_Min && h * HSV_H <= HSV_White_H_Max && s * HSV_S >= HSV_White_S_Min && s * HSV_S <= HSV_White_S_Max && v * HSV_V >= HSV_White_V_Min && v * HSV_V <= HSV_White_V_Max)
                 {
                     Debug.Log("white");
-                    for (int y = 0; y < GridSize.y; y++)
+                    for (int y = 0; y < GridDimensions.y; y++)
                     {
 
                         Pix2PixVoxel voxel = Voxels[x, y, z];
@@ -268,7 +268,7 @@ public class Pix2PixVoxelGrid
                 {
                     Debug.Log("yellow");
 
-                    for (int y = 0; y < GridSize.y; y++)
+                    for (int y = 0; y < GridDimensions.y; y++)
                     {
 
                         Pix2PixVoxel voxel = Voxels[x, y, z];
@@ -283,7 +283,7 @@ public class Pix2PixVoxelGrid
                 else if (h * HSV_H >= HSV_Green_H_Min && h * HSV_H <= HSV_Green_H_Max && s * HSV_S >= HSV_Green_S_Min && s * HSV_S <= HSV_Green_S_Max && v * HSV_V >= HSV_Green_V_Min && v * HSV_V <= HSV_Green_V_Max)
                 {
                     Debug.Log("green");
-                    for (int y = 0; y < GridSize.y; y++)
+                    for (int y = 0; y < GridDimensions.y; y++)
                     {
 
                         Pix2PixVoxel voxel = Voxels[x, y, z];
@@ -299,7 +299,7 @@ public class Pix2PixVoxelGrid
                 else if (h * HSV_H >= HSV_Blue_H_Min && h * HSV_H <= HSV_Blue_H_Max && s * HSV_S >= HSV_Blue_S_Min && s * HSV_S <= HSV_Blue_S_Max && v * HSV_V >= HSV_Blue_V_Min && v * HSV_V <= HSV_Blue_V_Max)
                 {
                     Debug.Log("blue");
-                    for (int y = 0; y < GridSize.y; y++)
+                    for (int y = 0; y < GridDimensions.y; y++)
                     {
                         //16 Get Pix2PixVoxel on Coordinate as Pix2PixVoxel
                         Pix2PixVoxel voxel = Voxels[x, y, z];
@@ -317,12 +317,12 @@ public class Pix2PixVoxelGrid
 
     public void SetStageFromImageReduced(Texture2D sourceImage)
     {
-        FunctionColour[,] combinedColours = new FunctionColour[GridSize.x, GridSize.z];
+        FunctionColour[,] combinedColours = new FunctionColour[GridDimensions.x, GridDimensions.z];
 
         //Loop over all the XZ voxels
-        for (int x = 0; x < GridSize.x; x++)
+        for (int x = 0; x < GridDimensions.x; x++)
         {
-            for (int z = 0; z < GridSize.z; z++)
+            for (int z = 0; z < GridDimensions.z; z++)
             {
                 FunctionColour[] pixels = new FunctionColour[PixelsPerVoxel * PixelsPerVoxel];
 
@@ -340,7 +340,7 @@ public class Pix2PixVoxelGrid
                 if (pixels.Count(p => p == FunctionColour.Green) > 0)
                 {
                     Debug.Log("green");
-                    for (int y = 0; y < GridSize.y; y++)
+                    for (int y = 0; y < GridDimensions.y; y++)
                     {
 
                         Pix2PixVoxel voxel = Voxels[x, y, z];
@@ -354,7 +354,7 @@ public class Pix2PixVoxelGrid
                 if (pixels.Count(p => p == FunctionColour.White) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
                 {
                     Debug.Log("White");
-                    for (int y = 0; y < GridSize.y; y++)
+                    for (int y = 0; y < GridDimensions.y; y++)
                     {
 
                         Pix2PixVoxel voxel = Voxels[x, y, z];
@@ -368,7 +368,7 @@ public class Pix2PixVoxelGrid
                 if (pixels.Count(p => p == FunctionColour.Yellow) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
                 {
                     Debug.Log("Yellow");
-                    for (int y = 0; y < GridSize.y; y++)
+                    for (int y = 0; y < GridDimensions.y; y++)
                     {
 
                         Pix2PixVoxel voxel = Voxels[x, y, z];
@@ -382,7 +382,7 @@ public class Pix2PixVoxelGrid
                 if (pixels.Count(p => p == FunctionColour.Red) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
                 {
                     Debug.Log("Red");
-                    for (int y = 0; y < GridSize.y; y++)
+                    for (int y = 0; y < GridDimensions.y; y++)
                     {
 
                         Pix2PixVoxel voxel = Voxels[x, y, z];
@@ -396,7 +396,7 @@ public class Pix2PixVoxelGrid
                 if (pixels.Count(p => p == FunctionColour.Blue) / (PixelsPerVoxel * PixelsPerVoxel) > 0.3f)
                 {
                     Debug.Log("Blue");
-                    for (int y = 0; y < GridSize.y; y++)
+                    for (int y = 0; y < GridDimensions.y; y++)
                     {
 
                         Pix2PixVoxel voxel = Voxels[x, y, z];
@@ -482,9 +482,9 @@ public class Pix2PixVoxelGrid
     /// <returns>All the Voxels</returns>
     public IEnumerable<Pix2PixVoxel> GetVoxels()
     {
-        for (int x = 0; x < GridSize.x; x++)
-            for (int y = 0; y < GridSize.y; y++)
-                for (int z = 0; z < GridSize.z; z++)
+        for (int x = 0; x < GridDimensions.x; x++)
+            for (int y = 0; y < GridDimensions.y; y++)
+                for (int z = 0; z < GridDimensions.z; z++)
                 {
                     yield return Voxels[x, y, z];
                 }

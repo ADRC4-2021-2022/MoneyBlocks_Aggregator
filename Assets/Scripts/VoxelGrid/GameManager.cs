@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
 
     private VoxelGrid _voxelGrid;
-    private Vector3Int _gridSize;
+    private Vector3Int _GridDimensions;
     // Start is called before the first frame update
     void Start()
     {

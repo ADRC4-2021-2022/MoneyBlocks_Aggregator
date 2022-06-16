@@ -36,7 +36,7 @@ public class TextureHSVColor : MonoBehaviour
 
     #region Public fields
 
-    public Vector3Int GridSize;
+    public Vector3Int GridDimensions;
     public Pix2PixVoxel[,,] Voxels;
     public Face[][,,] Faces = new Face[3][,,];
     public Vector3 Origin;
@@ -48,9 +48,9 @@ public class TextureHSVColor : MonoBehaviour
     public void SetStatesFromImage(Texture2D source)
     {
 
-        for (int x = 0; x < GridSize.x; x++)
+        for (int x = 0; x < GridDimensions.x; x++)
         {
-            for (int z = 0; z < GridSize.z; z++)
+            for (int z = 0; z < GridDimensions.z; z++)
             {
 
                 Color pixel = source.GetPixel(x, z);
@@ -68,7 +68,7 @@ public class TextureHSVColor : MonoBehaviour
                 if (h * HSV_H >= HSV_Yellow_H_Min && h * HSV_H <= HSV_Yellow_H_Max && s * HSV_S >= HSV_Yellow_S_Min && s * HSV_S <= HSV_Yellow_S_Max && v * HSV_V >= HSV_Yellow_V_Min && v * HSV_V <= HSV_Yellow_V_Max)
                 {
                     Debug.Log("yellow");
-                    for (int y = 0; y < GridSize.y; y++)
+                    for (int y = 0; y < GridDimensions.y; y++)
                     {
                         //16 Get Pix2PixVoxel on Coordinate as Pix2PixVoxel
                         Pix2PixVoxel voxel = Voxels[x, y, z];
