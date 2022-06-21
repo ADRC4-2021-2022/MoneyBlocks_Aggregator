@@ -44,21 +44,14 @@ public class Aggregator : MonoBehaviour
             return GameObject.Find("PatternCreator").GetComponent<PatternCreator>();
         }
     }
-    
-
-
-
 
     public void DestroyVoidVoxels()
     {
-        GameObject[] voidVoxels = GameObject.FindGameObjectsWithTag("VoidVoxel");
-       
+        GameObject[] voidVoxels = GameObject.FindGameObjectsWithTag("VoidVoxel");    
         foreach (GameObject item in voidVoxels)
         {
             Destroy(item);
         }
-
-
     }
 
     public void SetVoxelGridVoid()
@@ -71,23 +64,9 @@ public class Aggregator : MonoBehaviour
         }
     }
     
-
-
-    //37 Create public method to read image from button
-    /// <summary>
-    /// Read the image and set the states of the Voxels
-    /// </summary>
-    public void ReadImage()
-    {
-        _sourceImage[0] = Resources.Load<Texture2D>("Data/new03");
-        _grid = new VoxelGrid(_sourceImage[0], 3, 5, Vector3.zero, 0.3f);
-        _grid.SetStageFromImageReduced(_sourceImage[0]);
-        _targets = new List<Voxel>();
-    }
-
     public void ReadAllImage()
     {
-        int height = 14;
+        int height = 6;
         float voxelScale=0.3f;
         Vector3 location;
         location.x = location.y = location.z = 0;
@@ -98,9 +77,6 @@ public class Aggregator : MonoBehaviour
             _grid.SetStageFromImageReduced(_sourceImage[i]);
             location.y += height*voxelScale;
         }
-
-        
-
     }
 
 
@@ -114,10 +90,7 @@ public class Aggregator : MonoBehaviour
         {
             GenerationStep();
         }
-
         SetVoxelGridVoid();
-
-
     }
 
     void Start()
@@ -127,24 +100,9 @@ public class Aggregator : MonoBehaviour
     }
     public void Update()
     {
-        //int track = 0;
-
-        //while (track < 1000)
-        //{
-        //    track++;
-        //    GenerationStep();
-
-        //}
+        
     }
-    /*
-    public void OnGUI()
-    {
-        if (GUI.Button(new Rect(10, 10, 200, 50), "next"))
-        {
-            GenerationStep();
-        }
-    }
-    */
+    
     /// <summary>
     /// Set the status of all voxels dead inside or outside of the mesh
     /// </summary>
@@ -183,25 +141,17 @@ public class Aggregator : MonoBehaviour
     {
         //Find all available connections
         List<Connection> availableConnections = _grid.GetAvailableConnections();
-
-
-
         if (availableConnections.Count <= 0)
         {
             Debug.Log($"no available connections");
-            //return;
-
         }
-
         else
         {
             //Select a random available connection
             int rndConnectionIndex = Random.Range(0, availableConnections.Count);
             Connection selectedConnection = availableConnections[rndConnectionIndex];
-
             TryConnection(selectedConnection);
         }
-
     }
 
     public bool TryConnection(Connection connection)
@@ -210,7 +160,6 @@ public class Aggregator : MonoBehaviour
         //Debug.Log(possiblePatterns.Count);
         //If we have found a pattern, this boolean will be true
         bool patternSet = false;
-
         int patternTries = 0;
 
         //Try all patterns until one is found
@@ -263,26 +212,8 @@ public class Aggregator : MonoBehaviour
 
                 directionTries++;
             }
-
             patternTries++;
-
-
         }
-
-
-
-
-        //obj.transform.rotation = new Quaternion. ;
-        ///
-        /// 
-        ////If(Adding block failed)
-        //////Remove rotation from possible rotations
-        //////if(possibleRotation.count <=0)
-        ////////Remove pattenr out of connection.PossiblePatterns
-        ////////if(connection.PossiblePatterns.count<=0)
-        //////////Remove connection from aggregator connection list
-        //////////Return false
-
         return false;
     }
 
@@ -302,12 +233,6 @@ public class Aggregator : MonoBehaviour
         //else
         ////StartGeneration() start or stop the coroutine
     }
-
-    /*public void CreateVoxelGrid()
-    {
-        _grid = BoundingMesh.GetVoxelGrid(_voxelOffset, _voxelSize);
-    }*/
-
 
     /// <summary>
     /// Set the voxels outside of the mesh to not alive
