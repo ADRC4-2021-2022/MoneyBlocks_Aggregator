@@ -65,15 +65,15 @@ public static class Util
 
     public static Dictionary<FunctionColour, int> IndexPerFunction = new()
     {
-        [FunctionColour.Green] = 1,
+        [FunctionColour.Green] = 4,
         [FunctionColour.Red] = 1,
-        [FunctionColour.Cyan] = 1,
+        [FunctionColour.Cyan] = 4,
         [FunctionColour.White] = 1,
-        [FunctionColour.Black] = 5,
+        [FunctionColour.Black] = 6,
         [FunctionColour.Void] = 1,
         [FunctionColour.Yellow] = 1,
-        [FunctionColour.Blue] = 1,
-        [FunctionColour.Purple] = 1
+        [FunctionColour.Blue] = 4,
+        [FunctionColour.Purple] = 4
     };
 
 

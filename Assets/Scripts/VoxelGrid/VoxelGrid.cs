@@ -5,7 +5,7 @@ using System.Linq;
 
 //Try to use Kevin his voxelgrid class instead of Davids
 
-public enum FunctionColour { Yellow = 1, Green = 2, Blue = 3, Red = 4, White = 5, Purple = 6, Cyan = 7, Black = 8, Void = 9  }
+public enum FunctionColour { Yellow = 1, Green = 2, Blue = 3, Red = 4, White = 5, Purple = 6, Cyan = 7, Black = 8, Void = 9 }
 public class VoxelGrid
 {
     #region  HSVIndex
@@ -72,7 +72,7 @@ public class VoxelGrid
     #endregion
 
     #region public fields
-    
+
     public Vector3Int GridDimensions { get; private set; }
     public float VoxelSize { get; private set; }
     public Vector3 Origin { get; private set; }
@@ -80,9 +80,9 @@ public class VoxelGrid
     //public Vector3Int GridDimensions;
     public Voxel[,,] Voxels;
     public Face[][,,] Faces = new Face[3][,,];
-    
+
     public Vector3 Corner;
-   
+
     public int PixelsPerVoxel;
 
     public Vector3 Centre => Origin + (Vector3)GridDimensions * VoxelSize / 2;
@@ -136,9 +136,9 @@ public class VoxelGrid
     public List<Connection> GetAvailableConnections()
     {
         List<Connection> availableConnections = new List<Connection>();
-        foreach (var block in _blocks.Where(b=>b.State == BlockState.Placed))
+        foreach (var block in _blocks.Where(b => b.State == BlockState.Placed))
         {
-            availableConnections.AddRange(block.Connections.Where(c=>c.Available));
+            availableConnections.AddRange(block.Connections.Where(c => c.Available));
         }
         return availableConnections;
     }
@@ -175,7 +175,7 @@ public class VoxelGrid
     //private Voxel[,,] Voxels;
     private bool _showAliveVoxels = false;
     private bool _showAvailableVoxels = false;
-    
+    ComputeShader computerShader;
     #region block fields
     private List<Block> _blocks = new List<Block>();
     private List<Block> _currentBlocks => _blocks.Where(b => b.State != BlockState.Placed).ToList();
@@ -271,6 +271,7 @@ public class VoxelGrid
 
     public VoxelGrid(Texture2D source, int pixelPerVoxel, int height, Vector3 origin, float voxelSize)
     {
+
         //06 Read grid dimensions in X and Z from image
         GridDimensions = new Vector3Int(source.width / pixelPerVoxel, height, source.height / pixelPerVoxel);
 
@@ -291,8 +292,8 @@ public class VoxelGrid
             }
         }
 
-        //07 Add make Faces
-        MakeFaces();
+
+
     }
 
 
@@ -613,7 +614,7 @@ public class VoxelGrid
                 {
                     for (int y = 0; y < Util.IndexPerFunction[FunctionColour.Black]; y++)
                     {
-                        
+
                         Voxel voxel = Voxels[x, y, z];
                         voxel.SetState(FunctionColour.Black, true);
                     }
@@ -726,7 +727,7 @@ public class VoxelGrid
     #endregion
 
     #region Trash
-    
+
     public void SetStatesFromImage(Texture2D source)
     {
 
@@ -826,6 +827,6 @@ public class VoxelGrid
         }
 
     }
-    
+
     #endregion
 }

@@ -183,27 +183,28 @@ public class Voxel
     public void SetState(FunctionColour colour, bool state)
     {
         _goVoxelTrigger.GetComponent<MeshRenderer>().material = Util.MaterialPerFunction[colour];
-        if (colour == FunctionColour.Yellow || colour == FunctionColour.White || colour == FunctionColour.Red)
+        if (colour == FunctionColour.Yellow || colour == FunctionColour.White || colour == FunctionColour.Red || colour == FunctionColour.Void)
         {
             Status = VoxelState.Dead;
-            SetStateEnable(0.1f, false);
+            SetStateEnable(false);
         }
         else
         {
-            SetStateEnable(0.1f, state);
+            SetStateEnable(state);
         }
 
     }
 
-    public void SetStateEnable(float newState, bool visibility)
+    public void SetStateEnable(bool visibility)
     {
+       
 
-        _state = newState;
 
+        
         _goVoxelTrigger.SetActive(visibility);
 
         if(!visibility)_goVoxelTrigger.tag = "VoidVoxel";
-
+        
     }
 
 

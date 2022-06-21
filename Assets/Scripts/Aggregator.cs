@@ -5,6 +5,9 @@ using System.Linq;
 
 public class Aggregator : MonoBehaviour
 {
+    
+
+
     private List<Connection> _connections = new List<Connection>();
     private VoxelGrid _grid;
     //public Coroutine coroutine;
@@ -24,7 +27,7 @@ public class Aggregator : MonoBehaviour
 
     private List<Voxel> _nonDeadVoxels;
     List<Voxel> _targets = new List<Voxel>();
-    Texture2D _sourceImage;
+    public Texture2D[] _sourceImage;
     private float _voxelSize = 0.3f;
     private int _voxelOffset = 1;
 
@@ -41,8 +44,34 @@ public class Aggregator : MonoBehaviour
             return GameObject.Find("PatternCreator").GetComponent<PatternCreator>();
         }
     }
-
     
+
+
+
+
+    public void DestroyVoidVoxels()
+    {
+        GameObject[] voidVoxels = GameObject.FindGameObjectsWithTag("VoidVoxel");
+       
+        foreach (GameObject item in voidVoxels)
+        {
+            Destroy(item);
+        }
+
+
+    }
+
+    public void SetVoxelGridVoid()
+    {
+        GameObject[] voxels = GameObject.FindGameObjectsWithTag("Voxel");
+        Material voidMaterial = Resources.Load<Material>("Pix2PixMaterials/Void");
+        foreach (GameObject item in voxels)
+        {            
+            item.GetComponent<MeshRenderer>().material = voidMaterial;
+        }
+    }
+    
+
 
     //37 Create public method to read image from button
     /// <summary>
@@ -50,41 +79,45 @@ public class Aggregator : MonoBehaviour
     /// </summary>
     public void ReadImage()
     {
-        _sourceImage = Resources.Load<Texture2D>("Data/new01");
-        _grid = new VoxelGrid(_sourceImage, 3, 5, Vector3.zero, 0.3f);
-        _grid.SetStageFromImageReduced(_sourceImage);
+        _sourceImage[0] = Resources.Load<Texture2D>("Data/new03");
+        _grid = new VoxelGrid(_sourceImage[0], 3, 5, Vector3.zero, 0.3f);
+        _grid.SetStageFromImageReduced(_sourceImage[0]);
         _targets = new List<Voxel>();
     }
+
+    public void ReadAllImage()
+    {
+        int height = 6;
+        float voxelScale=0.3f;
+        Vector3 location;
+        location.x = location.y = location.z = 0;
+
+        for (int i = 0; i < _sourceImage.Length; i++)
+        {        
+            _grid = new VoxelGrid(_sourceImage[i], 3, height, location, voxelScale);
+            _grid.SetStageFromImageReduced(_sourceImage[i]);
+            location.y += height*voxelScale;
+        }
+
+        
+
+    }
+
+
 
 
     public void ButtonGenerate()
     {
-       
-        //Random.InitState(66);
         _patternCreator.CreatePatterns();
-
-        // Invoke("StopRun", 10f);
-        //_grid = new VoxelGrid(20, 20, 20, 0.095f, Vector3.zero);
-
-        //_grid = BoundingMesh.GetVoxelGrid(_voxelOffset, _voxelSize);
-        //KillVoxelsInOutBounds(true);
-
-
-        //_grid.SetGridState(VoxelState.Available);
-
-        //Find the GameObject
-
-        //GameObject obj = GameObject.Find("UShap");
-
-        //Get script attached to it
-        //attached in unity
-        //Call the function
-        //which function
         AddFirstBlock();
         for (int i = 0; i < 8000; i++)
         {
             GenerationStep();
         }
+
+        SetVoxelGridVoid();
+
+
     }
 
     void Start()

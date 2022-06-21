@@ -1923,7 +1923,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 5.5}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &819322175
@@ -1972,7 +1972,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1384461560}
         m_TargetAssemblyTypeName: Aggregator, Assembly-CSharp
-        m_MethodName: ReadImage
+        m_MethodName: ReadAllImage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3306,8 +3306,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 9.72998, y: 10.559998}
-  m_SizeDelta: {x: 172.92221, y: 76.33771}
+  m_AnchoredPosition: {x: 9.72998, y: 2.300003}
+  m_SizeDelta: {x: 172.92221, y: 134.4}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &1178444650
 CanvasRenderer:
@@ -3650,6 +3650,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbd6f4cf6e4b6a446a8c3cf950e8af6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sourceImage:
+  - {fileID: 2800000, guid: f6f73312e7be15e499c0c7315a14b40c, type: 3}
 --- !u!4 &1384461561
 Transform:
   m_ObjectHideFlags: 0
@@ -3948,7 +3950,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 37.74}
+  m_AnchoredPosition: {x: 0, y: 43.240005}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1476958266

@@ -23,6 +23,7 @@ TagManager:
   - PurpleVoxel
   - CyanVoxel
   - BlackVoxel
+  - Pix2PixVoxel
   layers:
   - Default
   - TransparentFX
