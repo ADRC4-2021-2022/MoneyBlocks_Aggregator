@@ -87,7 +87,7 @@ public class Aggregator : MonoBehaviour
 
     public void ReadAllImage()
     {
-        int height = 6;
+        int height = 14;
         float voxelScale=0.3f;
         Vector3 location;
         location.x = location.y = location.z = 0;
