@@ -580,7 +580,7 @@ public class VoxelGrid
     #endregion
 
     #region Grid operations
-    public void SetStageFromImageReduced(Texture2D sourceImage)
+    public void SetStatesFromImageReduced(Texture2D sourceImage)
     {
         //FunctionColour[,] combinedColours = new FunctionColour[GridDimensions.x, GridDimensions.z];
 

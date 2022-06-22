@@ -190,6 +190,7 @@ public class Voxel
         }
         else
         {
+            if (!state) Status = VoxelState.Dead;
             SetStateEnable(state);
         }
 

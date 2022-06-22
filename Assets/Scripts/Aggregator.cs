@@ -5,7 +5,7 @@ using System.Linq;
 
 public class Aggregator : MonoBehaviour
 {
-    
+    private int _seed = 202;
 
 
     private List<Connection> _connections = new List<Connection>();
@@ -65,7 +65,7 @@ public class Aggregator : MonoBehaviour
         for (int i = 0; i < _sourceImage.Length; i++)
         {        
             _grid = new VoxelGrid(_sourceImage[i], 3, height, location, voxelScale);
-            _grid.SetStageFromImageReduced(_sourceImage[i]);
+            _grid.SetStatesFromImageReduced(_sourceImage[i]);
             location.y += height*voxelScale;
         }
     }
@@ -94,7 +94,14 @@ public class Aggregator : MonoBehaviour
 
     void Start()
     {
-        
+        Random.InitState(_seed);
+        // generate using the first seed
+        // count how many voxels are still VoxelStat.Availble
+        var remainingVoxels = _grid.GetVoxels().Count(v => v.Status == VoxelState.Available);
+        // store the seed and result in a list or dictionary
+        // repeat for a diffrent seed.
+        // find the seed that had the best result
+        // use that seed to generate the final result
 
     }
     public void Update()

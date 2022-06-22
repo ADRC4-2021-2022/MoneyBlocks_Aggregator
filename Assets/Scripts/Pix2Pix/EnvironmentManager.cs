@@ -48,7 +48,7 @@ public class EnvironmentManager : MonoBehaviour
     /// </summary>
     public void ReadImage()
     {
-        _voxelGrid.SetStageFromImageReduced(_sourceImage);
+        _voxelGrid.SetStatesFromImageReduced(_sourceImage);
         _targets = new List<Voxel>();
     }
 
