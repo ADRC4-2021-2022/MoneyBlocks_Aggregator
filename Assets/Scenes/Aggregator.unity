@@ -3860,7 +3860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sourceImage:
-  - {fileID: 2800000, guid: 9d173e49998e5ab49a3885d8ca43be31, type: 3}
+  - {fileID: 2800000, guid: c21ddad2ee763304f9248931d35dadc8, type: 3}
 --- !u!4 &1384461561
 Transform:
   m_ObjectHideFlags: 0
