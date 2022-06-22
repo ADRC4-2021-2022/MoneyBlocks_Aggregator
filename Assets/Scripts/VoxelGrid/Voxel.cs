@@ -200,8 +200,8 @@ public class Voxel
         _goVoxelTrigger.SetActive(visibility);
         if (!visibility)
         {
-           // _goVoxelTrigger.tag = "VoidVoxel";
-            DestroyGameObject();
+           _goVoxelTrigger.tag = "VoidVoxel";
+           // DestroyGameObject();
         }    
     }
 

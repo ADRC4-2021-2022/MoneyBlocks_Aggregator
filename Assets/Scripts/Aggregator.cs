@@ -64,7 +64,7 @@ public class Aggregator : MonoBehaviour
 
         for (int i = 0; i < _sourceImage.Length; i++)
         {        
-            _grid = new VoxelGrid(_sourceImage[i], 1, height, location, voxelScale);
+            _grid = new VoxelGrid(_sourceImage[i], 3, height, location, voxelScale);
             _grid.SetStageFromImageReduced(_sourceImage[i]);
             location.y += height*voxelScale;
         }
@@ -88,7 +88,8 @@ public class Aggregator : MonoBehaviour
         {
             GenerationStep();
         }
-        DestroyOriginVoxelGrid();
+        //DestroyOriginVoxelGrid();
+        SetVoxelGridVoid();
     }
 
     void Start()
