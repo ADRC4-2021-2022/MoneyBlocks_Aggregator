@@ -45,15 +45,6 @@ public class Aggregator : MonoBehaviour
         }
     }
 
-    public void DestroyVoidVoxels()
-    {
-        GameObject[] voidVoxels = GameObject.FindGameObjectsWithTag("VoidVoxel");    
-        foreach (GameObject item in voidVoxels)
-        {
-            Destroy(item);
-        }
-    }
-
     public void SetVoxelGridVoid()
     {
         GameObject[] voxels = GameObject.FindGameObjectsWithTag("Voxel");
@@ -66,20 +57,27 @@ public class Aggregator : MonoBehaviour
     
     public void ReadAllImage()
     {
-        int height = 6;
+        int height = 14;
         float voxelScale=0.3f;
         Vector3 location;
         location.x = location.y = location.z = 0;
 
         for (int i = 0; i < _sourceImage.Length; i++)
         {        
-            _grid = new VoxelGrid(_sourceImage[i], 3, height, location, voxelScale);
+            _grid = new VoxelGrid(_sourceImage[i], 1, height, location, voxelScale);
             _grid.SetStageFromImageReduced(_sourceImage[i]);
             location.y += height*voxelScale;
         }
     }
 
-
+    public void DestroyOriginVoxelGrid()
+    {
+        GameObject[] voxels = GameObject.FindGameObjectsWithTag("Voxel");
+        foreach (GameObject item in voxels)
+        {
+            Destroy(item);
+        }
+    }
 
 
     public void ButtonGenerate()
@@ -90,7 +88,7 @@ public class Aggregator : MonoBehaviour
         {
             GenerationStep();
         }
-        SetVoxelGridVoid();
+        DestroyOriginVoxelGrid();
     }
 
     void Start()

@@ -197,14 +197,12 @@ public class Voxel
 
     public void SetStateEnable(bool visibility)
     {
-       
-
-
-        
         _goVoxelTrigger.SetActive(visibility);
-
-        if(!visibility)_goVoxelTrigger.tag = "VoidVoxel";
-        
+        if (!visibility)
+        {
+           // _goVoxelTrigger.tag = "VoidVoxel";
+            DestroyGameObject();
+        }    
     }
 
 
@@ -255,8 +253,8 @@ public class Voxel
     }
 
     public void DestroyGameObject()
-    {
-        GameObject.Destroy(_goVoxelTrigger);
+    {       
+        GameObject.Destroy(_goVoxelTrigger);   
     }
 
     public List<Voxel> GetFaceNeighbourList()

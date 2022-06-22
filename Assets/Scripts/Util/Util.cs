@@ -69,13 +69,12 @@ public static class Util
         [FunctionColour.Red] = 1,
         [FunctionColour.Cyan] = 4,
         [FunctionColour.White] = 1,
-        [FunctionColour.Black] = 6,
+        [FunctionColour.Black] = 14,
         [FunctionColour.Void] = 1,
         [FunctionColour.Yellow] = 1,
         [FunctionColour.Blue] = 4,
         [FunctionColour.Purple] = 4
     };
-
 
     /// <summary>
     /// Generate a random color
