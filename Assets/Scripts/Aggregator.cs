@@ -5,7 +5,7 @@ using System.Linq;
 
 public class Aggregator : MonoBehaviour
 {
-    private int _seed = 202;
+    private int _seed = 166;
 
 
     private List<Connection> _connections = new List<Connection>();
@@ -52,6 +52,7 @@ public class Aggregator : MonoBehaviour
         foreach (GameObject item in voxels)
         {            
             item.GetComponent<MeshRenderer>().material = voidMaterial;
+            item.SetActive(false);
         }
     }
     
@@ -94,10 +95,10 @@ public class Aggregator : MonoBehaviour
 
     void Start()
     {
-        Random.InitState(_seed);
+        //Random.InitState(_seed);
         // generate using the first seed
         // count how many voxels are still VoxelStat.Availble
-        var remainingVoxels = _grid.GetVoxels().Count(v => v.Status == VoxelState.Available);
+        //var remainingVoxels = _grid.GetVoxels().Count(v => v.Status == VoxelState.Available);
         // store the seed and result in a list or dictionary
         // repeat for a diffrent seed.
         // find the seed that had the best result
