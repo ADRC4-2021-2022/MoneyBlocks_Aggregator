@@ -5,7 +5,7 @@ using System.Linq;
 
 public class Aggregator : MonoBehaviour
 {
-    private int _seed = 166;
+    private int _seed = 102;
 
 
     private List<Connection> _connections = new List<Connection>();
@@ -48,10 +48,10 @@ public class Aggregator : MonoBehaviour
     public void SetVoxelGridVoid()
     {
         GameObject[] voxels = GameObject.FindGameObjectsWithTag("Voxel");
-        Material voidMaterial = Resources.Load<Material>("Pix2PixMaterials/Void");
+        //Material voidMaterial = Resources.Load<Material>("Pix2PixMaterials/Void");
         foreach (GameObject item in voxels)
         {            
-            item.GetComponent<MeshRenderer>().material = voidMaterial;
+            //item.GetComponent<MeshRenderer>().material = voidMaterial;
             item.SetActive(false);
         }
     }
@@ -83,6 +83,7 @@ public class Aggregator : MonoBehaviour
 
     public void ButtonGenerate()
     {
+        
         _patternCreator.CreatePatterns();
         AddFirstBlock();
         for (int i = 0; i < 8000; i++)
@@ -91,11 +92,14 @@ public class Aggregator : MonoBehaviour
         }
         //DestroyOriginVoxelGrid();
         SetVoxelGridVoid();
+
+        var remainingVoxels = _grid.GetVoxels().Count(v => v.Status == VoxelState.Available);
+        Debug.Log(remainingVoxels);
     }
 
     void Start()
     {
-        //Random.InitState(_seed);
+        Random.InitState(_seed);
         // generate using the first seed
         // count how many voxels are still VoxelStat.Availble
         //var remainingVoxels = _grid.GetVoxels().Count(v => v.Status == VoxelState.Available);

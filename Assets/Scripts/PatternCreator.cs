@@ -107,13 +107,18 @@ public class PatternCreator : MonoBehaviour
         }
     }
 
+    public Texture[] aTexture;
+    
+
     public void OnGUI()
     {
+        aTexture = Resources.LoadAll<Texture>("Data/PartsIcon");
         int counter = 0;
         int height = 50;
         for (int i = 0; i < _selected.Length; i++)
         {
             _selected[i] = GUI.Toggle(new Rect(10, 10 + height * counter++, 100, 30), _selected[i], $"{_prefabs[i].name}");
+            GUI.DrawTexture(new Rect(10, 10 + height * counter++, 100, 30), aTexture[i], ScaleMode.ScaleAndCrop);
         }
 
     }
