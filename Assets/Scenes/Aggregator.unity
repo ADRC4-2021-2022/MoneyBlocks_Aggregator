@@ -3918,7 +3918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sourceImage:
-  - {fileID: 2800000, guid: a78fa6459dd2a2b428dd4b43d22c5cb2, type: 3}
+  - {fileID: 2800000, guid: eb16d622f1678ad44a5fc61296e17848, type: 3}
 --- !u!4 &1384461561
 Transform:
   m_ObjectHideFlags: 0
