@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MenuButton : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public class MenuButton : MonoBehaviour
 	[SerializeField] AnimatorFunctions animatorFunctions;
 	[SerializeField] int thisIndex;
 
-    void Update()
+	void Update()
     {
 		if(menuButtonController.index == thisIndex)
 		{
@@ -29,4 +31,13 @@ public class MenuButton : MonoBehaviour
 			animator.SetBool ("selected", false);
 		}
     }
+
+
+	
+
+
+
+
+
+
 }

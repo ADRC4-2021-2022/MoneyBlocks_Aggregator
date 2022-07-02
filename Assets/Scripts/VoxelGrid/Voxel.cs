@@ -174,7 +174,7 @@ public class Voxel
         if (Status == VoxelState.Available && _showAvailableVoxel) visible = true;
         if (Status == VoxelState.Alive && _showAliveVoxel) visible = true;
 
-        _goVoxelTrigger.SetActive(visible);
+       // _goVoxelTrigger.SetActive(visible);
     }
     #endregion
 
@@ -198,7 +198,7 @@ public class Voxel
 
     public void SetStateEnable(bool visibility)
     {
-        _goVoxelTrigger.SetActive(visibility);
+       // _goVoxelTrigger.SetActive(visibility);
         if (!visibility)
         {
            _goVoxelTrigger.tag = "VoidVoxel";
