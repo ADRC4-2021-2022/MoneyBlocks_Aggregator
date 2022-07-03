@@ -495,7 +495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4191989751192317663}
   m_Layer: 0
-  m_Name: S6
+  m_Name: BIGS6
   m_TagString: Component
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -682,7 +682,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3033667219593020291, guid: 8fc6e346ed72a1841a0dc0ca36430c25, type: 3}
+  - {fileID: 2100000, guid: 2da2ec89cff9c074db8997825ad71f26, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

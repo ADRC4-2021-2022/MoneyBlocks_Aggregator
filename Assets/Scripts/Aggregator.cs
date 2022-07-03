@@ -5,12 +5,12 @@ using System.Linq;
 
 public class Aggregator : MonoBehaviour
 {
-    private int _seed = 102;
+    private int _seed = 104;
 
 
     private List<Connection> _connections = new List<Connection>();
     private VoxelGrid _grid;
-    
+
     //public Coroutine coroutine;
     public List<Voxel> NonDeadVoxels
     {
@@ -20,11 +20,11 @@ public class Aggregator : MonoBehaviour
             {
                 if (_nonDeadVoxels == null)
                 {
-                
-                        _nonDeadVoxels = _grid.GetVoxels().Where(v => v.Status != VoxelState.Dead).ToList();
+
+                    _nonDeadVoxels = _grid.GetVoxels().Where(v => v.Status != VoxelState.Dead).ToList();
 
                 }
- 
+
             }
             return _nonDeadVoxels;
         }
@@ -52,7 +52,7 @@ public class Aggregator : MonoBehaviour
 
     public void SetVoxelGridVoid()
     {
-        
+
         GameObject[] voxels = GameObject.FindGameObjectsWithTag("Voxel");
         //Material voidMaterial = Resources.Load<Material>("Pix2PixMaterials/Void");
         foreach (GameObject item in voxels)
@@ -79,7 +79,7 @@ public class Aggregator : MonoBehaviour
             Destroy(item);
         }
     }
-    /*
+
     public void ReadAllImage()
     {
         int height = 14;
@@ -87,13 +87,14 @@ public class Aggregator : MonoBehaviour
         Vector3 location;
         location.x = location.y = location.z = 0;
 
-        
-            _grid = new VoxelGrid(_sourceImage[i], 3, height, location, voxelScale);
-            _grid.SetStatesFromImageReduced(_sourceImage[i]);
-            location.y += height * voxelScale;
-        
+        _grid = new VoxelGrid(_sourceImage[floorIndex], 3, height, location, voxelScale);
+        _grid.SetStatesFromImageReduced(_sourceImage[floorIndex]);
+        location.y += height * voxelScale;
+        DestroyTagVoidVoxel();
+        //DestroyTagVoxel();
+        floorIndex += 1;
     }
-    */
+
 
     public static int height = 14;
     float voxelScale = 0.3f;
@@ -101,36 +102,38 @@ public class Aggregator : MonoBehaviour
     int floorIndex = 0;
     public void GeniusGenerate()
     {
-        if (floorIndex==1)
+        //IsTopFloor();
+
+        _grid = new VoxelGrid(_sourceImage[floorIndex], 3, height, location, voxelScale);
+        _grid.SetStatesFromImageReduced(_sourceImage[0]);
+        location.y += height * voxelScale;
+        floorIndex += 1;
+        ButtonGenerate();
+
+    }
+
+    public void IsTopFloor()
+    {
+        if (floorIndex == 2)
         {
             height = 4;
             Util.IndexPerFunction.Remove(FunctionColour.Black);
             Util.IndexPerFunction.Add(FunctionColour.Black, height);
         }
-        
-
-            _grid = new VoxelGrid(_sourceImage[floorIndex], 3, height, location, voxelScale);
-            _grid.SetStatesFromImageReduced(_sourceImage[0]);
-            location.y += height * voxelScale;
-            floorIndex += 1;
-            ButtonGenerate();
-        
     }
-
-    
 
     public void test111()
     {
         Debug.Log("111");
     }
-    
+
 
     public void ButtonGenerate()
     {
 
         _patternCreator.CreatePatterns();
         AddFirstBlock();
-        for (int i = 0; i < 5000; i++)
+        for (int i = 0; i < 8000; i++)
         {
             GenerationStep();
         }
@@ -140,10 +143,10 @@ public class Aggregator : MonoBehaviour
         //var remainingVoxels = _grid.GetVoxels().Count(v => v.Status == VoxelState.Available);
         //Debug.Log(remainingVoxels);
     }
-    
+
     void Start()
     {
-        
+
         location.x = location.y = location.z = 0;
 
         Random.InitState(_seed);
@@ -200,8 +203,8 @@ public class Aggregator : MonoBehaviour
     //Google coroutine
     public void GenerationStep()
     {
-        
-        
+
+
         //Find all available connections
         List<Connection> availableConnections = _grid.GetAvailableConnections();
         if (availableConnections.Count <= 0)
@@ -215,7 +218,7 @@ public class Aggregator : MonoBehaviour
             Connection selectedConnection = availableConnections[rndConnectionIndex];
             TryConnection(selectedConnection);
         }
-        
+
     }
 
     public bool TryConnection(Connection connection)
@@ -225,60 +228,60 @@ public class Aggregator : MonoBehaviour
         //If we have found a pattern, this boolean will be true
         bool patternSet = false;
         int patternTries = 0;
-        
-            //Try all patterns until one is found
-            while (possiblePatterns.Count > 0 && !patternSet && patternTries < PatternManager.Patterns.Count)
+
+        //Try all patterns until one is found
+        while (possiblePatterns.Count > 0 && !patternSet && patternTries < PatternManager.Patterns.Count)
+        {
+            List<Vector3Int> possibleDirections = new List<Vector3Int>(Util.Directions);
+            int directionTries = 0;
+
+            //Get a random pattern out of the possiblePatterns
+            int patternIndex = Random.Range(0, possiblePatterns.Count);
+            Pattern selectedPattern = possiblePatterns[patternIndex];
+
+            //try all directions untill one is found
+            while (possibleDirections.Count > 0 && !patternSet && directionTries < Util.Directions.Count)
             {
-                List<Vector3Int> possibleDirections = new List<Vector3Int>(Util.Directions);
-                int directionTries = 0;
+                int rndDirectionIndex = Random.Range(0, possibleDirections.Count);
+                Vector3Int randomDirection = possibleDirections[rndDirectionIndex];
+                //Set the random pattern as current grid pattern
+                _grid.SetPatternIndex(selectedPattern.Index);
 
-                //Get a random pattern out of the possiblePatterns
-                int patternIndex = Random.Range(0, possiblePatterns.Count);
-                Pattern selectedPattern = possiblePatterns[patternIndex];
+                Quaternion xRotation = Quaternion.Euler(new Vector3(90, 0, 0));
 
-                //try all directions untill one is found
-                while (possibleDirections.Count > 0 && !patternSet && directionTries < Util.Directions.Count)
+                //Try to place a block based on the pattern with the anchorpoint on the connection point
+                _grid.AddBlock(connection.Index, Quaternion.Euler(randomDirection * 90)/**xRotation*/);
+
+                //See if the block can be added
+                if (!_grid.TryAddCurrentBlocksToGrid())
                 {
-                    int rndDirectionIndex = Random.Range(0, possibleDirections.Count);
-                    Vector3Int randomDirection = possibleDirections[rndDirectionIndex];
-                    //Set the random pattern as current grid pattern
-                    _grid.SetPatternIndex(selectedPattern.Index);
+                    //Remove the added block from the grid
+                    _grid.PurgeUnplacedBlocks();
 
-                    Quaternion xRotation = Quaternion.Euler(new Vector3(90, 0, 0));
+                    //remove the random direction that we have tried
+                    possibleDirections.Remove(randomDirection);
 
-                    //Try to place a block based on the pattern with the anchorpoint on the connection point
-                    _grid.AddBlock(connection.Index, Quaternion.Euler(randomDirection * 90)/**xRotation*/);
-
-                    //See if the block can be added
-                    if (!_grid.TryAddCurrentBlocksToGrid())
+                    //If the direction we have tried was the last one, remove the random pattern
+                    if (possibleDirections.Count == 0)
                     {
-                        //Remove the added block from the grid
-                        _grid.PurgeUnplacedBlocks();
-
-                        //remove the random direction that we have tried
-                        possibleDirections.Remove(randomDirection);
-
-                        //If the direction we have tried was the last one, remove the random pattern
-                        if (possibleDirections.Count == 0)
-                        {
-                            possiblePatterns.Remove(selectedPattern);
-                        }
-
-                    }
-                    else
-                    {
-                        //A pattern is succesfully added to the grid
-                        //Clear all the possible connections, make sure the while loop stops and stop the function
-                        connection.PossiblePatterns = new List<Pattern>();
-                        patternSet = true;
-                        return true;
+                        possiblePatterns.Remove(selectedPattern);
                     }
 
-                    directionTries++;
                 }
-                patternTries++;
+                else
+                {
+                    //A pattern is succesfully added to the grid
+                    //Clear all the possible connections, make sure the while loop stops and stop the function
+                    connection.PossiblePatterns = new List<Pattern>();
+                    patternSet = true;
+                    return true;
+                }
+
+                directionTries++;
             }
-        
+            patternTries++;
+        }
+
         return false;
     }
 
