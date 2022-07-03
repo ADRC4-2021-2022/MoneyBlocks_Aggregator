@@ -67,7 +67,7 @@ public class PatternCreator : MonoBehaviour
         
         for (int i = 0; i < _prefabs.Length; i++)
         {
-            _selected[i] = true;
+            _selected[i] = false;
         }
     }
 

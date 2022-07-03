@@ -5,7 +5,7 @@ using System.Linq;
 
 public class Aggregator : MonoBehaviour
 {
-    private int _seed = 104;
+    private int _seed = 102;
 
 
     private List<Connection> _connections = new List<Connection>();
@@ -16,8 +16,7 @@ public class Aggregator : MonoBehaviour
     {
         get
         {
-            for (int i = 0; i < _sourceImage.Length; i++)
-            {
+            
                 if (_nonDeadVoxels == null)
                 {
 
@@ -25,7 +24,7 @@ public class Aggregator : MonoBehaviour
 
                 }
 
-            }
+            
             return _nonDeadVoxels;
         }
     }
@@ -82,17 +81,21 @@ public class Aggregator : MonoBehaviour
 
     public void ReadAllImage()
     {
-        int height = 14;
-        float voxelScale = 0.3f;
-        Vector3 location;
-        location.x = location.y = location.z = 0;
-
-        _grid = new VoxelGrid(_sourceImage[floorIndex], 3, height, location, voxelScale);
-        _grid.SetStatesFromImageReduced(_sourceImage[floorIndex]);
-        location.y += height * voxelScale;
-        DestroyTagVoidVoxel();
-        //DestroyTagVoxel();
-        floorIndex += 1;
+        
+        for (int i = 0; i < _sourceImage.Length; i++)
+        {
+            if (i==3)
+            {
+                height = 4;
+                Util.IndexPerFunction.Remove(FunctionColour.Black);
+                Util.IndexPerFunction.Add(FunctionColour.Black, height);
+            }
+            _grid = new VoxelGrid(_sourceImage[i], 3, height, location, voxelScale);
+            _grid.SetStatesFromImageReduced(_sourceImage[i]);
+            location.y += height * voxelScale;
+            DestroyTagVoidVoxel();
+        }
+        
     }
 
 
@@ -102,7 +105,9 @@ public class Aggregator : MonoBehaviour
     int floorIndex = 0;
     public void GeniusGenerate()
     {
-        //IsTopFloor();
+        
+        
+        IsTopFloor();
 
         _grid = new VoxelGrid(_sourceImage[floorIndex], 3, height, location, voxelScale);
         _grid.SetStatesFromImageReduced(_sourceImage[0]);
@@ -114,7 +119,7 @@ public class Aggregator : MonoBehaviour
 
     public void IsTopFloor()
     {
-        if (floorIndex == 2)
+        if (floorIndex == 3)
         {
             height = 4;
             Util.IndexPerFunction.Remove(FunctionColour.Black);
@@ -133,13 +138,13 @@ public class Aggregator : MonoBehaviour
 
         _patternCreator.CreatePatterns();
         AddFirstBlock();
-        for (int i = 0; i < 8000; i++)
+        for (int i = 0; i < 5000; i++)
         {
             GenerationStep();
         }
+        
         DestroyTagVoidVoxel();
         DestroyTagVoxel();
-
         //var remainingVoxels = _grid.GetVoxels().Count(v => v.Status == VoxelState.Available);
         //Debug.Log(remainingVoxels);
     }
