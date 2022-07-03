@@ -95,17 +95,26 @@ public class Aggregator : MonoBehaviour
     }
     */
 
-    int height = 14;
+    public static int height = 14;
     float voxelScale = 0.3f;
     Vector3 location;
     int floorIndex = 0;
     public void GeniusGenerate()
     {
+        if (floorIndex==1)
+        {
+            height = 4;
+            Util.IndexPerFunction.Remove(FunctionColour.Black);
+            Util.IndexPerFunction.Add(FunctionColour.Black, height);
+        }
+        
+
             _grid = new VoxelGrid(_sourceImage[floorIndex], 3, height, location, voxelScale);
             _grid.SetStatesFromImageReduced(_sourceImage[0]);
             location.y += height * voxelScale;
             floorIndex += 1;
-            ButtonGenerate();      
+            ButtonGenerate();
+        
     }
 
     

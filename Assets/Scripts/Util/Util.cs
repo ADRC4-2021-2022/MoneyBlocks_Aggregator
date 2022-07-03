@@ -12,8 +12,8 @@ public static class Util
     /// <returns>the rounded Vector3Int value of the given Vector3</returns>
     public static Vector3Int ToVector3IntRound(this Vector3 v) => new Vector3Int(Mathf.RoundToInt(v.x), Mathf.RoundToInt(v.y), Mathf.RoundToInt(v.z));
     public static Vector3Int ToVector3IntCeil(this Vector3 v) => new Vector3Int(Mathf.CeilToInt(v.x), Mathf.CeilToInt(v.y), Mathf.CeilToInt(v.z));
-    
 
+    
     /// <summary>
     /// List of the Carthesian directions (along the x, y, z axis)
     /// </summary>
@@ -69,12 +69,15 @@ public static class Util
         [FunctionColour.Red] = 1,
         [FunctionColour.Cyan] = 4,
         [FunctionColour.White] = 1,
-        [FunctionColour.Black] = 14,
+        [FunctionColour.Black] = Aggregator.height,
         [FunctionColour.Void] = 1,
         [FunctionColour.Yellow] = 1,
         [FunctionColour.Blue] = 4,
         [FunctionColour.Purple] = 4
     };
+
+    
+
 
     /// <summary>
     /// Generate a random color
@@ -191,4 +194,5 @@ public static class Util
 
         return taggedChildren;
     }
+
 }

@@ -582,6 +582,7 @@ public class VoxelGrid
     #region Grid operations
     public void SetStatesFromImageReduced(Texture2D sourceImage)
     {
+        
         //FunctionColour[,] combinedColours = new FunctionColour[GridDimensions.x, GridDimensions.z];
 
         //Loop over all the XZ voxels
