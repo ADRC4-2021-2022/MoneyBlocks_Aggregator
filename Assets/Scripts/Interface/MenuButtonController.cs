@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MenuButtonController : MonoBehaviour 
 {
-
 	public int index;
 	[SerializeField] bool keyDown;
 	[SerializeField] int maxIndex;
@@ -51,5 +50,4 @@ public class MenuButtonController : MonoBehaviour
 			keyDown = false;
 		}
 	}
-
 }

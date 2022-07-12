@@ -7,40 +7,31 @@ public class Aggregator : MonoBehaviour
 {
     private int _seed = 102;
 
-
     private List<Connection> _connections = new List<Connection>();
     private VoxelGrid _grid;
-
-    //public Coroutine coroutine;
-    public List<Voxel> NonDeadVoxels
-    {
-        get
-        {
-            
-                if (_nonDeadVoxels == null)
-                {
-
-                    _nonDeadVoxels = _grid.GetVoxels().Where(v => v.Status != VoxelState.Dead).ToList();
-
-                }
-
-            
-            return _nonDeadVoxels;
-        }
-    }
-
     private List<Voxel> _nonDeadVoxels;
     List<Voxel> _targets = new List<Voxel>();
     public Texture2D[] _sourceImage;
     private float _voxelSize = 0.3f;
     private int _voxelOffset = 1;
-
     private int _triesPerIteration = 10000;
     private int _iterations = 1000;
-
     private int _tryCounter = 0;
     private int _iterationCounter = 0;
 
+    public List<Voxel> NonDeadVoxels
+    {
+        get
+        {        
+                if (_nonDeadVoxels == null)
+                {
+                    _nonDeadVoxels = _grid.GetVoxels().Where(v => v.Status != VoxelState.Dead).ToList();
+                }          
+            return _nonDeadVoxels;
+        }
+    }
+
+   
     private PatternCreator _patternCreator
     {
         get
@@ -51,7 +42,6 @@ public class Aggregator : MonoBehaviour
 
     public void SetVoxelGridVoid()
     {
-
         GameObject[] voxels = GameObject.FindGameObjectsWithTag("Voxel");
         //Material voidMaterial = Resources.Load<Material>("Pix2PixMaterials/Void");
         foreach (GameObject item in voxels)
@@ -80,8 +70,7 @@ public class Aggregator : MonoBehaviour
     }
 
     public void ReadAllImage()
-    {
-        
+    {    
         for (int i = 0; i < _sourceImage.Length; i++)
         {
             if (i==3)
@@ -94,8 +83,7 @@ public class Aggregator : MonoBehaviour
             _grid.SetStatesFromImageReduced(_sourceImage[i]);
             location.y += height * voxelScale;
             DestroyTagVoidVoxel();
-        }
-        
+        }    
     }
 
 
@@ -104,17 +92,13 @@ public class Aggregator : MonoBehaviour
     Vector3 location;
     int floorIndex = 0;
     public void GeniusGenerate()
-    {
-        
-        
+    {           
         IsTopFloor();
-
         _grid = new VoxelGrid(_sourceImage[floorIndex], 3, height, location, voxelScale);
         _grid.SetStatesFromImageReduced(_sourceImage[0]);
         location.y += height * voxelScale;
         floorIndex += 1;
         ButtonGenerate();
-
     }
 
     public void IsTopFloor()
@@ -135,7 +119,6 @@ public class Aggregator : MonoBehaviour
 
     public void ButtonGenerate()
     {
-
         _patternCreator.CreatePatterns();
         AddFirstBlock();
         for (int i = 0; i < 5000; i++)
@@ -164,10 +147,6 @@ public class Aggregator : MonoBehaviour
         // use that seed to generate the final result
 
     }
-    public void Update()
-    {
-
-    }
 
     /// <summary>
     /// Set the status of all voxels dead inside or outside of the mesh
@@ -186,21 +165,17 @@ public class Aggregator : MonoBehaviour
                 if (!checkInside && isInside)
                     voxel.Status = VoxelState.Dead;
             }
-
             Debug.Log($"Number of available voxels: {_grid.GetVoxels().Count(v => v.Status == VoxelState.Available)} of {_grid.GetVoxels().Count()} voxels");
         }
     }
 
     public void AddFirstBlock()
     {
-
         //Select a random voxel with Y index = 0
         int rndIndex = Random.Range(0, NonDeadVoxels.Count);
-
         Vector3Int randomVoxel = NonDeadVoxels[rndIndex].Index;
         //Create a new connection with the voxel index
         Connection connectionZero = new Connection(randomVoxel, _grid);
-
         TryConnection(connectionZero);
     }
 
@@ -208,8 +183,6 @@ public class Aggregator : MonoBehaviour
     //Google coroutine
     public void GenerationStep()
     {
-
-
         //Find all available connections
         List<Connection> availableConnections = _grid.GetAvailableConnections();
         if (availableConnections.Count <= 0)
@@ -223,7 +196,6 @@ public class Aggregator : MonoBehaviour
             Connection selectedConnection = availableConnections[rndConnectionIndex];
             TryConnection(selectedConnection);
         }
-
     }
 
     public bool TryConnection(Connection connection)
@@ -281,30 +253,11 @@ public class Aggregator : MonoBehaviour
                     patternSet = true;
                     return true;
                 }
-
                 directionTries++;
             }
             patternTries++;
         }
-
         return false;
-    }
-
-    public void AddNextBlock()
-    {
-        //select random available connection out of the grid
-        //TryConnection
-    }
-
-    //This is a coroutine, watch a tutorial on coroutines to start this function
-
-
-    public void StartStopGenerating()
-    {
-        //if there is no block added to the grid
-        ////AddFirstBlock()
-        //else
-        ////StartGeneration() start or stop the coroutine
     }
 
     /// <summary>

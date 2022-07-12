@@ -291,9 +291,6 @@ public class VoxelGrid
                 }
             }
         }
-
-
-
     }
 
 
@@ -581,8 +578,7 @@ public class VoxelGrid
 
     #region Grid operations
     public void SetStatesFromImageReduced(Texture2D sourceImage)
-    {
-        
+    {      
         //FunctionColour[,] combinedColours = new FunctionColour[GridDimensions.x, GridDimensions.z];
 
         //Loop over all the XZ voxels
@@ -725,109 +721,5 @@ public class VoxelGrid
         }
     }
 
-    #endregion
-
-    #region Trash
-
-    public void SetStatesFromImage(Texture2D source)
-    {
-
-        for (int x = 0; x < GridDimensions.x; x++)
-        {
-            for (int z = 0; z < GridDimensions.z; z++)
-            {
-
-                Color pixel = source.GetPixel(x, z);
-                float avgColor = (pixel.r + pixel.g + pixel.b) / 3f;
-
-                float h = 0;
-                float s = 0;
-                float v = 0;
-
-                Color.RGBToHSV(pixel, out h, out s, out v);
-
-                if (h * HSV_H >= HSV_Red_H_Min && h * HSV_H <= HSV_Red_H_Max && s * HSV_S >= HSV_Red_S_Min && s * HSV_S <= HSV_Red_S_Max && v * HSV_V >= HSV_Red_V_Min && v * HSV_V <= HSV_Red_V_Max)
-                {
-                    Debug.Log("red");
-                    for (int y = 0; y < GridDimensions.y; y++)
-                    {
-                        //16 Get Pix2PixVoxel on Coordinate as Pix2PixVoxel
-                        Voxel voxel = Voxels[x, y, z];
-
-                        //19 Calculate state based on height, decreasing as it goes up
-
-
-                        //20 Set state on Pix2PixVoxel
-                        voxel.SetStateRed(avgColor);
-
-                    }
-
-
-                }
-                else if (h * HSV_H >= HSV_White_H_Min && h * HSV_H <= HSV_White_H_Max && s * HSV_S >= HSV_White_S_Min && s * HSV_S <= HSV_White_S_Max && v * HSV_V >= HSV_White_V_Min && v * HSV_V <= HSV_White_V_Max)
-                {
-                    Debug.Log("white");
-                    for (int y = 0; y < GridDimensions.y; y++)
-                    {
-
-                        Voxel voxel = Voxels[x, y, z];
-
-                        voxel.SetStateWhite(0.1f);
-
-                    }
-
-                }
-
-                else if (h * HSV_H >= HSV_Yellow_H_Min && h * HSV_H <= HSV_Yellow_H_Max && s * HSV_S >= HSV_Yellow_S_Min && s * HSV_S <= HSV_Yellow_S_Max && v * HSV_V >= HSV_Yellow_V_Min && v * HSV_V <= HSV_Yellow_V_Max)
-                {
-                    Debug.Log("yellow");
-
-                    for (int y = 0; y < GridDimensions.y; y++)
-                    {
-
-                        Voxel voxel = Voxels[x, y, z];
-
-                        voxel.SetStateYellow(0.1f);
-
-                    }
-
-                }
-
-
-                else if (h * HSV_H >= HSV_Green_H_Min && h * HSV_H <= HSV_Green_H_Max && s * HSV_S >= HSV_Green_S_Min && s * HSV_S <= HSV_Green_S_Max && v * HSV_V >= HSV_Green_V_Min && v * HSV_V <= HSV_Green_V_Max)
-                {
-                    Debug.Log("green");
-                    for (int y = 0; y < GridDimensions.y; y++)
-                    {
-
-                        Voxel voxel = Voxels[x, y, z];
-
-                        voxel.SetStateGreen(0.1f);
-
-                    }
-
-
-                }
-
-
-                else if (h * HSV_H >= HSV_Blue_H_Min && h * HSV_H <= HSV_Blue_H_Max && s * HSV_S >= HSV_Blue_S_Min && s * HSV_S <= HSV_Blue_S_Max && v * HSV_V >= HSV_Blue_V_Min && v * HSV_V <= HSV_Blue_V_Max)
-                {
-                    Debug.Log("blue");
-                    for (int y = 0; y < GridDimensions.y; y++)
-                    {
-                        //16 Get Pix2PixVoxel on Coordinate as Pix2PixVoxel
-                        Voxel voxel = Voxels[x, y, z];
-
-
-                        //20 Set state on Pix2PixVoxel
-                        voxel.SetStateBlue(0.1f);
-
-                    }
-                }
-            }
-        }
-
-    }
-
-    #endregion
+    #endregion   
 }

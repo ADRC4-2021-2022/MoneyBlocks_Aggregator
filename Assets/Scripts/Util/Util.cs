@@ -76,9 +76,6 @@ public static class Util
         [FunctionColour.Purple] = 4
     };
 
-    
-
-
     /// <summary>
     /// Generate a random color
     /// </summary>
@@ -191,7 +188,6 @@ public static class Util
                 GetChildrenWithTag(child, tag);
             }
         }
-
         return taggedChildren;
     }
 

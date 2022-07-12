@@ -24,9 +24,7 @@ public class PatternCreator : MonoBehaviour
     Color pink;
     private GameObject[] _prefabs;
     private bool[] _selected;
-
     public Button[] buttons;
-
 
     //Please create your regions
     #region Private fields
@@ -45,7 +43,6 @@ public class PatternCreator : MonoBehaviour
 
     #endregion
     
-
     public void Start()
     {
         LoadPrefabs();
@@ -247,7 +244,7 @@ public class PatternCreator : MonoBehaviour
         int height = 100;
         for (int i = 0; i < _selected.Length; i++)
         {
-            
+           
             _selected[i] = GUI.Toggle(new Rect(10, 10 + height * counter++, 100, 30), _selected[i], $"{_prefabs[i].name}");
             if (_selected[i])
             {
@@ -328,22 +325,17 @@ public class PatternCreator : MonoBehaviour
 
     public void CreatePatterns()
     {
-        int count = 0;
-        
-        
+        int count = 0;       
         for (int i = 0; i < _prefabs.Length; i++)
         {
             if (_selected[i])
             {
                 var goPrefab = _prefabs[i];
-                GameObject goComponent = GameObject.Instantiate(goPrefab);
-                
-               
+                GameObject goComponent = GameObject.Instantiate(goPrefab);                          
                 AddPattern(goComponent, count++);
                 GameObject.Destroy(goComponent);
             }
         }
-
     }
 
     private void AddPattern(GameObject goComponent, int count)
@@ -377,19 +369,9 @@ public class PatternCreator : MonoBehaviour
             partBounds.Encapsulate(connection.GetComponent<Collider>().bounds);
         }
 
-        Vector3Int gridDimensions = (partBounds.size / _voxelSize).ToVector3IntCeil();
-
-        ////Create you voxelgrid using the Voxelsize, Origin and dimensions
-        //if(_grid != null)
-        //{
-        //    foreach (var vox in _grid.GetVoxels())
-        //    {
-        //        vox.DestroyGameObject();
-        //    }
-        //}
-        //_grid = new VoxelGrid(gridDimensions, _voxelSize, partBounds.min);
-        //var grid = new VoxelGrid(gridDimensions, _voxelSize, partBounds.min);
+        Vector3Int gridDimensions = (partBounds.size / _voxelSize).ToVector3IntCeil();      
         Vector3[,,] vecGrid = new Vector3[gridDimensions.x, gridDimensions.y, gridDimensions.z];
+
         for (int x = 0; x < gridDimensions.x; x++)
         {
             for (int y = 0; y < gridDimensions.y; y++)
@@ -416,15 +398,7 @@ public class PatternCreator : MonoBehaviour
                     }
                 }
             }
-        }
-
-        //foreach (Voxel vox in vecGrid.GetVoxels())
-        //{
-        //    if (Util.PointInsideCollider(vox.Centre, partCollider))
-        //    {
-        //        indices.Add(vox.Index);
-        //    }
-        //}
+        }   
 
         //Get all the children of the component gameobject with the tag anchorpoints in a list
         ////Loop over all the anchorpoints,
@@ -448,24 +422,13 @@ public class PatternCreator : MonoBehaviour
                         }
                     }
                 }
-            }
-
-            //foreach (var vox in grid.GetVoxels())
-            //{
-            //    //Check if the centrepoint of the voxel is in almost the same position as the transform position of the anchorpoint gameobject
-            //    if (Vector3.Distance(goAnchorpoint.transform.position, vox.Centre) < _voxelSize / 2)
-            //    {
-            //        anchorpoints.Add(vox.Index);
-            //    }
-            //}
+            }           
         }
 
         //Get all the children of the component gameobject with the tag connections in a list
         ////Loop over all the connections,
         //////Take the connection position and divide by your voxelsize, rounded to a Vector3Int
         //////Add the new vector3Int to the list of connection
-
-
         foreach (GameObject goConnection in goConnections)
         {
             for (int x = 0; x < gridDimensions.x; x++)
@@ -482,22 +445,11 @@ public class PatternCreator : MonoBehaviour
                         }
                     }
                 }
-            }
-
-            //foreach (var vox in grid.GetVoxels())
-            //{
-            //    //Check if the centrepoint of the voxel is in almost the same position as the transform position of the anchorpoint gameobject
-            //    if (Vector3.Distance(goConnection.transform.position, vox.Centre) < _voxelSize / 2)
-            //    {
-            //        connections.Add(vox.Index);
-            //    }
-            //}
+            }            
         }
-
         Debug.Log($"{name} {indices.Count} {anchorpoints.Count} {connections.Count}");
         //Add the new paterns for the component
         PatternManager.AddPattern(indices, anchorpoints, connections, $"{name}-{Random.Range(0, 1000)}", goComponent, _voxelSize);
         //PatternManager.AddPattern(indices, anchorpoints, connections, name, goComponent, _voxelSize);
-
     }
 }

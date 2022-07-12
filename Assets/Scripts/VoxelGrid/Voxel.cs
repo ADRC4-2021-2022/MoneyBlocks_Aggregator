@@ -269,7 +269,6 @@ public class Voxel
                 neighbours.Add(_grid.GetVoxelByIndex(neighbourIndex));
             }
         }
-
         return neighbours;
     }
 
@@ -289,7 +288,6 @@ public class Voxel
                 relatedVoxels.Add(_grid.GetVoxelByIndex(newIndex));
             }
         }
-
         return relatedVoxels;
     }
 
@@ -345,104 +343,67 @@ public class Voxel
 
     public void SetStateRed(float newState)
     {
-
         _state = newState;
-
         _goVoxelTrigger.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/RED");
-
         _goVoxelTrigger.tag = "RedVoxel";
-
     }
 
     public void SetStateWhite(float newState)
     {
-
         _state = newState;
-
         _goVoxelTrigger.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/WHITE");
-
         _goVoxelTrigger.tag = "WhiteVoxel";
-
     }
 
 
     public void SetStateYellow(float newState)
     {
-
         _state = newState;
-
         _goVoxelTrigger.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/YELLOW");
-
         _goVoxelTrigger.tag = "YellowVoxel";
-
     }
 
     public void SetStateBlue(float newState)
     {
-
         _state = newState;
-
         _goVoxelTrigger.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/BLUE");
-
         _goVoxelTrigger.tag = "BlueVoxel";
-
     }
 
     public void SetStateGreen(float newState)
     {
-
         _state = newState;
-
         _goVoxelTrigger.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/GREEN");
-
         _goVoxelTrigger.tag = "GreenVoxel";
-
     }
 
     public void SetStatePurple(float newState)
     {
-
         _state = newState;
-
         _goVoxelTrigger.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/PURPLE");
-
         _goVoxelTrigger.tag = "PurpleVoxel";
-
     }
 
     public void SetStateCyan(float newState)
     {
-
         _state = newState;
-
         _goVoxelTrigger.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/CYAN");
-
         _goVoxelTrigger.tag = "CyanVoxel";
-
     }
 
     public void SetStateBlack(float newState)
     {
-
         _state = newState;
-
         _goVoxelTrigger.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/Black");
-
         _goVoxelTrigger.tag = "BlackVoxel";
-
     }
 
     public void SetStateVoid(float newState)
     {
-
         _state = newState;
-
         _goVoxelTrigger.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Pix2PixMaterials/Void");
-
         _goVoxelTrigger.tag = "VoidVoxel";
-
     }
 
     #endregion
-
 }
