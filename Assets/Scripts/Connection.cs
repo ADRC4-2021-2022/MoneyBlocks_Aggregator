@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Connection
 {
+    private VoxelGrid _grid;
     public Vector3Int Index;
     public List<Pattern> PossiblePatterns;
+
     public bool Available
     {
         get
@@ -16,10 +18,7 @@ public class Connection
             return true;
         }
     }
-
-    private VoxelGrid _grid;
     
-
     public Connection(Vector3Int index, VoxelGrid grid)
     {
         Index = index;

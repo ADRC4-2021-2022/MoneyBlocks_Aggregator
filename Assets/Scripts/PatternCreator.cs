@@ -25,23 +25,11 @@ public class PatternCreator : MonoBehaviour
     private GameObject[] _prefabs;
     private bool[] _selected;
     public Button[] buttons;
+    public Texture[] aTexture;
+    public GameObject toogle;
 
-    //Please create your regions
-    #region Private fields
     [SerializeField]
     private readonly float _voxelSize = 0.3f;
-
-    //private Vector3Int _dimensions;
-    //private Vector3 _origin;
-
-    //private VoxelGrid _grid;
-
-    //List<GameObject> _componentPrefabs;
-
-
-
-
-    #endregion
     
     public void Start()
     {
@@ -233,18 +221,12 @@ public class PatternCreator : MonoBehaviour
 
 #endregion
 
-    public Texture[] aTexture;
-
-    
-
     public void OnGUI()
     {
-        //aTexture = Resources.LoadAll<Texture>("Data/PartsIcon");
         int counter = 0;
         int height = 100;
         for (int i = 0; i < _selected.Length; i++)
-        {
-           
+        {     
             _selected[i] = GUI.Toggle(new Rect(10, 10 + height * counter++, 100, 30), _selected[i], $"{_prefabs[i].name}");
             if (_selected[i])
             {
@@ -289,7 +271,6 @@ public class PatternCreator : MonoBehaviour
             {
                 buttons[i].GetComponent<Image>().color = Color.gray;
             }
-            //GUI.DrawTexture(new Rect(10, 10 + height * counter++, 100, 30), aTexture[i], ScaleMode.ScaleAndCrop);
         }
 
     }
@@ -321,7 +302,6 @@ public class PatternCreator : MonoBehaviour
         }
         return false;
     }
-
 
     public void CreatePatterns()
     {
@@ -450,6 +430,11 @@ public class PatternCreator : MonoBehaviour
         Debug.Log($"{name} {indices.Count} {anchorpoints.Count} {connections.Count}");
         //Add the new paterns for the component
         PatternManager.AddPattern(indices, anchorpoints, connections, $"{name}-{Random.Range(0, 1000)}", goComponent, _voxelSize);
-        //PatternManager.AddPattern(indices, anchorpoints, connections, name, goComponent, _voxelSize);
+    }  
+
+    public void showThis()
+    {
+        toogle.SetActive(true);
     }
+
 }

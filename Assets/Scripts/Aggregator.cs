@@ -43,10 +43,9 @@ public class Aggregator : MonoBehaviour
     public void SetVoxelGridVoid()
     {
         GameObject[] voxels = GameObject.FindGameObjectsWithTag("Voxel");
-        //Material voidMaterial = Resources.Load<Material>("Pix2PixMaterials/Void");
+        
         foreach (GameObject item in voxels)
         {
-            //item.GetComponent<MeshRenderer>().material = voidMaterial;
             item.SetActive(false);
         }
     }
@@ -128,23 +127,13 @@ public class Aggregator : MonoBehaviour
         
         DestroyTagVoidVoxel();
         DestroyTagVoxel();
-        //var remainingVoxels = _grid.GetVoxels().Count(v => v.Status == VoxelState.Available);
-        //Debug.Log(remainingVoxels);
     }
 
     void Start()
     {
-
         location.x = location.y = location.z = 0;
 
         Random.InitState(_seed);
-        // generate using the first seed
-        // count how many voxels are still VoxelStat.Availble
-        //var remainingVoxels = _grid.GetVoxels().Count(v => v.Status == VoxelState.Available);
-        // store the seed and result in a list or dictionary
-        // repeat for a diffrent seed.
-        // find the seed that had the best result
-        // use that seed to generate the final result
 
     }
 
@@ -179,8 +168,6 @@ public class Aggregator : MonoBehaviour
         TryConnection(connectionZero);
     }
 
-    //Add the next block to the aggregation. Run this in a coroutine to automate the generation
-    //Google coroutine
     public void GenerationStep()
     {
         //Find all available connections
@@ -201,12 +188,10 @@ public class Aggregator : MonoBehaviour
     public bool TryConnection(Connection connection)
     {
         List<Pattern> possiblePatterns = connection.PossiblePatterns;
-        //Debug.Log(possiblePatterns.Count);
-        //If we have found a pattern, this boolean will be true
+
         bool patternSet = false;
         int patternTries = 0;
 
-        //Try all patterns until one is found
         while (possiblePatterns.Count > 0 && !patternSet && patternTries < PatternManager.Patterns.Count)
         {
             List<Vector3Int> possibleDirections = new List<Vector3Int>(Util.Directions);

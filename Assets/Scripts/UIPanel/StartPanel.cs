@@ -7,11 +7,11 @@ using UnityEngine.UI;
 ///</summary>
 public class StartPanel : BasePanel
 {
-    private static string name = "StartPanel";
-    private static string path = "Panel/StartPanel";
-    public static readonly UIType uiType = new UIType(path, name);
+    private static string name = "StartPanel01";
+    private static string path = "Panel/StartPanel01";
+    public static readonly UIType uiType_StartPanel01 = new UIType(path, name);
 
-    public StartPanel(): base(uiType)
+    public StartPanel(): base(uiType_StartPanel01)
     {
 
     }

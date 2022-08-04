@@ -17,6 +17,7 @@ public class Block
     public Vector3Int Anchor;
     public Quaternion Rotation;
     private bool _placed = false;
+
     /// <summary>
     /// Get the current state of the block. Can be Valid, Intersecting, OutOfBound or Placed
     /// </summary>
@@ -24,19 +25,16 @@ public class Block
     {
         get
         {
-            //Debug.Log($"{new List<Voxel>(_grid.GetVoxels()).Count(v => v.Status == VoxelState.Alive)} alive");
-            //Debug.Log($"{new List<Voxel>(_grid.GetVoxels()).Count(v => v.Status == VoxelState.Dead)} dead");
-
             if (_placed) return BlockState.Placed;
             if (Voxels.Count < _pattern.Indices.Count) return BlockState.OutOfBounds;
             if (Voxels.Count(v => v.Status != VoxelState.Available) > 0)
             {
-                //_goBlock.name = "INTERSECTING";
                 return BlockState.Intersecting;
             }
             return BlockState.Valid;
         }
     }
+
     /// <summary>
     /// Block constructor. Will create block starting at an anchor with a certain rotation of a given type.
     /// </summary>
@@ -49,7 +47,6 @@ public class Block
         Anchor = anchor;
         Rotation = rotation;
         _grid = grid;
-
 
         PositionPattern();
     }
@@ -91,6 +88,7 @@ public class Block
             Debug.LogWarning("Block can't be placed");
             return false;
         }
+
         Color randomCol = Util.RandomColor;
         CreateGOBlock();
 
@@ -127,7 +125,6 @@ public class Block
             moveAnchor.transform.position = _grid.GetVoxelByIndex(Anchor).Centre;
             moveAnchor.transform.rotation = Rotation;;
             var mesh = Util.GetChildrenWithTag(_goBlock.transform, "ComponentMesh").First();
-            //mesh.GetComponent<MeshRenderer>().material.color = Util.RandomColor;
         }
         else
             Debug.LogWarning($"The GameObject for pattern  {PatternIndex}: '{PatternManager.GetPatternByIndex(PatternIndex).Name}' is not found");
